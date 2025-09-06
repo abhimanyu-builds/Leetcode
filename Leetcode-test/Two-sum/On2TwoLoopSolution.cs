@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class Solution
+public class On2TwoLoopSolution : ITwoSumSolution
 {
     public int[] TwoSum(int[] nums, int target)
     {
