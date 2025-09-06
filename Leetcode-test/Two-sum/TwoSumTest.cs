@@ -1,6 +1,10 @@
 ﻿public class TwoSumTest
 {
+    public enum TwoSumStrategyType { On2, On }
     public record TwoSumCase(int[] Array, int[] Expected);
+    private static readonly TwoSumStrategyType strategy = TwoSumStrategyType.On;
+
+
     public TwoSumTest()
     {
         List<TwoSumCase> cases = GenerateTestCases();
@@ -10,7 +14,7 @@
         foreach (var testCase in cases)
         {
             total++;
-            isPass = RunTest(testCase);
+            isPass = RunTest(testCase, strategy);
             if (isPass) passed++;
         }
         Console.WriteLine($"\nSummary: {passed}/{total} tests passed.");
@@ -61,12 +65,12 @@
         return array;
     }
 
-    public static bool RunTest(TwoSumCase testCase)
+    public static bool RunTest(TwoSumCase testCase, TwoSumStrategyType strategy)
     {
         (int[] array, int[] expected) = testCase;
         var (i, j) = (expected[0], expected[1]);
         int target = array[i] + array[j];
-        On2TwoLoopSolution solution = new();
+        ITwoSumSolution solution = GetTwoSumSolution(strategy);
         var watch = System.Diagnostics.Stopwatch.StartNew();
         int[] result = solution.TwoSum(array, target);
         watch.Stop();
@@ -74,6 +78,13 @@
         PrintTestResult(isPass, testCase, result, watch.ElapsedMilliseconds);
         return isPass;
     }
+    public static ITwoSumSolution GetTwoSumSolution(TwoSumStrategyType strategy) =>
+        strategy switch
+        {
+            TwoSumStrategyType.On => new OnOneLoopDictionarySolution(),
+            TwoSumStrategyType.On2 => new On2TwoLoopSolution(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
     public static void PrintTestResult(bool isPass, TwoSumCase testCase, int[] result, long timeMs)
 
     {

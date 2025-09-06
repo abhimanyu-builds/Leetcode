@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-public class OnOneLoopDictionarySolution : ITwoSumSolution
+﻿public class OnOneLoopDictionarySolution : ITwoSumSolution
 {
     public int[] TwoSum(int[] nums, int target)
     {
