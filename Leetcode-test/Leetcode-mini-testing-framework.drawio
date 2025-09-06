@@ -1,0 +1,169 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.0">
+  <diagram name="Page-1" id="MKwtOkW5DXRh_Tmtk4o3">
+    <mxGraphModel dx="3531" dy="2148" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="145" width="440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-2" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Orchestration Layer&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="155" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="SoGpk_oBTaYuiK0jBRyO-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="SoGpk_oBTaYuiK0jBRyO-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="SoGpk_oBTaYuiK0jBRyO-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-3" value="Program.cs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="535" y="185" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-4" value="Loads test cases" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="212.5" width="110" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="910" y="-170" width="370" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-6" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Test Case Provider Layer&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="955" y="-160" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-7" value="ITestCaseProvider&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="937.5" y="-110" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-8" value="Interface for generating test cases per problem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1152.5" y="-115" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-9" target="SoGpk_oBTaYuiK0jBRyO-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-9" value="TwoSumTestCaseProvider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="937.5" y="-20" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-11" value="Implementation to provide&amp;nbsp;static and randomized test cases for Two Sum" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1152.5" y="-25" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-13" value="&lt;div&gt;Runs strategies&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="210" width="110" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="-600" width="570" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-15" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Strategy Layer&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="87.5" y="-580" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-16" value="IProblemSolution&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="-550" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-17" value="Interface for solving a problem with a specific algorithm" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-560" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="SoGpk_oBTaYuiK0jBRyO-19" target="SoGpk_oBTaYuiK0jBRyO-16" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="-455" />
+              <mxPoint x="400" y="-520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-19" value="OnOneLoopDictionarySolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="-475" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-20" value="Fast O(n) solution for Two Sum with Dictionary" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="285" y="-487.5" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-21" target="SoGpk_oBTaYuiK0jBRyO-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="-375" />
+              <mxPoint x="430" y="-530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-21" value="On2TwoLoopSolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="-395" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-22" value="Brute-force O(n²) solution for Two Sum with&amp;nbsp;&lt;div&gt;nested loops&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="285" y="-405" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-24" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="470" y="-170" width="360" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-25" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Test Harness&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="572.5" y="-160" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-26" value="ProblemTest&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="487.5" y="-110" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-27" value="Generic test runner that executes cases, validates results,&amp;nbsp;&lt;div&gt;logs failures, and benchmarks&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="693.75" y="-127.5" width="127.5" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="SoGpk_oBTaYuiK0jBRyO-29" target="SoGpk_oBTaYuiK0jBRyO-26" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-29" value="TestCase" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="487.5" y="-20" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-30" value="Model to hold input, expected output, and validation mode" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="702.5" y="-25" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-31" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-50" y="-270" width="430" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-32" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Strategy Registry&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="71.25" y="-250" width="187.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-33" target="SoGpk_oBTaYuiK0jBRyO-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-33" value="ProblemStrategy&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-2.5" y="-130" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-34" value="Wrapper on strategy for metadata (e.g., name)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="212.5" y="-135" width="127.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-36" target="SoGpk_oBTaYuiK0jBRyO-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="105" y="35" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-36" value="ProblemStrategyFactory" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-2.5" y="45" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-37" value="Returns available strategy implementations for a problem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="202.5" y="40" width="175" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-39" target="SoGpk_oBTaYuiK0jBRyO-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-70" y="-47" />
+              <mxPoint x="-70" y="-375" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-39" target="SoGpk_oBTaYuiK0jBRyO-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-90" y="-40" />
+              <mxPoint x="-90" y="-455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-39" value="TwoSumStrategies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-2.5" y="-67.5" width="215" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-40" value="To hold list of strategies to solve Two Sum problem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="212.5" y="-72.5" width="145" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SoGpk_oBTaYuiK0jBRyO-42" value="IProblemStrategy&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-2.5" y="-200" width="215" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
