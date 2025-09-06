@@ -1,1 +1,1 @@
-﻿var test = new TwoSumTest();
+﻿var _ = new TwoSumTest();
