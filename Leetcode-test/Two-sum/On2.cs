@@ -22,11 +22,11 @@ public class Solution
                 if (nums[i] + nums[j] == target)
                 {
                     //Exactly 1 solution => return after finding a match
-                    return new int[] { i, j };
+                    return [i, j];
                 }
             }
         }
         //Exactly 1 solution => Always has solution => ideally never get executed. Only for compilation
-        return new int[] { 0, 0 };
+        return [0, 0];
     }
 }
