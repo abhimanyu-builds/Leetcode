@@ -1,6 +1,6 @@
-﻿using Leetcode_test.Interfaces;
-using Leetcode_test.Models;
-using Leetcode_test.TestHarness;
+﻿using Leetcode.Interfaces;
+using Leetcode.Models;
+using Leetcode.TestHarness;
 
 public class TwoSumTestCaseProvider : ITestCaseProvider<TwoSumInput, int[]>
 {

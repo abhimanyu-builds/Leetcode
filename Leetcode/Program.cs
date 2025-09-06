@@ -1,6 +1,6 @@
-﻿using Leetcode_test.Common;
-using Leetcode_test.Models;
-using Leetcode_test.TestHarness;
+﻿using Leetcode.Common;
+using Leetcode.Models;
+using Leetcode.TestHarness;
 
 class Program
 {

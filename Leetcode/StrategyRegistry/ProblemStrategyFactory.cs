@@ -1,9 +1,8 @@
-﻿using Leetcode_test.Interfaces;
-using Leetcode_test.Models;
-using Leetcode_test.Strategies;
-using Leetcode_test.Two_sum;
+﻿using Leetcode.Interfaces;
+using Leetcode.Models;
+using Leetcode.StrategyRegistry;
 
-namespace Leetcode_test.Common
+namespace Leetcode.Common
 {
     public enum ProblemType { TwoSum }
 

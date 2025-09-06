@@ -3,5 +3,8 @@
 ################################################################################
 
 /.vs
-/Leetcode-test/bin/Debug/net8.0
-/Leetcode-test/obj
+bin/
+*.user
+*.suo
+/Leetcode/obj
+/Leetcode/bin/Debug/net8.0

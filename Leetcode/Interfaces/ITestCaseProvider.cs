@@ -1,6 +1,6 @@
-﻿using Leetcode_test.TestHarness;
+﻿using Leetcode.TestHarness;
 
-namespace Leetcode_test.Interfaces
+namespace Leetcode.Interfaces
 {
     public interface ITestCaseProvider<TInput, TOutput>
     {

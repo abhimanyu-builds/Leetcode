@@ -1,7 +1,7 @@
-﻿using Leetcode_test.Interfaces;
-using Leetcode_test.Models;
+﻿using Leetcode.Interfaces;
+using Leetcode.Models;
 
-namespace Leetcode_test.TestHarness
+namespace Leetcode.TestHarness
 {
     public static class ProblemTestCaseFactory
     {

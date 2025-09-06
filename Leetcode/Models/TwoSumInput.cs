@@ -1,4 +1,4 @@
-﻿namespace Leetcode_test.Models
+﻿namespace Leetcode.Models
 {
     public class TwoSumInput
     {

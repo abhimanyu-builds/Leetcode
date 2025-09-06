@@ -1,4 +1,4 @@
-﻿namespace Leetcode_test.Interfaces
+﻿namespace Leetcode.Interfaces
 {
     public interface IProblemSolution<TInput, TOutput>
     {

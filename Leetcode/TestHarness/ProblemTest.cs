@@ -1,7 +1,7 @@
-﻿using Leetcode_test.Models;
+﻿using Leetcode.Models;
 using System.Collections;
 
-namespace Leetcode_test.TestHarness
+namespace Leetcode.TestHarness
 {
     public class ProblemTest<TInput, TOutput>
     {
