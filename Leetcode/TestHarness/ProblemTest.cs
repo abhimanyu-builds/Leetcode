@@ -42,12 +42,15 @@ namespace Leetcode.TestHarness
         }
         private bool ValidateBySum(TInput input, TOutput actual)
         {
-            if (input is TwoSumInput ts && actual is int[] indices && indices.Length == 2)
+            if (actual is not int[] indices || indices.Length != 2)
+                return false;
+
+            return input switch
             {
-                var nums = ts.Numbers;
-                return nums[indices[0]] + nums[indices[1]] == ts.Target;
-            }
-            return false;
+                TwoSumInput ts => ts.Numbers[indices[0]] + ts.Numbers[indices[1]] == ts.Target,
+                TwoSumSortedInput ts => ts.Numbers[indices[0] - 1] + ts.Numbers[indices[1] - 1] == ts.Target,
+                _ => false
+            };
         }
 
         private void PrintSummary(List<TestResult> results, int passed, int total, long totalTime)

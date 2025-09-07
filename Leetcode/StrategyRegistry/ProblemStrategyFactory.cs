@@ -4,7 +4,7 @@ using Leetcode.StrategyRegistry;
 
 namespace Leetcode.Common
 {
-    public enum ProblemType { TwoSum }
+    public enum ProblemType { TwoSum, TwoSumSorted }
 
     public class ProblemStrategy<TInput, TOutput> : IProblemStrategy<TInput, TOutput>
     {
@@ -21,5 +21,6 @@ namespace Leetcode.Common
     public static class ProblemStrategyFactory
     {
         public static IEnumerable<IProblemStrategy<TwoSumInput, int[]>> GetTwoSumStrategies() => TwoSumStrategies.All;
+        public static IEnumerable<IProblemStrategy<TwoSumSortedInput, int[]>> GetTwoSumSortedStrategies() => TwoSumSortedStrategies.All;
     }
 }
