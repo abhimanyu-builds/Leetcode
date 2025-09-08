@@ -3,7 +3,7 @@ using Leetcode.Models;
 
 namespace Leetcode.Strategies
 {
-    public class TwoSumSortedSolution : IProblemSolution<TwoSumSortedInput, int[]>
+    public class TwoSumSortedTwoPointerSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
         public int[] Solve(TwoSumSortedInput input)
         {
