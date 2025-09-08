@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.2.0">
   <diagram name="Page-1" id="MKwtOkW5DXRh_Tmtk4o3">
-    <mxGraphModel dx="4051" dy="2426" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="3166" dy="1953" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -24,7 +24,7 @@
         <mxCell id="SoGpk_oBTaYuiK0jBRyO-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="SoGpk_oBTaYuiK0jBRyO-29" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="z4QxL23_FTDWs-ytmF1i-13">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" parent="1" source="SoGpk_oBTaYuiK0jBRyO-3" target="z4QxL23_FTDWs-ytmF1i-13" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="900" y="330" />
@@ -96,7 +96,7 @@
         <mxCell id="SoGpk_oBTaYuiK0jBRyO-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SoGpk_oBTaYuiK0jBRyO-21" target="SoGpk_oBTaYuiK0jBRyO-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1170" y="-375" />
+              <mxPoint x="1170" y="-390" />
               <mxPoint x="1170" y="-520" />
             </Array>
           </mxGeometry>
@@ -151,7 +151,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="SoGpk_oBTaYuiK0jBRyO-36" target="z4QxL23_FTDWs-ytmF1i-5">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" parent="1" source="SoGpk_oBTaYuiK0jBRyO-36" target="z4QxL23_FTDWs-ytmF1i-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-10" y="-387" />
@@ -190,7 +190,7 @@
         <mxCell id="SoGpk_oBTaYuiK0jBRyO-42" value="IProblemStrategy&amp;lt;TInput, TOutput&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="17.5" y="-540" width="215" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="z4QxL23_FTDWs-ytmF1i-1" target="SoGpk_oBTaYuiK0jBRyO-16">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="z4QxL23_FTDWs-ytmF1i-1" target="SoGpk_oBTaYuiK0jBRyO-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1220" y="-330" />
@@ -198,13 +198,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-1" value="OnOneLoopDictionarySolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-1" value="TwoSumSortedTwoPointerSolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="812.5" y="-350" width="215" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-2" value="Fast O(n) solution for Two Sum with Dictionary" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-2" value="Fast O(n) solution for Two Sum Sorted with Two pointers" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1027.5" y="-362.5" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="z4QxL23_FTDWs-ytmF1i-3" target="SoGpk_oBTaYuiK0jBRyO-16">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="z4QxL23_FTDWs-ytmF1i-3" target="SoGpk_oBTaYuiK0jBRyO-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1220" y="-275" />
@@ -212,16 +212,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-3" value="On2TwoLoopSolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-3" value="TwoSumSortedBinarySearchSolution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="812.5" y="-295" width="215" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-4" value="Brute-force O(n²) solution for Two Sum with&amp;nbsp;&lt;div&gt;nested loops&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1025" y="-305" width="145" height="50" as="geometry" />
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-4" value="Slow O(nlogn) solution for Two Sum Sorted with&amp;nbsp;&lt;div&gt;Binary Search for each element&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1021" y="-298" width="160" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="z4QxL23_FTDWs-ytmF1i-5" target="z4QxL23_FTDWs-ytmF1i-1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" parent="1" source="z4QxL23_FTDWs-ytmF1i-5" target="z4QxL23_FTDWs-ytmF1i-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="z4QxL23_FTDWs-ytmF1i-5" target="z4QxL23_FTDWs-ytmF1i-3">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;" parent="1" source="z4QxL23_FTDWs-ytmF1i-5" target="z4QxL23_FTDWs-ytmF1i-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="570" y="-330" />
@@ -229,23 +229,23 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-5" value="TwoSumSortedStrategies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-5" value="TwoSumSortedStrategies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="17.5" y="-350" width="215" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-6" value="To hold list of strategies to solve Two Sum II problem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-6" value="To hold list of strategies to solve Two Sum II problem" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="232.5" y="-355" width="145" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-12" value="Implementation to provide&amp;nbsp;static and data-driven test cases for Two Sum Sorted" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-12" value="Implementation to provide&amp;nbsp;static and data-driven test cases for Two Sum Sorted" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="910" y="180" width="110" height="72.5" as="geometry" />
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="z4QxL23_FTDWs-ytmF1i-13" target="SoGpk_oBTaYuiK0jBRyO-7">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="z4QxL23_FTDWs-ytmF1i-13" target="SoGpk_oBTaYuiK0jBRyO-7" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1280" y="208" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="z4QxL23_FTDWs-ytmF1i-13" value="TwoSumSortedTestCaseProvider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="z4QxL23_FTDWs-ytmF1i-13" value="TwoSumSortedTestCaseProvider" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="1020" y="187.5" width="215" height="40" as="geometry" />
         </mxCell>
       </root>
