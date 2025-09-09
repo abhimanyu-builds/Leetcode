@@ -1,0 +1,26 @@
+@startuml
+skinparam componentStyle rectangle
+
+package "Core Framework" {
+  [Program] --> [ProblemStrategyFactory]
+  [Program] --> [ProblemTestCaseFactory]
+  [Program] --> [ProblemTest]
+}
+
+package "Strategy Layer" {
+  [ProblemStrategyFactory] --> [TwoSumSortedStrategy]
+  [ProblemStrategyFactory] --> [TwoSumBinarySearchStrategy]
+  [TwoSumSortedStrategy] --> [TwoSumSortedSolution]
+  [TwoSumBinarySearchStrategy] --> [TwoSumBinarySearchSolution]
+}
+
+package "Test Case Layer" {
+  [ProblemTestCaseFactory] --> [TwoSumSortedTestCases]
+}
+
+package "Execution Layer" {
+  [ProblemTest] --> [Strategy]
+  [ProblemTest] --> [Validator]
+}
+
+@enduml
