@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+autonumber
+
+participant Program
+participant StrategyFactory
+participant TestCaseFactory
+participant TestHarness
+participant Strategy
+participant Validator
+
+== Initialization Phase ==
+
+Program -> StrategyFactory : GetStrategies()
+StrategyFactory --> Program : List of strategies
+
+Program -> TestCaseFactory : GetTestCases()
+TestCaseFactory --> Program : List of test cases
+
+== Execution Phase ==
+
+loop For each strategy
+    Program -> TestHarness : Create with strategy + comparer
+    Program -> TestHarness : RunTests(testCases)
+
+    loop For each test case
+        TestHarness -> Strategy : Solve(input)
+        activate Strategy
+        Strategy --> TestHarness : output
+        deactivate Strategy
+
+        TestHarness -> Validator : Compare(output, expected)
+        Validator --> TestHarness : result
+    end
+end
+
+== Summary Phase ==
+Program --> Program : Display summary
+@enduml
