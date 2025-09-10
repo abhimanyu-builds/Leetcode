@@ -22,6 +22,6 @@ namespace Leetcode.Common
     {
         public static IEnumerable<IProblemStrategy<TwoSumInput, int[]>> GetTwoSumStrategies() => TwoSumStrategies.All;
         public static IEnumerable<IProblemStrategy<TwoSumSortedInput, int[]>> GetTwoSumSortedStrategies() => TwoSumSortedStrategies.All;
-        public static IEnumerable<IProblemStrategy<ThreeSumInput, List<int[]>>> GetThreeSumStrategies() => ThreeSumStrategies.All;
+        public static IEnumerable<IProblemStrategy<ThreeSumInput, List<List<int>>>> GetThreeSumStrategies() => ThreeSumStrategies.All;
     }
 }

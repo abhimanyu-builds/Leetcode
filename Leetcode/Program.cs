@@ -29,7 +29,7 @@ class Program
                 break;
 
             case ProblemType.ThreeSum:
-                RunTestSuite<ThreeSumInput, List<int[]>>(
+                RunTestSuite<ThreeSumInput, List<List<int>>>(
                     ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetThreeSumStrategies(),
                     CompareTripletSets
@@ -59,7 +59,7 @@ class Program
         if (actual.Length != expected.Length) return false;
         return actual.SequenceEqual(expected);
     }
-    static bool CompareTripletSets(List<int[]> actual, List<int[]> expected)
+    static bool CompareTripletSets(List<List<int>> actual, List<List<int>> expected)
     {
         if (actual == null || expected == null) return false;
         if (actual.Count == 0 && actual.Count == expected.Count) return true;

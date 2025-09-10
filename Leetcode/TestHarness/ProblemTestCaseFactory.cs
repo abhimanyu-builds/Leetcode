@@ -9,7 +9,7 @@ namespace Leetcode.TestHarness
             new TwoSumTestCaseProvider();
         public static ITestCaseProvider<TwoSumSortedInput, int[]> GetTwoSumSortedTestCases() =>
             new TwoSumSortedTestCaseProvider();
-        public static ITestCaseProvider<ThreeSumInput, List<int[]>> GetThreeSumTestCases() =>
+        public static ITestCaseProvider<ThreeSumInput, List<List<int>>> GetThreeSumTestCases() =>
             new ThreeSumTestCaseProvider();
     }
 }
