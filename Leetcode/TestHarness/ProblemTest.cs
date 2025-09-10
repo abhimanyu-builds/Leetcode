@@ -45,9 +45,9 @@ namespace Leetcode.TestHarness
 
         private bool ValidateBySum(TInput input, TOutput actual, TOutput expected)
         {
-            if (input is ThreeSumInput ts && actual is List<int[]> triplet)
+            if (input is ThreeSumInput ts && actual is List<List<int>> triplet)
             {
-                if (triplet.Count == 0 || triplet?.FirstOrDefault()?.Length != 3 || triplet?.FirstOrDefault()?.Sum() != ts.Target) return false;
+                if (triplet.Count == 0 || triplet?.FirstOrDefault()?.Count != 3 || triplet?.FirstOrDefault()?.Sum() != ts.Target) return false;
 
                 var inputFreq = ts.Numbers.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
                 var tripletFreq = triplet?.FirstOrDefault()?.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());

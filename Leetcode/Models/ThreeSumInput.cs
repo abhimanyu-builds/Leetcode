@@ -2,10 +2,10 @@
 {
     public class ThreeSumInput
     {
-        public int[] Numbers { get; init; }
+        public List<int> Numbers { get; init; }
         public int Target { get; init; }
 
-        public ThreeSumInput(int[] numbers, int target)
+        public ThreeSumInput(List<int> numbers, int target)
         {
             Numbers = numbers;
             Target = target;
