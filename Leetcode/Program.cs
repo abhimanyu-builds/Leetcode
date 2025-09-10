@@ -6,7 +6,7 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.TwoSumSorted);
+        RunProblem(ProblemType.ThreeSum);
     }
     static void RunProblem(ProblemType type)
     {
@@ -28,6 +28,14 @@ class Program
                 );
                 break;
 
+            case ProblemType.ThreeSum:
+                RunTestSuite<ThreeSumInput, List<int[]>>(
+                    ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetThreeSumStrategies(),
+                    CompareTripletSets
+                );
+                break;
+
             default:
                 Console.WriteLine($"Unsupported problem type {type}");
                 break;
@@ -45,6 +53,24 @@ class Program
             testHarness.RunTests(testCases);
         }
     }
-    static bool CompareArrays(int[] actual, int[] expected) =>
-        actual.Length == expected.Length && actual[0] == expected[0] && actual[1] == expected[1];
+    static bool CompareArrays(int[] actual, int[] expected)
+    {
+        if (actual == null || expected == null) return false;
+        if (actual.Length != expected.Length) return false;
+        return actual.SequenceEqual(expected);
+    }
+    static bool CompareTripletSets(List<int[]> actual, List<int[]> expected)
+    {
+        if (actual == null || expected == null) return false;
+        if (actual.Count == 0 && actual.Count == expected.Count) return true;
+        if (actual.Count != expected.Count) return false;
+
+        var actualSorted = actual.Select(t => t.OrderBy(x => x).ToArray()).ToList();
+        var expectedSorted = expected.Select(t => t.OrderBy(x => x).ToArray()).ToList();
+
+        var actualSet = new HashSet<string>(actualSorted.Select(t => string.Join(",", t)));
+        var expectedSet = new HashSet<string>(expectedSorted.Select(t => string.Join(",", t)));
+
+        return actualSet.SetEquals(expectedSet);
+    }
 }
