@@ -1,10 +1,17 @@
 Approaches
 ----------
-| Rank  |		Approach                    | Time Complexity   | Space Complexity  | Pros                                             | Cons                                    |
-|-------|-----------------------------------|-------------------|-------------------|--------------------------------------------------|-----------------------------------------|
-|		|	Dictionary Overall 				|		O(n+k^2)	|		O(k)		|
-|		|		Dictionary Creation			|		O(n)		|		O(k)		|
-|		|		Triplet Generation Methods	|		O(k^2)		|		O(n^2)		|
+| Rank  |		Approach                    | Time Complexity   | Space Complexity  | Pros														| Cons												|
+|-------|-----------------------------------|-------------------|-------------------|-----------------------------------------------------------|---------------------------------------------------|
+| 1		| Sorting + Two-Pointer				|		O(n²)		|		O(1)		| Efficient, easy to implement, handles duplicates well		| Requires sorting, only works on sorted arrays		|
+| 2		| Hash Set for Two-Sum within 3Sum	|		O(n²)		|		O(n)		| Fast lookups, avoids sorting								| Duplicate handling can be tricky					|
+| 3		| Dictionary-Based Lookup			|		O(n²)		|		O(n)		| Good for tracking complements, flexible					| Can get messy with duplicate keys					|
+|		|	Dictionary Overall 				|		O(n+k^2)	|		O(k)		|															|													|
+|		|		Dictionary Creation			|		O(n)		|		O(k)		|															|													|
+|		|		Triplet Generation Methods	|		O(k^2)		|		O(n^2)		|															|													|
+| 4		| Recursive K-Sum					|		O(n^{k-1})	|		O(k)		| Generalizes to any K, elegant structure					| Slower for large K, more complex to code			|
+| 5		| Meet-in-the-Middle				|		O(n^{k/2})	|		O(n^{k/2})	| Powerful for large K, parallelizable						| High space usage, not ideal for small K			|
+| 6		| Brute Force						|		O(n³)		|		O(1)		| Simple to understand and implement						| Extremely inefficient for large inputs			|
+|-------|-----------------------------------|-------------------|-------------------|-----------------------------------------------------------|---------------------------------------------------|
 
 
 Variants
