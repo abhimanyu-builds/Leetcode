@@ -3,6 +3,11 @@ Approaches
 | Rank  |		Approach                    | Time Complexity   | Space Complexity  | Pros														| Cons												|
 |-------|-----------------------------------|-------------------|-------------------|-----------------------------------------------------------|---------------------------------------------------|
 | 1		| Sorting + Two-Pointer				|		O(n²)		|		O(1)		| Efficient, easy to implement, handles duplicates well		| Requires sorting, only works on sorted arrays		|
+|		|	Sorting							|		O(n log n)	|		O(1)		| Array.Sort() uses Introsort, a hybrid of					|													|
+|		|									|					|					|		Quicksort for fast average performance				|													|
+|		|									|					|					|		Heapsort to avoid Quicksort's worst-case behavior	|													|
+|		|									|					|					|		Insertion Sort for small arrays for efficiency		|													|
+|		|									|					|					|															|													|	
 | 2		| Hash Set for Two-Sum within 3Sum	|		O(n²)		|		O(n)		| Fast lookups, avoids sorting								| Duplicate handling can be tricky					|
 | 3		| Dictionary-Based Lookup			|		O(n²)		|		O(n)		| Good for tracking complements, flexible					| Can get messy with duplicate keys					|
 |		|	Dictionary Overall 				|		O(n+k^2)	|		O(k)		|															|													|
