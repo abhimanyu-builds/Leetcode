@@ -5,7 +5,7 @@ namespace Leetcode.Strategies
 {
     public class ThreeSum0On2OneLoopDictionarySolution : IProblemSolution<ThreeSumInput, List<List<int>>>
     {
-        public List<List<int>> Solve(ThreeSumInput input)
+        public async Task<List<List<int>>> SolveAsync(ThreeSumInput input)
         {
             //Submission: https://leetcode.com/problems/3sum/submissions/1767774394/
 
@@ -56,7 +56,7 @@ namespace Leetcode.Strategies
             List<List<int>> potentials = new();
             HashSet<string> seen = new();
 
-            List<int> triplet = new();
+            //List<int> triplet = new();
 
             bool hasDuplicates = false; // for duplicate-based triplets
             bool checkForThirds = target % 3 == 0;
@@ -70,31 +70,51 @@ namespace Leetcode.Strategies
                 if (hasTarget && hasOpposites && hasDuplicates && hasThirds) break;
             }
 
+            var tasks = new List<Task<TripletResult>> { };
+
             if (hasTarget && hasOpposites)
             {
-                List<List<int>> symmetrics = GetSymmetricTriplets(pool, target, strictuniqueness, seen);
-                result.AddRange(symmetrics);
+                HashSet<string> localseen = new();
+                tasks.Add(Task.Run(() => GetSymmetricTriplets(pool, target, strictuniqueness, localseen)));
             }
             if (hasDuplicates)
             {
-                List<List<int>> duplicates = GetDuplicateTriplets(pool, target, strictuniqueness, seen);
-                result.AddRange(duplicates);
+                HashSet<string> localseen = new();
+                tasks.Add(Task.Run(() => GetDuplicateTriplets(pool, target, strictuniqueness, localseen)));
             }
             if (hasThirds)
             {
-                List<List<int>> thirds = GetTripletsOfThirds(pool, target, strictuniqueness, seen);
-                result.AddRange(thirds);
+                HashSet<string> localseen = new();
+                tasks.Add(Task.Run(() => GetTripletsOfThirds(pool, target, strictuniqueness, localseen)));
             }
             if (pool.Keys.Count >= 3)
             {
-                List<List<int>> uniques = GetUniqueElementTriplets(pool, target, strictuniqueness, seen);
-                result.AddRange(uniques);
+                HashSet<string> localseen = new();
+                tasks.Add(Task.Run(() => GetUniqueElementTriplets(pool, target, strictuniqueness, localseen)));
+            }
+
+            await Task.WhenAll(tasks);
+
+            foreach (var task in tasks)
+            {
+                var tripletResult = task.Result;
+
+                foreach (var triplet in tripletResult.Triplets)
+                {
+                    var tripletSignature = $"{triplet[0]}:{triplet[1]}:{triplet[2]}";
+                    if (!seen.Contains(tripletSignature))
+                    {
+                        seen.Add(tripletSignature);
+                        result.Add(triplet);
+                    }
+
+                }
             }
 
             return result;
         }
 
-        private List<List<int>> GetTripletsOfThirds(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
+        private TripletResult GetTripletsOfThirds(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
         {
 
             //if (target == 0 && pool.TryGetValue(0, out int zeroCount) && zeroCount >= 3)
@@ -122,10 +142,11 @@ namespace Leetcode.Strategies
                     result.Add(triplet);
                 }
             }
-            return result;
+
+            return new TripletResult { Triplets = result, Seen = seen };
         }
 
-        private List<List<int>> GetUniqueElementTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
+        private TripletResult GetUniqueElementTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
         {
             List<List<int>> result = [];
 
@@ -150,10 +171,10 @@ namespace Leetcode.Strategies
                     }
                 }
             }
-            return result;
+            return new TripletResult { Triplets = result, Seen = seen };
         }
 
-        private List<List<int>> GetDuplicateTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
+        private TripletResult GetDuplicateTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
         {
             List<List<int>> result = [];
 
@@ -176,10 +197,10 @@ namespace Leetcode.Strategies
                     }
                 }
             }
-            return result;
+            return new TripletResult { Triplets = result, Seen = seen };
         }
 
-        private List<List<int>> GetSymmetricTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
+        private TripletResult GetSymmetricTriplets(Dictionary<int, int> pool, int target, bool strictuniqueness, HashSet<string> seen)
         {
             List<List<int>> result = [];
             List<int> triplet = [];
@@ -202,7 +223,7 @@ namespace Leetcode.Strategies
                     }
                 }
             }
-            return result;
+            return new TripletResult { Triplets = result, Seen = seen };
         }
 
         private static Dictionary<int, int> CreateDictionary(List<int> nums)

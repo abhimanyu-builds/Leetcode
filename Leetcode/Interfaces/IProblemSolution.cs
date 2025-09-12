@@ -2,6 +2,6 @@
 {
     public interface IProblemSolution<TInput, TOutput>
     {
-        TOutput Solve(TInput input);
+        Task<TOutput> SolveAsync(TInput input);
     }
 }

@@ -5,7 +5,7 @@ namespace Leetcode.Strategies
 {
     public class TwoSumSortedBinarySearchSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
-        public int[] Solve(TwoSumSortedInput input)
+        public Task<int[]> SolveAsync(TwoSumSortedInput input)
         {
 
             //Submission: https://leetcode.com/submissions/detail/1762022829/
@@ -25,7 +25,7 @@ namespace Leetcode.Strategies
             //trivial example test case: [10, 20, 30, 40, 50, 60];
             //example target 100. result for 40,60 []
             var (numbers, target) = (input.Numbers, input.Target);
-            for (int i = 0; i < numbers.Length-1; i++) //n-1 as last element cannot have a complement
+            for (int i = 0; i < numbers.Length - 1; i++) //n-1 as last element cannot have a complement
             {
                 if (i > 0 && numbers[i] == numbers[i - 1]) continue;    //skip duplicates
                 int complement = target - numbers[i];
@@ -35,7 +35,7 @@ namespace Leetcode.Strategies
                     int mid = left + (right - left) / 2; //mathematically equivalent but computationally safer, avoids overflow for large numbers
                     if (numbers[mid] == complement)
                     {
-                        return [i + 1, mid + 1];
+                        return Task.FromResult<int[]>([i + 1, mid + 1]);
                     }
                     else if (numbers[mid] < complement)
                     {
@@ -48,7 +48,7 @@ namespace Leetcode.Strategies
                 }
             }
             // Unreachable line due to problem constraints (exactly one solution guaranteed).
-            return [-1, -1];
+            return Task.FromResult<int[]>([-1, -1]);
         }
     }
 }

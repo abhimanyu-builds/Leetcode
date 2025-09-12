@@ -5,7 +5,7 @@ namespace Leetcode.Strategies
 {
     public class TwoSumOn2TwoLoopSolution : IProblemSolution<TwoSumInput, int[]>
     {
-        public int[] Solve(TwoSumInput input)
+        public Task<int[]> SolveAsync(TwoSumInput input)
         {
 
             //Submission: //https://leetcode.com/submissions/detail/1761606991/
@@ -30,12 +30,12 @@ namespace Leetcode.Strategies
                     if (nums[i] + nums[j] == target)
                     {
                         //Exactly 1 solution => return after finding a match
-                        return [i, j];
+                        return Task.FromResult<int[]>([i, j]);
                     }
                 }
             }
             //Exactly 1 solution => Always has solution => ideally never get executed. Only for compilation
-            return [0, 0];
+            return Task.FromResult<int[]>([0, 0]);
         }
     }
 }

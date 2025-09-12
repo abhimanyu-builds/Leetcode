@@ -5,7 +5,7 @@ namespace Leetcode.Strategies
 {
     public class TwoSumSortedTwoPointerSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
-        public int[] Solve(TwoSumSortedInput input)
+        public Task<int[]> SolveAsync(TwoSumSortedInput input)
         {
 
             //Submission: https://leetcode.com/submissions/detail/1762007111/
@@ -37,7 +37,7 @@ namespace Leetcode.Strategies
                     right--;
                 }
             }
-            return [left + 1, right + 1];
+            return Task.FromResult<int[]>([left + 1, right + 1]);
 
         }
     }

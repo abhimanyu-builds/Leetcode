@@ -44,12 +44,12 @@ class Program
     static void RunTestSuite<TInput, TOutput>(
     List<ProblemTest<TInput, TOutput>.TestCase> testCases,
     IEnumerable<IProblemStrategy<TInput, TOutput>> strategies,
-    Func<TOutput, TOutput, bool> comparer)
+    Func<TOutput, TOutput, bool>? comparer)
     {
         foreach (var strategy in strategies)
         {
             Console.WriteLine($"\n Running strategy: {strategy.Name}");
-            var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer);
+            var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.SolveAsync, comparer);
             testHarness.RunTests(testCases);
         }
     }

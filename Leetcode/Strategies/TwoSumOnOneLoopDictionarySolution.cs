@@ -5,7 +5,7 @@ namespace Leetcode.Strategies
 {
     public class TwoSumOnOneLoopDictionarySolution : IProblemSolution<TwoSumInput, int[]>
     {
-        public int[] Solve(TwoSumInput input)
+        public Task<int[]> SolveAsync(TwoSumInput input)
         {
             //Submission: https://leetcode.com/submissions/detail/1761831726/
 
@@ -29,12 +29,12 @@ namespace Leetcode.Strategies
                 if (lookup.TryGetValue(complement, out complementIx))
                 {
                     //Exactly 1 solution => return after finding a match
-                    return [complementIx, i];
+                    return Task.FromResult<int[]>([complementIx, i]);
                 }
                 else { lookup[nums[i]] = i; }
             }
             //Exactly 1 solution => Always has solution => ideally never get executed. Only for compilation
-            return [0, 0];
+            return Task.FromResult<int[]>([0, 0]);
         }
     }
 }
