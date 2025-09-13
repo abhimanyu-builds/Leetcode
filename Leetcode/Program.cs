@@ -6,9 +6,10 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.TwoSum);
-        RunProblem(ProblemType.TwoSumSorted);
-        RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
+        //RunProblem(ProblemType.TwoSum);
+        //RunProblem(ProblemType.TwoSumSorted);
+        //RunProblem(ProblemType.ThreeSum);
     }
     static void RunProblem(ProblemType type, int iterations = 1)
     {
@@ -35,6 +36,13 @@ class Program
                     ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetThreeSumStrategies(),
                     CompareTripletSets, iterations
+                );
+                break;
+            case ProblemType.RemoveDuplicatesFromSortedArray:
+                RunTestSuite<int[], int>(
+                    ProblemTestCaseFactory.GetRemoveDuplicatesTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetRemoveDuplicatesStrategies(),
+                    (expected, actual) => expected == actual, iterations
                 );
                 break;
 

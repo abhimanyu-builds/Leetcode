@@ -11,5 +11,7 @@ namespace Leetcode.TestHarness
             new TwoSumSortedTestCaseProvider();
         public static ITestCaseProvider<ThreeSumInput, List<List<int>>> GetThreeSumTestCases() =>
             new ThreeSumTestCaseProvider();
+        public static ITestCaseProvider<int[], int> GetRemoveDuplicatesTestCases() =>
+            new RemoveDuplicatesSortedTestCaseProvider();
     }
 }
