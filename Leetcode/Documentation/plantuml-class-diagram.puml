@@ -1,0 +1,141 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+
+' Core Interfaces
+interface IProblemSolution<TInput, TOutput>
+note right of IProblemSolution
+Defines the Solve(input) method
+end note
+
+interface IProblemStrategy<TInput, TOutput>
+note right of IProblemStrategy
+Wraps a solution with metadata
+end note
+
+interface ITestCaseProvider<TInput, TOutput>
+note right of ITestCaseProvider
+Provides test cases for a given problem
+end note
+
+' Strategy Wrapper
+class ProblemStrategy<TInput, TOutput> implements IProblemStrategy {
+    - Name: string
+    - Implementation: IProblemSolution
+}
+
+' Strategy Implementations
+class TwoSumOnOneLoopDictionarySolution implements IProblemSolution
+class TwoSumOn2TwoLoopSolution implements IProblemSolution
+class TwoSumSortedTwoPointerSolution implements IProblemSolution
+class TwoSumSortedBinarySearchSolution implements IProblemSolution
+class ThreeSum0On2OneLoopDictionarySolution implements IProblemSolution
+class ThreeSum0On2SortingTwoPointerSolution implements IProblemSolution
+class ThreeSum0On2Hashset2SumComplementSolution implements IProblemSolution
+
+' Test Harness
+class ProblemTest<TInput, TOutput> {
+    - _solver: Func
+    - _comparer: Func
+    + RunTests(testCases: List<TestCase>)
+}
+note right of ProblemTest
+Executes test cases with optional validation
+end note
+
+class TestCase {
+    - Input: TInput
+    - Expected: TOutput
+    - ValidateBySum: bool
+    - ValidateByCount: bool
+}
+
+class TestResult {
+    - IsPass: bool
+    - Input: TInput
+    - Expected: TOutput
+    - Actual: TOutput
+    - TimeMicros: double
+}
+
+class StrategyBenchmark<TInput, TOutput> {
+    + Run(strategies, testCases, comparer, iterations): List<BenchmarkResult>
+}
+
+class BenchmarkResult {
+    - StrategyName: string
+    - AvgMicroseconds: double
+    - IsCorrect: bool
+}
+
+' Factories
+class ProblemStrategyFactory {
+    + GetTwoSumStrategies(): IEnumerable
+    + GetTwoSumSortedStrategies(): IEnumerable
+    + GetThreeSumStrategies(): IEnumerable
+}
+
+class ProblemTestCaseFactory {
+    + GetTwoSumTestCases(): ITestCaseProvider
+    + GetTwoSumSortedTestCases(): ITestCaseProvider
+    + GetThreeSumTestCases(): ITestCaseProvider
+}
+
+' Models
+class TwoSumInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+class TwoSumSortedInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+class ThreeSumInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+' Dispatcher
+class Program {
+    + Main()
+    - RunProblem(type: ProblemType)
+    - RunTestSuite()
+}
+
+enum ProblemType {
+    TwoSum
+    TwoSumSorted
+    ThreeSum
+}
+
+' Relationships
+Program --> ProblemType
+Program --> ProblemStrategyFactory
+Program --> ProblemTestCaseFactory
+Program --> ProblemTest
+
+ProblemStrategyFactory --> ProblemStrategy
+ProblemTestCaseFactory --> ITestCaseProvider
+ProblemTest --> IProblemStrategy
+ProblemTest --> TestCase
+ProblemTest --> TestResult
+ProblemStrategy --> IProblemSolution
+
+StrategyBenchmark --> IProblemStrategy
+StrategyBenchmark --> BenchmarkResult
+
+TwoSumOnOneLoopDictionarySolution --> IProblemSolution
+TwoSumOn2TwoLoopSolution --> IProblemSolution
+TwoSumSortedTwoPointerSolution --> IProblemSolution
+TwoSumSortedBinarySearchSolution --> IProblemSolution
+ThreeSum0On2OneLoopDictionarySolution --> IProblemSolution
+ThreeSum0On2SortingTwoPointerSolution --> IProblemSolution
+ThreeSum0On2Hashset2SumComplementSolution --> IProblemSolution
+
+@enduml

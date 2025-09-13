@@ -4,25 +4,28 @@ skinparam shadowing false
 skinparam linetype ortho
 autonumber
 
+title Test Case Execution Flow
+
 participant Program
 participant StrategyFactory
 participant TestCaseFactory
 participant TestHarness
 participant Strategy
 participant Validator
+participant Benchmark
 
 == Initialization Phase ==
 
 Program -> StrategyFactory : GetStrategies()
-StrategyFactory --> Program : List of strategies
+StrategyFactory --> Program : List<IProblemStrategy>
 
 Program -> TestCaseFactory : GetTestCases()
-TestCaseFactory --> Program : List of test cases
+TestCaseFactory --> Program : List<TestCase>
 
 == Execution Phase ==
 
 loop For each strategy
-    Program -> TestHarness : Create with strategy + comparer
+    Program -> TestHarness : Create(strategy, comparer)
     Program -> TestHarness : RunTests(testCases)
 
     loop For each test case
@@ -36,6 +39,11 @@ loop For each strategy
     end
 end
 
+== Benchmarking Phase ==
+Program -> Benchmark : Run(strategies, testCases, comparer)
+Benchmark --> Program : List<BenchmarkResult>
+
 == Summary Phase ==
-Program --> Program : Display summary
+Program --> Program : Display summary + failed cases + timing
+
 @enduml

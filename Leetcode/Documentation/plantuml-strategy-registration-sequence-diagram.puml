@@ -1,0 +1,38 @@
+@startuml
+autonumber
+skinparam shadowing false
+skinparam linetype ortho
+
+participant Program
+participant StrategyFactory
+participant StrategyRegistry
+participant ProblemStrategy
+participant Solution
+
+== Startup Phase ==
+
+Program -> StrategyFactory : Initialize()
+StrategyFactory -> StrategyRegistry : Register(TwoSumStrategy)
+StrategyFactory -> StrategyRegistry : Register(TwoSumSortedStrategy)
+StrategyFactory -> StrategyRegistry : Register(ThreeSumStrategy)
+StrategyRegistry --> StrategyFactory : Registration confirmation
+
+== Selection Phase ==
+
+Program -> StrategyFactory : GetStrategies(ProblemType)
+StrategyFactory -> StrategyRegistry : Fetch strategies for ProblemType
+StrategyRegistry --> StrategyFactory : List<IProblemStrategy>
+StrategyFactory --> Program : Return strategies
+
+== Execution Phase ==
+
+loop For each strategy
+    Program -> ProblemStrategy : Get Implementation
+    ProblemStrategy -> Solution : Solve(input)
+    activate Solution
+    Solution --> ProblemStrategy : output
+    deactivate Solution
+    ProblemStrategy --> Program : Return output
+end
+
+@enduml

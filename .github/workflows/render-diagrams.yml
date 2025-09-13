@@ -1,0 +1,26 @@
+name: Render PlantUML Diagrams
+
+on:
+  push:
+    paths:
+      - 'Leetcode/Documentation/diagrams/*.puml'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Render PlantUML diagrams
+        uses: weirongxu/plantuml-action@v1
+        with:
+          args: -tsvg Leetcode/Documentation/diagrams/*.puml
+
+      - name: Commit rendered diagrams
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add Leetcode/Documentation/diagrams/*.svg
+          git commit -m "Auto-rendered PlantUML diagrams"
+          git push

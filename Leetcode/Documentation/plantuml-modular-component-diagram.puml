@@ -1,0 +1,57 @@
+@startuml
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+' Core orchestration
+package "Core Framework" {
+  [Program]
+  [ProblemStrategyFactory]
+  [ProblemTestCaseFactory]
+  [ProblemTest]
+  [StrategyBenchmark]
+
+  [Program] --> [ProblemStrategyFactory]
+  [Program] --> [ProblemTestCaseFactory]
+  [Program] --> [ProblemTest]
+  [Program] --> [StrategyBenchmark]
+}
+
+' Strategy definitions
+package "Strategy Layer" {
+  [ProblemStrategyFactory] --> [TwoSumStrategies]
+  [ProblemStrategyFactory] --> [TwoSumSortedStrategies]
+  [ProblemStrategyFactory] --> [ThreeSumStrategies]
+
+  package "TwoSumStrategies" {
+    [TwoSumOnOneLoopDictionarySolution]
+    [TwoSumOn2TwoLoopSolution]
+  }
+
+  package "TwoSumSortedStrategies" {
+    [TwoSumSortedTwoPointerSolution]
+    [TwoSumSortedBinarySearchSolution]
+  }
+
+  package "ThreeSumStrategies" {
+    [ThreeSum0On2OneLoopDictionarySolution]
+    [ThreeSum0On2SortingTwoPointerSolution]
+    [ThreeSum0On2Hashset2SumComplementSolution]
+  }
+}
+
+' Test case provisioning
+package "Test Case Layer" {
+  [ProblemTestCaseFactory] --> [TwoSumTestCaseProvider]
+  [ProblemTestCaseFactory] --> [TwoSumSortedTestCaseProvider]
+  [ProblemTestCaseFactory] --> [ThreeSumTestCaseProvider]
+}
+
+' Execution and validation
+package "Execution Layer" {
+  [ProblemTest] --> [IProblemStrategy]
+  [ProblemTest] --> [ValidationLogic]
+  [StrategyBenchmark] --> [IProblemStrategy]
+  [StrategyBenchmark] --> [BenchmarkResult]
+}
+
+@enduml

@@ -1,14 +1,38 @@
-﻿[PlantUML Sequence Diagram: Test Case Flow](//www.plantuml.com/plantuml/dpng/VP91Rzim38Nl-XKy9jW2x5mWGuTktGhiK2p3xgpC9iHaIH2fjkwldrpNgfMi4U0B-Rs7HzANefWqzyx8N_OH4_PW7OfyKKrybvLkRF0xVYRuj43aW5ruPB-7UtH2YuvZJpf4Wf3q40nc3JxtTvICAO2ovOXUuJQ5VS6RsauJAks7QxGQqj3qVfFe5Ggzr_k1oPF8__nQ-0ywxh1u6BFTmerdvL9vHkNWuVQ0Gh3T6lEQ3pQVZsF11NmdVIqooMfjZebDKSq65_2JHI7SWrH9Ox-ShDhFnT6z0cVTjL1WHydBOD-UoEQZcLm84Qv30a9x09ct0-KrUUesY_rLeaB18-kR0Zw03Nt4HEcy-5VsOq5MEe-pDY-ADacDRc1wZStY0iLo5zm3hTZ7hEkAerL-A4G5QwSgDoVXGjPYKicEJbtUorF_eN51qoPMazr7eAT8LgchwHRqQOX4ajqKWdndnc-ytYxtFQRXxNPrnStjlx94XmF8X9lBei-z-mS0)
+﻿
 
-[sequence-diagram-test-case-flow](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/sequence-diagram-test-case-flow.png)
 
-[PlantUML Class Diagram](//www.plantuml.com/plantuml/dpng/hLJ1RjGm4BtxA-RMNPLAd5UeAhGKLgA0kf4u80xJP7PZaTYHPz9IKF-ToSOfIPskG28dP-RDpBFViyzOC4XRLuQ_MzTWm1ho2fbVYmHxqmgjS-yszYV1on64IopydNKxs6B5DCfKrf7SDmG-IEcDEO9p7mZMJYXiCISsDYur-3ducuhgZQzQiTuPvuKWs5qfuBTf-fgQG4nEECczojQkQUK5P9zQqSMfkQ2jKc6Gaa1HjxIm7M89DIcnmf0he9jdvWX9GA7T_PHGcfuZ57CfeIy16mO4ZfJXpahPiS421UVvPCHoZapQ_DOM5AQ4Pl9nmI2QWLnJ35iV065dRyb1qxCSJJk2WJ9q31jjiZS0FDaGsBhHtzdDmYy3-ft0Hwnf1In1hH53ww4CkqslKbKV9XocS8vSiZk_QRKa21L3uIoXc9kKlR4Em_s6CEJbFnV_LO5ke5C2tcDmn3mzm2up753ln1LSjYwFaNDVDnZ6iMEuRbrNnGk9-l8AFbYMfNcOEc0ymsIa554eEdolE_sWl1LLOsI8YVYNc8iFbdXUzJuz27mCxqZwSua0BLmiLTIthgqfe9Ocm5wqP-4FPZfviFIpaoCWTafkmEpumpMz1QzyGTNKSFih_CVSRNr3GQMmJhv-Yy4Cmuva7ukZCx_P-rz73JT1-wS-_e_DZ-32SeEIb-FRkmjOFnxV5LgtMCQ-wgzuselkhLuzdht-HCpWmKrhXRHGfv2ADaR6tlsUHij-UtsW34GQwabUKzNVwj8sR0Q69oUduwvfF75Z2fdQvW34cFcMSzDCsdg0fXuQWtj4scqA63eyPTGbqoTczWKyW4mVlSFumvWpSaLRLxy1) visualized ([PNG](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/class-diagram.png))
 
-[PlantUML Modular Component Diagram](//www.plantuml.com/plantuml/dpng/ZP11QiCm44NtEiMGVQvGGaEpwgAWq4tnOYeFhh6aCQCngIYzUuc9g08oP2dq__l3EoH5qILuawOnpYWOm76OEL9KgzaJ23d5E7WoPaOtuK2mEx8Gd0G3NLYc7VmOW8ytuK4mTB3VFwslJq_1gg3Ia4_eb2Ltcy4p9JrYeeU2dVcjhYaRy8gPf5pJtB-XpXUsIx0iIdr9T0-sdiU8aYsXkA-wsuOszjWlEd8idJPoU_E_NpkuMe6hlrf2qsrJGacaU-hBDxbrR8jwGzKU6j_lwCSUbMMb7oZsI_1_)
+## Documentation Gallery
 
-[PlantUML Strategy Registration Sequence Diagram](//www.plantuml.com/plantuml/dpng/dP9DJiD038NtSmelow8NG0ggG1GXiQW85p2farXCnf77GmcdPwB-A0r5gjZ5Vdv--fnPHKErr7c7oIIaxftKnGyEFIfs45lSoev30pNwI1F5So0RUW9HQyMvt3MkkCTWi55fyinPhpH5esPOOsMYmqNjbHgEzeVeN57a8YkfXqsBaQ0ed3jamV9k7W6ty1pO63r_q-B6pUNic0Tdo_wJTF6sap9rPSQZxN7kdqlkEQ0E9Q5MxMJLtBUyoF0WeMRjq5Z2_WRagHghQw_mH7PeCiKphcjvrcHL2_6q16fH6F_-jH0lMGIf9oj-9sVZ4MEye2KDq_aH_V6BgdI6VeaysqlndxJ8RpNPYN4U8Scox5OKjgdpFm00)
+A visual overview of the architecture, execution flow, and design patterns used in this project.
 
-[project-visualization-diagram.drawio](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/project-visualization-diagram.png)
+### Execution Flow
+
+- **Test Case Flow – Sequence Diagram**  
+  Illustrates how strategies are executed against test cases, including validation and result logging.  
+  ![Test Case Flow](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-sequence-diagram-test-case-flow.png)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-sequence-diagram-test-case-flow.puml)
+
+---
+
+### Architecture & Design
+
+- **Class Diagram – System Structure**  
+  Shows relationships between core interfaces, strategy implementations, and factories.  
+  ![Class Diagram](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/class-diagram.png)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/class-diagram.puml)
+
+- **Modular Component Diagram**  
+  Highlights separation of concerns across orchestration, strategy, test case provisioning, and execution.  
+  ![Modular Component Diagram](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-modular-component-diagram.png)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-modular-component-diagram.puml)
+
+- **Strategy Registration – Sequence Diagram**  
+  Shows how strategies are registered and retrieved based on problem type.  
+  ![Strategy Registration](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-strategy-registration-sequence-diagram.png)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-strategy-registration-sequence-diagram.puml)
+
+
 
 Description: 
 Mini scalable testing framework that:
@@ -16,62 +40,111 @@ Mini scalable testing framework that:
 - Benchmarks different strategies
 - Logs failures with context
 - Validates flexibly (strict or relaxed)
-|----------------------|--------------------------------------|--------------------------------------------------------------------------------------------|
-| **Layer**            | **Component**                        | **Role / Responsibility**                                                                  |
-|----------------------|--------------------------------------|--------------------------------------------------------------------------------------------|
-| Orchestration        | `Program.cs`                         | Central controller that loads test cases, runs strategies, and prints results              |
-| Test Harness         | `ProblemTest<TInput, TOutput>`       | Generic test runner that executes cases, validates results, logs failures, and benchmarks  |
-|                      | `TestCase` record                    | Holds input, expected output, and validation mode (strict vs sum-based)                    |
-| Test Case Provider   | `ITestCaseProvider<TInput, TOutput>` | Interface for generating test cases per problem                                            |
-|                      | `TwoSumTestCaseProvider`             | Supplies static and randomized test cases for Two Sum                                      |
-|                      | `TwoSumSortedTestCaseProvider`       | Supplies static and data-driven test cases for Two Sum Sorted                              |
-| Strategy Layer       | `IProblemSolution<TInput, TOutput>`  | Interface for solving a problem with a specific algorithm                                  |
-|                      | `OnOneLoopDictionarySolution`        | Fast O(n) solution for Two Sum                                                             |
-|                      | `On2TwoLoopSolution`                 | Brute-force O(n²) solution for Two Sum                                                     |
-|                      | `TwoSumSortedSolution`		      | Fast O(n) solution for Two Sum Sorted                                                      |
-|                      | `TwoSumSortedBinarySearchSolution`   | Binary search O(nlogn) solution for Two Sum Sorted                                         |
-| Strategy Registry    | `IProblemStrategy<TInput, TOutput>`  | Wraps a strategy with metadata like name                                                   |
-|                      | `ProblemStrategyFactory`             | Returns all available strategies for a given problem                                       |
-|                      | `TwoSumStrategies`                   | Holds the list of Two Sum strategies                                                       |
-|                      | `TwoSumSortedStrategies`             | Holds the list of strategies for Two Sum II (sorted array)                                 |
-|----------------------|--------------------------------------|--------------------------------------------------------------------------------------------|
 
-How It All Connects
-- Program.cs acts as the dispatcher, selecting the problem and orchestrating execution.
-- Factories provide the right strategies and test cases based on the selected problem.
-- Strategies implement the core logic using the Strategy Pattern.
-- The test harness (ProblemTest) runs all strategies against all test cases using a template method.
-- Comparison and validation logic are passed as delegates, enabling flexible behavior
 
-Summary of the key patterns integrated into the architecture to ensure modularity, scalability, and maintainability:
-1. Strategy Pattern
-Used to encapsulate multiple solution approaches for each problem (e.g., Two Sum, Two Sum II). Each strategy implements a shared interface (IProblemSolution<TInput, TOutput>) and can be swapped dynamically at runtime. 
-This allows for clean benchmarking, testing, and extension of new algorithms without modifying core logic.
-Benefit: Promotes open/closed principle—new strategies can be added without altering existing code.
+## Architecture Overview
 
-2. Factory Pattern
-Factories are used to centralize the creation of test cases and strategy instances. ProblemStrategyFactory and ProblemTestCaseFactory abstract away instantiation logic, allowing the main program to retrieve problem-specific components based on an enum (ProblemType).
-Benefit: Simplifies object creation and improves separation of concerns.
+This project implements a modular strategy framework for solving algorithmic problems like Two Sum, Two Sum Sorted, and Three Sum. It supports extensible strategy registration, test harness execution, and benchmarking.
 
-3. Template Method Pattern
-The ProblemTest<TInput, TOutput> class defines a reusable testing workflow that accepts a strategy and a comparer. 
-The structure of the test execution is fixed, while the specific logic (e.g., input types, comparison rules) is injected.
-Benefit: Encourages consistent testing behavior while allowing flexibility in implementation details.
+| **Layer**              | **Component**                          | **Role / Responsibility**                                                                  |
+|------------------------|----------------------------------------|--------------------------------------------------------------------------------------------|
+| **Orchestration**      | `Program.cs`                           | Central controller that loads test cases, runs strategies, benchmarks, and prints results  |
+| **Test Harness**       | `ProblemTest<TInput, TOutput>`         | Executes test cases, validates results, logs failures, and measures performance            |
+|                        | `TestCase`                             | Holds input, expected output, and validation flags (e.g. sum-based, count-based)           |
+|                        | `TestResult`                           | Captures pass/fail status, actual vs expected output, and execution time                   |
+| **Benchmarking**       | `StrategyBenchmark<TInput, TOutput>`   | Runs multiple strategies over test cases and reports average execution time and accuracy   |
+|                        | `BenchmarkResult`                      | Records strategy name, correctness, and average microseconds per test                      |
+| **Test Case Provider** | `ITestCaseProvider<TInput, TOutput>`   | Interface for generating test cases per problem                                            |
+|                        | `TwoSumTestCaseProvider`               | Supplies static and randomized test cases for Two Sum                                      |
+|                        | `TwoSumSortedTestCaseProvider`         | Supplies static and data-driven test cases for Two Sum Sorted                              |
+|                        | `ThreeSumTestCaseProvider`             | Supplies static and edge-case test cases for Three Sum                                     |
+| **Strategy Layer**     | `IProblemSolution<TInput, TOutput>`    | Interface for solving a problem with a specific algorithm                                  |
+|                        | `TwoSumOnOneLoopDictionarySolution`    | Fast O(n) solution using hash map                                                          |
+|                        | `TwoSumOn2TwoLoopSolution`             | Brute-force O(n²) solution                                                                 |
+|                        | `TwoSumSortedTwoPointerSolution`       | O(n) solution using two-pointer technique                                                  |
+|                        | `TwoSumSortedBinarySearchSolution`     | O(nlogn) solution using binary search                                                      |
+|                        | `ThreeSum0On2OneLoopDictionarySolution`| Dictionary-based frequency analysis                                                        |
+|                        | `ThreeSum0On2SortingTwoPointerSolution`| Sorting + two-pointer approach                                                             |
+|                        | `ThreeSum0On2Hashset2SumComplementSolution` | Embedded 2Sum with HashSet complement lookup                                          |
+| **Strategy Registry**  | `IProblemStrategy<TInput, TOutput>`    | Wraps a strategy with metadata like name and implementation                                |
+|                        | `ProblemStrategyFactory`               | Returns all available strategies for a given problem type                                  |
+|                        | `TwoSumStrategies`                     | Holds the list of Two Sum strategies                                                       |
+|                        | `TwoSumSortedStrategies`               | Holds the list of strategies for Two Sum Sorted                                            |
+|                        | `ThreeSumStrategies`                   | Holds the list of strategies for Three Sum                                                 |
 
-4. Adapter Pattern
-The ProblemStrategy<TInput, TOutput> wrapper adapts raw solution implementations to a unified interface (IProblemStrategy). 
-This enables consistent handling of strategy metadata (e.g., name, complexity) and execution logic.
-Benefit: Facilitates polymorphism and clean integration of diverse solution types.
 
-5. Enum-Based Dispatcher
-The use of the ProblemType enum in Program.cs acts as a lightweight command router, directing execution flow based on the selected problem.
-Benefit: Simplifies branching logic and supports future extensibility. Improves readability and centralizes control flow. 
+## How It All Connects
 
-6. Functional Composition
-Test case validation and comparison logic are passed as delegates (e.g., CompareArrays, ValidateBySum). 
-Benefit: Decouples behavior from structure and allows for flexible customization. Enhances testability and promotes clean separation of logic.
+- `Program.cs` serves as the central dispatcher. It selects the problem type, retrieves the appropriate strategies and test cases, and orchestrates execution and benchmarking.
+- `ProblemStrategyFactory` and `ProblemTestCaseFactory` use the Factory Pattern to provide the correct strategy implementations and test cases based on the selected `ProblemType` enum.
+- Each strategy implements the core algorithm using the Strategy Pattern via the `IProblemSolution<TInput, TOutput>` interface. These strategies are wrapped in `ProblemStrategy<TInput, TOutput>` to include metadata like name and complexity.
+- The test harness (`ProblemTest<TInput, TOutput>`) runs all strategies against all test cases using a Template Method Pattern. It handles execution, validation, and result logging in a consistent workflow.
+- Validation and comparison logic are passed as delegates (e.g., equality checks, sum-based validation), allowing flexible behavior across different problem types and output formats.
+- `StrategyBenchmark<TInput, TOutput>` runs performance benchmarks across strategies, measuring average execution time and correctness. This enables empirical comparison of algorithmic efficiency.
 
-These patterns collectively contribute to a robust and extensible framework for solving algorithmic problems, benchmarking strategies, and maintaining clean architecture as the codebase grows.
+Together, these components form a cohesive and extensible framework for solving algorithmic problems, validating correctness, and benchmarking performance.
+
+
+## Design Patterns Summary
+
+This project integrates several key design patterns to ensure modularity, scalability, and maintainability across problem-solving, testing, and benchmarking workflows.
+
+### 1. Strategy Pattern
+Encapsulates multiple algorithmic approaches for each problem (e.g., Two Sum, Two Sum Sorted, Three Sum).  
+Each strategy implements the shared interface `IProblemSolution<TInput, TOutput>` and can be dynamically selected or benchmarked at runtime.
+
+**Benefit:** Promotes the open/closed principle—new strategies can be added without modifying existing logic. Enables clean separation of concerns and extensible experimentation.
+
+---
+
+### 2. Factory Pattern
+Centralizes the creation of test cases and strategy instances.  
+`ProblemStrategyFactory` and `ProblemTestCaseFactory` abstract away instantiation logic and expose problem-specific components based on the `ProblemType` enum.
+
+**Benefit:** Simplifies object creation, improves separation of concerns, and supports plug-and-play extensibility.
+
+---
+
+### 3. Template Method Pattern
+`ProblemTest<TInput, TOutput>` defines a reusable testing workflow that accepts a strategy and a comparer.  
+The structure of test execution is fixed, while specific logic (e.g., input types, validation rules) is injected via delegates and configuration.
+
+**Benefit:** Ensures consistent testing behavior while allowing flexibility in validation and input modeling.
+
+---
+
+### 4. Adapter Pattern
+`ProblemStrategy<TInput, TOutput>` acts as a wrapper that adapts raw solution implementations to the unified `IProblemStrategy` interface.  
+It encapsulates metadata (e.g., name, complexity) alongside the execution logic.
+
+**Benefit:** Enables polymorphic handling of diverse strategies and simplifies integration into registries and benchmarks.
+
+---
+
+### 5. Enum-Based Dispatcher
+The `ProblemType` enum in `Program.cs` serves as a lightweight command router, directing execution flow to the appropriate strategy and test case factory.
+
+**Benefit:** Improves readability, centralizes control flow, and supports future extensibility with minimal branching logic.
+
+---
+
+### 6. Functional Composition
+Validation and comparison logic are passed as delegates (e.g., `CompareArrays`, `ValidateBySum`, `EqualityComparer<T>.Default`).  
+This allows test behavior to be customized without altering the test harness structure.
+
+**Benefit:** Decouples behavior from structure, enhances testability, and promotes clean separation of logic.
+
+---
+
+### 7. Benchmarking Integration
+`StrategyBenchmark<TInput, TOutput>` runs multiple strategies against a shared test suite and reports average execution time and correctness.  
+It supports performance profiling and comparative analysis across algorithmic approaches.
+
+**Benefit:** Enables empirical evaluation of strategies, supports optimization, and provides actionable insights for algorithm selection.
+
+---
+
+Together, these patterns form a robust and extensible framework for solving algorithmic problems, validating correctness, and benchmarking performance—while maintaining clean architecture as the codebase evolves.
 
 Extending the Framework
 To add a new problem:
@@ -84,3 +157,14 @@ To add a new problem:
 
 
 
+[PlantUML Sequence Diagram: Test Case Flow](VLHDRzim3BthL_3ee0cmSx44tRgc2z13qHIxAp8R2vKbGwBQkh--b1r_9fs174m-FZu-Chu993t5qeZmgcqblIn16Hd2BoAl3v5mfvpTwq-47oD8A6JkthKzmeiq0KSPeorINI4uJuKJCfApiJoW5u8q6OHd30ItCY3SVQ2Af9s5hN7lGZ01QQKhQGaUlJiotIIs9oy9Z_LMAdA-dkGIQoBzBlTNUeiXNEIR1Fz9etF979FeRxIgAAL_5MAzXftLf1dtAHlrZqMQPhqMugGQLfkvMBY6UwHJK6F85cAEM75LHt0D3phGpns_7moM7NGpQJ6RkMtH1LE7EU12XmwoQGORDZBCP9ohOEiye5G5XCupu6UcvUGnKzzwP5JMWPUWNCbseb_yl-ufsXG86NLJB4HJCHMHig0utUJICwOPcS-KUsVUCEFhZBJeuUo7VcF4S09TfgzSdObpaPYaH-PuplATdlweaZUj5LbBjmJyg50HveEw0NqkmcE8fXM1DXVfbnRNtsVwI_Qx6_dS0rgNkzNm9IwXDtkyfw7WmjNqoQT6Jdiy-rXogBxGVaBmHuVAo1h22Nx5dn1jC6yM6lYLTCbJ2773m_67wGi0)
+
+[sequence-diagram-test-case-flow](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-sequence-diagram-test-case-flow.png)
+
+[PlantUML Class Diagram](hLVTRzCm47_tNt5lwyGceJrMQDedh19Zqrh10qB8IwwDHM97jjEj8FvtpecT9gspTa2V7D_vTx_xj7jcBDUsAd9cVWXPSiqBI79kpBcrMZnM5YU9abFn4-5jHyLaF5LFGYvWpdE37Kak9DfLYQ2qpHHZ1t2fDC94MjHpdg1X8YnXSg_LOux5LEML5Kg-cqraMTaZcDrLbXQdJ2gBeCKYiw3cM_hi2kTape3D46XpYIFX00wXG3AUCfGfE0WMCserjxXOxMtKwxClcfS6E1ZF0fw4pPn5ddBBupPdQEmbDqXOIv6Ytcbqym3p2_AL992GoC1SQUAn44kKK3OiE-OF8506Hxaaa3gpi2i088gIv2YjsV8UVZ6Wtp5yuWMEmL2Ho8NVceHZt8Lbl9sktprIVNNZoSsUrBGgxkITn8zAbLSYSLAkLm4boYvOw6ESqCA1lFheb8eNKrhVgpg9Vmbm8MhYo7MIlGOYquW4yfOy-ASmT70S8ShKtxdKmRdX9ZDeJ-ZpKeMJUs5HwbrHmmtNrBAcNujEibs7eTQ-6zVRUWplAvc4lOJCSztRVGCFbNHGPcHz_vWnV1GEst-V7b8LzdkjGu5TFsD2Cw_NPNLxgxAEVmvBdekqhjXEg_auUHijxzgVCJH--Rthvn8JgernSDFlVsvmyM95eHt3erBvbkHILT9wsU-krGSqLMxNTiqzINeWhw5odjYAvvkxCr7WhKYq8k1KLHIoDOVGqnSeawpW-iTGBkiCZKoZBj0SGPke8mWPFG911TfCXKEVlnQvSVLqRNj3qWOXS8eCglFbel44wMvBr_w4wD6DfIaowqWVm7kUMAM9SNo6Dk9Lw-K7j7uGjAwEo9N9jQmASYqOwohM4sCVTT-DmwfjQ3gLxK8yI38eD4XRLq-KwTvdFDqT-dMGRrMAUVyYgCjeVUbKnIDgIXYDiA_VGc5olK1RxtcpCpMjq-rC-SIlswNZm_y7zyx-H-03k1Acv3R9klVtmZsrGXvlkP2ZGuzB_UNJFdBFi75R1FJHqN49c5RKPoCt46cKLKLNqsCtmUeicxWr6zxNXkG3vat3Pg8qB30yFZxjeiRsDpeeUhHVlqCgZ0qqPSGQ6sWDfnfzUmNbHkC5j5eX84G5pPpQ9Di7RY_DhSaQ9n1NsnYDZEr-N4LP3BwdNj0UV4BjF1DzDSLFxVLGsdbq-6sqy-ZBpw5uIi_etK1_kFu0) visualized ([PNG](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/class-diagram.png))
+
+[PlantUML Modular Component Diagram](dLJBQiCm4BmR_0yYbvu29HzGGjA65W89TUYbvA3AMrlObema9pKb_rx9hoho8xGtIJEhsLdjQYaL5gh8Kj-J2MKv5ZX3X6SvPy1KeCeKa02YC8jIi3afPQ3A710NAkQ-vtjtQCs5sPCOf19OKSvyBySamH6WMGLkT2YSkKXcwDlt47hV2nxfisEx-KWX2qmmHEK64yL5UOKTzDLhB64Cgm_Q6rR0I9nXaHnDWfOSciyVRkhrcMFgmymXU2YpIrsz5a8XV596JVcaLRyEtk8IX5M_8GkrsE7CWwB5ACZ9Ab-5w4U5y6-1iG1mrKnOPy3Dfh60Mj4Tsp7OSfu_KcBCOr46F2tCykWG5tfXc5VuPLZFiUAgrhXUxpbb2iImPCrQqIefmBh5fwLxnR1a6-nUsxXjs2AR72YB9bAroCzOnXBKGc_NUfhrivbnTd9k6i_qAYAwhL4k-8bApT0wLkjL1DFtWxtd3eNTI2ssDnU782PdkT-1_mblYZ0GsjXz-W9IbG5X5g8JJcde_bM_b373ZTgBCnFz_wZclNKgMnvHClPBJLqwnkxsho2BLBK-by12_Qt_0000)
+
+[PlantUML Strategy Registration Sequence Diagram](dLJ1ReCm3BtdAtoaX_x0DAfUrgdI3jNQ7qZ1XMWXGOdJZdtz30sKKWvLEQ38zdj-VfYiFKb7eT921h8cL4TqmlyeKqidA_2bpEr5cG9EKdiSPRGoI4sDO1sLLWYEaifKBGt1pjc2Q-vYUtAIi6WsCYFhcjdSDnRAqoJ9P4UDLLzp3xGwaB96Y3HbbdQI6dQbz0XfAaJK0SlLj3symTOeKbAhFqmMOfeU8NfH3BaUqIM7Yzs7GTAhS7OEyzT9IeSugsAeNiuE7jEoDGuoQqxALVBc8chCkjIJFduYnQ12dyIlTU3DU7QY3L9MWXyuu6GTZ7YUdUkBa-_RoRgi7aKmk1-eDOE2CwFkdGaVlvY5YGdQsXesB0tbJMuZW9-HFvFsLtzWMzKSH4DNdoFchh0TAMupW_XuneJ_jK2Bhfp5gpDNtbQ-ZGw8vMnh6uW9kieSvnaUPCov4tdGv4Ai-StNnJy0)
+
+[project-visualization-diagram.drawio](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/project-visualization-diagram.png)
