@@ -1,11 +1,12 @@
 ﻿using Leetcode.Models;
 using System.Collections;
+using System.Diagnostics;
 
 namespace Leetcode.TestHarness
 {
     public class ProblemTest<TInput, TOutput>
     {
-        public record TestResult(bool IsPass, TInput Input, TOutput Expected, TOutput Actual, long TimeMs);
+        public record TestResult(bool IsPass, TInput Input, TOutput Expected, TOutput Actual, double TimeMicros);
         public record TestCase(TInput Input, TOutput Expected, bool ValidateBySum = false, bool ValidateByCount = false);
 
         private readonly Func<TInput, TOutput> _solver;
@@ -17,30 +18,46 @@ namespace Leetcode.TestHarness
             _comparer = comparer ?? ((a, b) => EqualityComparer<TOutput>.Default.Equals(a, b));
         }
 
-        public void RunTests(List<TestCase> cases)
+        public void RunTests(List<TestCase> cases, int iterations = 1000)
         {
             List<TestResult> results = new();
             int passed = 0;
-            long totalTime = 0;
+            double totalTimeMicros = 0;
 
             foreach (var test in cases)
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
-                var result = _solver(test.Input);
-                watch.Stop();
+                double totalTicks = 0;
+                TOutput result = default!;
+                bool isPass = true;
 
-                bool isPass = test.ValidateBySum
+                for (int i = 0; i < iterations; i++)
+                {
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+
+                    var watch = System.Diagnostics.Stopwatch.StartNew();
+                    result = _solver(test.Input);
+                    watch.Stop();
+                    totalTicks += watch.ElapsedTicks;
+                }
+
+                double avgMicros = totalTicks / iterations / Stopwatch.Frequency * 1_000_000;
+
+                isPass = test.ValidateBySum
                     ? ValidateBySum(test.Input, result, test.Expected)
                     : _comparer(result, test.Expected);
-                isPass = isPass && test.ValidateByCount ? (result is IEnumerable rEnum && test.Expected is IEnumerable eEnum && rEnum.Cast<object>().Count() == eEnum.Cast<object>().Count())
+
+                isPass = isPass && test.ValidateByCount
+                    ? (result is IEnumerable rEnum && test.Expected is IEnumerable eEnum && rEnum.Cast<object>().Count() == eEnum.Cast<object>().Count())
                     : isPass;
 
-                results.Add(new TestResult(isPass, test.Input, test.Expected, result, watch.ElapsedMilliseconds));
-                totalTime += watch.ElapsedMilliseconds;
+                results.Add(new TestResult(isPass, test.Input, test.Expected, result, avgMicros));
+                totalTimeMicros += avgMicros;
                 if (isPass) passed++;
             }
 
-            PrintSummary(results, passed, cases.Count, totalTime);
+            PrintSummary(results, passed, cases.Count, totalTimeMicros);
         }
 
         private bool ValidateBySum(TInput input, TOutput actual, TOutput expected)
@@ -72,12 +89,11 @@ namespace Leetcode.TestHarness
                 _ => false
             };
         }
-
-        private void PrintSummary(List<TestResult> results, int passed, int total, long totalTime)
+        private void PrintSummary(List<TestResult> results, int passed, int total, double totalTimeMicros)
         {
             Console.WriteLine($"\nSummary: {passed}/{total} tests passed.");
-            Console.WriteLine($"Total Time: {totalTime} ms");
-            Console.WriteLine($"Avg Time/Test: {totalTime / (double)total:F2} ms");
+            Console.WriteLine($"Total Time: {totalTimeMicros:F2} µs");
+            Console.WriteLine($"Avg Time/Test: {totalTimeMicros / total:F2} µs");
 
             var failed = results.Where(r => !r.IsPass).ToList();
             if (failed.Any())
@@ -88,7 +104,7 @@ namespace Leetcode.TestHarness
                     Console.WriteLine($"Input: {Format(fail.Input)}");
                     Console.WriteLine($"Expected: {Format(fail.Expected)}");
                     Console.WriteLine($"Actual:   {Format(fail.Actual)}");
-                    Console.WriteLine($"Time:     {fail.TimeMs} ms\n");
+                    Console.WriteLine($"Time:     {fail.TimeMicros:F2} µs\n");
                 }
             }
         }

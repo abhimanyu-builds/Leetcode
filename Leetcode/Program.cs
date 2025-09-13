@@ -6,9 +6,11 @@ class Program
 {
     static void Main()
     {
+        RunProblem(ProblemType.TwoSum);
+        RunProblem(ProblemType.TwoSumSorted);
         RunProblem(ProblemType.ThreeSum);
     }
-    static void RunProblem(ProblemType type)
+    static void RunProblem(ProblemType type, int iterations = 1)
     {
         switch (type)
         {
@@ -16,7 +18,7 @@ class Program
                 RunTestSuite<TwoSumInput, int[]>(
                     ProblemTestCaseFactory.GetTwoSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetTwoSumStrategies(),
-                    CompareArrays
+                    CompareArrays, iterations
                 );
                 break;
 
@@ -24,7 +26,7 @@ class Program
                 RunTestSuite<TwoSumSortedInput, int[]>(
                     ProblemTestCaseFactory.GetTwoSumSortedTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetTwoSumSortedStrategies(),
-                    CompareArrays
+                    CompareArrays, iterations
                 );
                 break;
 
@@ -32,7 +34,7 @@ class Program
                 RunTestSuite<ThreeSumInput, List<List<int>>>(
                     ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetThreeSumStrategies(),
-                    CompareTripletSets
+                    CompareTripletSets, iterations
                 );
                 break;
 
@@ -44,13 +46,14 @@ class Program
     static void RunTestSuite<TInput, TOutput>(
     List<ProblemTest<TInput, TOutput>.TestCase> testCases,
     IEnumerable<IProblemStrategy<TInput, TOutput>> strategies,
-    Func<TOutput, TOutput, bool> comparer)
+    Func<TOutput, TOutput, bool> comparer,
+    int iterations)
     {
         foreach (var strategy in strategies)
         {
-            Console.WriteLine($"\n Running strategy: {strategy.Name}");
+            Console.WriteLine($"Running strategy: {strategy.Name} (x{iterations} iterations per test)");
             var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer);
-            testHarness.RunTests(testCases);
+            testHarness.RunTests(testCases, iterations);
         }
     }
     static bool CompareArrays(int[] actual, int[] expected)
