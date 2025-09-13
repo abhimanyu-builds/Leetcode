@@ -8,8 +8,8 @@ namespace Leetcode.StrategyRegistry
     {
         public static List<IProblemStrategy<TwoSumInput, int[]>> All => new()
         {
-            new ProblemStrategy<TwoSumInput, int[]>("O(n)", new TwoSumOnOneLoopDictionarySolution()),
-            new ProblemStrategy<TwoSumInput, int[]>("O(n²)", new TwoSumOn2TwoLoopSolution())
+            new ProblemStrategy<TwoSumInput, int[]>("O(n) One loop Dictionary Lookup", new TwoSumOnOneLoopDictionarySolution()),
+            new ProblemStrategy<TwoSumInput, int[]>("O(n²) Nested loop", new TwoSumOn2TwoLoopSolution())
         };
     }
 }

@@ -18,6 +18,12 @@ Approaches
 | 6		| Brute Force						|		O(n³)		|		O(1)		| Simple to understand and implement						| Extremely inefficient for large inputs			|
 |-------|-----------------------------------|-------------------|-------------------|-----------------------------------------------------------|---------------------------------------------------|
 
+Input test cases
+----------------
+Negative Target
+Reverse-sorted arrays
+Arrays with clustered duplicates
+Adversarial Inputs to stress duplicate handling or early pruning
 
 Variants
 --------
