@@ -6,10 +6,10 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
-        //RunProblem(ProblemType.TwoSum);
-        //RunProblem(ProblemType.TwoSumSorted);
-        //RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray,10);
+        RunProblem(ProblemType.TwoSum);
+        RunProblem(ProblemType.TwoSumSorted);
+        RunProblem(ProblemType.ThreeSum);
     }
     static void RunProblem(ProblemType type, int iterations = 1)
     {
@@ -60,7 +60,7 @@ class Program
         foreach (var strategy in strategies)
         {
             Console.WriteLine($"\nRunning strategy: {strategy.Name} (x{iterations} iterations per test)");
-            var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer);
+            var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer, strategy.IsInPlace);
             testHarness.RunTests(testCases, iterations);
         }
     }
