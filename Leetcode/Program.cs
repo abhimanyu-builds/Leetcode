@@ -59,7 +59,7 @@ class Program
     {
         foreach (var strategy in strategies)
         {
-            Console.WriteLine($"Running strategy: {strategy.Name} (x{iterations} iterations per test)");
+            Console.WriteLine($"\nRunning strategy: {strategy.Name} (x{iterations} iterations per test)");
             var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer);
             testHarness.RunTests(testCases, iterations);
         }
