@@ -8,23 +8,25 @@ namespace Leetcode.TestHarness
     {
         public record TestResult(bool IsPass, TInput Input, TOutput Expected, TOutput Actual, double TimeMicros);
         public record TestCase(TInput Input, TOutput Expected, bool ValidateBySum = false, bool ValidateByCount = false);
+        public bool IsInPlace { get; }
 
         private readonly Func<TInput, TOutput> _solver;
         private readonly Func<TOutput, TOutput, bool> _comparer;
 
-        public ProblemTest(Func<TInput, TOutput> solver, Func<TOutput, TOutput, bool>? comparer = null)
+        public ProblemTest(Func<TInput, TOutput> solver, Func<TOutput, TOutput, bool>? comparer = null, bool isInPlace = false)
         {
             _solver = solver;
             _comparer = comparer ?? ((a, b) => EqualityComparer<TOutput>.Default.Equals(a, b));
+            IsInPlace = isInPlace;
         }
 
-        public void RunTests(List<TestCase> cases, int iterations = 1000)
+        public void RunTests(List<TestCase> cases, int iterations = 1)
         {
             List<TestResult> results = new();
             int passed = 0;
             double totalTimeMicros = 0;
 
-            foreach (var test in cases)
+            foreach (var testcase in cases)
             {
                 double totalTicks = 0;
                 TOutput result = default!;
@@ -36,23 +38,25 @@ namespace Leetcode.TestHarness
                     GC.WaitForPendingFinalizers();
                     GC.Collect();
 
+                    // Prevents test case corruption in in-place update algorithms
+                    var input = IsInPlace ? Clone(testcase.Input) : testcase.Input;
                     var watch = System.Diagnostics.Stopwatch.StartNew();
-                    result = _solver(test.Input);
+                    result = _solver(input);
                     watch.Stop();
                     totalTicks += watch.ElapsedTicks;
+                    isPass = testcase.ValidateBySum
+                        ? ValidateBySum(input, result, testcase.Expected)
+                        : _comparer(result, testcase.Expected);
+
+                    isPass = isPass && testcase.ValidateByCount
+                        ? (result is IEnumerable rEnum && testcase.Expected is IEnumerable eEnum && rEnum.Cast<object>().Count() == eEnum.Cast<object>().Count())
+                        : isPass;
+
                 }
 
                 double avgMicros = totalTicks / iterations / Stopwatch.Frequency * 1_000_000;
 
-                isPass = test.ValidateBySum
-                    ? ValidateBySum(test.Input, result, test.Expected)
-                    : _comparer(result, test.Expected);
-
-                isPass = isPass && test.ValidateByCount
-                    ? (result is IEnumerable rEnum && test.Expected is IEnumerable eEnum && rEnum.Cast<object>().Count() == eEnum.Cast<object>().Count())
-                    : isPass;
-
-                results.Add(new TestResult(isPass, test.Input, test.Expected, result, avgMicros));
+                results.Add(new TestResult(isPass, testcase.Input, testcase.Expected, result, avgMicros));
                 totalTimeMicros += avgMicros;
                 if (isPass) passed++;
             }
@@ -91,7 +95,7 @@ namespace Leetcode.TestHarness
         }
         private void PrintSummary(List<TestResult> results, int passed, int total, double totalTimeMicros)
         {
-            Console.WriteLine($"\nSummary: {passed}/{total} tests passed.");
+            Console.WriteLine($"Summary: {passed}/{total} tests passed.");
             Console.WriteLine($"Total Time: {totalTimeMicros:F2} µs");
             Console.WriteLine($"Avg Time/Test: {totalTimeMicros / total:F2} µs");
 
@@ -128,6 +132,13 @@ namespace Leetcode.TestHarness
 
             // Fallback for single objects
             return obj.ToString() ?? "null";
+        }
+
+        static T Clone<T>(T input)
+        {
+            if (input is int[] arr)
+                return (T)(object)arr.ToArray();
+            throw new NotSupportedException("Clone not implemented for this type.");
         }
     }
 }

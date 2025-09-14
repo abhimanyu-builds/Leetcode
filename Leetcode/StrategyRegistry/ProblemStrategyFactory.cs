@@ -9,11 +9,13 @@ namespace Leetcode.Common
     public class ProblemStrategy<TInput, TOutput> : IProblemStrategy<TInput, TOutput>
     {
         public string Name { get; }
+        public bool IsInPlace { get; }
         public IProblemSolution<TInput, TOutput> Implementation { get; }
 
-        public ProblemStrategy(string name, IProblemSolution<TInput, TOutput> implementation)
+        public ProblemStrategy(string name, IProblemSolution<TInput, TOutput> implementation, bool isInPlace = false)
         {
             Name = name;
+            IsInPlace = isInPlace;
             Implementation = implementation;
         }
     }
