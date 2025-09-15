@@ -6,10 +6,11 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray,10);
-        RunProblem(ProblemType.TwoSum);
-        RunProblem(ProblemType.TwoSumSorted);
-        RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.RemoveElement,10);
+        //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
+        //RunProblem(ProblemType.TwoSum);
+        //RunProblem(ProblemType.TwoSumSorted);
+        //RunProblem(ProblemType.ThreeSum);
     }
     static void RunProblem(ProblemType type, int iterations = 1)
     {
@@ -42,6 +43,13 @@ class Program
                 RunTestSuite<int[], int>(
                     ProblemTestCaseFactory.GetRemoveDuplicatesTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRemoveDuplicatesStrategies(),
+                    (expected, actual) => expected == actual, iterations
+                );
+                break;
+            case ProblemType.RemoveElement:
+                RunTestSuite<RemoveElementInput, int>(
+                    ProblemTestCaseFactory.GetRemoveElementTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetRemoveElementStrategies(),
                     (expected, actual) => expected == actual, iterations
                 );
                 break;

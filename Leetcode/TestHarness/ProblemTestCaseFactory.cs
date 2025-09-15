@@ -13,5 +13,7 @@ namespace Leetcode.TestHarness
             new ThreeSumTestCaseProvider();
         public static ITestCaseProvider<int[], int> GetRemoveDuplicatesTestCases() =>
             new RemoveDuplicatesSortedTestCaseProvider();
+        public static ITestCaseProvider<RemoveElementInput, int> GetRemoveElementTestCases() =>
+            new RemoveElementTestCaseProvider();
     }
 }
