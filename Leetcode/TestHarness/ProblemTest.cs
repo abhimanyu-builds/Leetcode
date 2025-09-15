@@ -133,12 +133,22 @@ namespace Leetcode.TestHarness
             // Fallback for single objects
             return obj.ToString() ?? "null";
         }
-
         static T Clone<T>(T input)
         {
-            if (input is int[] arr)
-                return (T)(object)arr.ToArray();
-            throw new NotSupportedException("Clone not implemented for this type.");
+            switch (input)
+            {
+                case int[] arr:
+                    return (T)(object)arr.ToArray();
+
+                case List<int> list:
+                    return (T)(object)new List<int>(list);
+
+                case RemoveElementInput rei:
+                    return (T)(object)new RemoveElementInput(rei.Numbers.ToArray(), rei.Target);
+
+                default:
+                    throw new NotSupportedException($"Clone not implemented for type: {typeof(T).Name}");
+            }
         }
     }
 }
