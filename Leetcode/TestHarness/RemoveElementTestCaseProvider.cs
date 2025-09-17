@@ -3,6 +3,14 @@ using Leetcode.Models;
 
 namespace Leetcode.TestHarness
 {
+    public enum DensityLevel
+    {
+        None,       // 0% targets
+        Low,        // ~0–10%
+        Medium,     // ~25–50%
+        High,       // ~66–90%
+        VeryHigh    // ~90–100%
+    }
     public class RemoveElementTestCaseProvider : ITestCaseProvider<RemoveElementInput, int>
     {
         public List<ProblemTest<RemoveElementInput, int>.TestCase> GetTestCases()
@@ -34,24 +42,46 @@ namespace Leetcode.TestHarness
             };
             return cases;
         }
-        private static List<ProblemTest<RemoveElementInput, int>.TestCase> GenerateRandomizedCases(int count = 5)
+        private IEnumerable<ProblemTest<RemoveElementInput, int>.TestCase> GenerateRandomizedCases(int count)
+        {
+            List<ProblemTest<RemoveElementInput, int>.TestCase> testCases = new();
+            foreach (DensityLevel DensityLevel in Enum.GetValues(typeof(DensityLevel)))
+            {
+                testCases.AddRange(GenerateTargetDensityLevelCases(DensityLevel, count / 5));
+            }
+            return testCases;
+        }
+        private static List<ProblemTest<RemoveElementInput, int>.TestCase> GenerateTargetDensityLevelCases(DensityLevel DensityLevel, int count = 5)
         {
             var rand = new Random();
             var cases = new List<ProblemTest<RemoveElementInput, int>.TestCase>();
 
             for (int i = 0; i < count; i++)
             {
-                int length = rand.Next(0, 101); // nums.length between 0 and 100
+                int length = rand.Next(10, 101); // array length between 10 and 100
+                int valToRemove = rand.Next(0, 51); // target value between 0 and 50
                 int[] input = new int[length];
 
+                // Fill with random non-targets
                 for (int j = 0; j < length; j++)
-                    input[j] = rand.Next(0, 51); // nums[i] between 0 and 50
+                    input[j] = rand.Next(0, 51);
 
-                int valToRemove = rand.Next(0, 101); // val between 0 and 100
+                int targetCount = DensityLevel switch
+                {
+                    DensityLevel.None => 0,
+                    DensityLevel.Low => rand.Next(0, length / 10 + 1),
+                    DensityLevel.Medium => rand.Next(length / 4, length / 2),
+                    DensityLevel.High => rand.Next(length * 2 / 3, length * 9 / 10),
+                    DensityLevel.VeryHigh => rand.Next(length * 9 / 10, length + 1),
+                    _ => 0
+                };
+
+                // Inject target values at random positions
+                var indices = Enumerable.Range(0, length).OrderBy(_ => rand.Next()).Take(targetCount);
+                foreach (var index in indices)
+                    input[index] = valToRemove;
 
                 int expected = input.Count(x => x != valToRemove);
-
-                // Clone input to avoid mutation during test execution
                 int[] inputCopy = input.ToArray();
 
                 cases.Add(new(new RemoveElementInput(inputCopy, valToRemove), expected));
