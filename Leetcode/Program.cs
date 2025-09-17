@@ -1,4 +1,5 @@
 ﻿using Leetcode.Common;
+using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
 
@@ -6,14 +7,15 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.RemoveElement,10);
-        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray,10);
-        //RunProblem(ProblemType.TwoSum);
-        //RunProblem(ProblemType.TwoSumSorted);
-        //RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.RemoveElement, 10);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray, 10);
+        RunProblem(ProblemType.TwoSum);
+        RunProblem(ProblemType.TwoSumSorted);
+        RunProblem(ProblemType.ThreeSum);
     }
     static void RunProblem(ProblemType type, int iterations = 1)
     {
+        Console.WriteLine($"\n=== Running tests for {type} ===");
         switch (type)
         {
             case ProblemType.TwoSum:
