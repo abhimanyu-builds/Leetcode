@@ -7,7 +7,7 @@ class Program
     static void Main()
     {
         RunProblem(ProblemType.RemoveElement,10);
-        //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray,10);
         //RunProblem(ProblemType.TwoSum);
         //RunProblem(ProblemType.TwoSumSorted);
         //RunProblem(ProblemType.ThreeSum);

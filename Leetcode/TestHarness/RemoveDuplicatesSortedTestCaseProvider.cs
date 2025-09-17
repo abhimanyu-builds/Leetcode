@@ -1,4 +1,6 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Models;
+using System.Collections.Generic;
 
 namespace Leetcode.TestHarness
 {
@@ -24,23 +26,40 @@ namespace Leetcode.TestHarness
             new([5, 5, 5, 5, 5, 6], 2) // Large duplicates block
         ];
 
-        private static List<ProblemTest<int[], int>.TestCase> GenerateRandomizedCases(int count = 5)
+        private IEnumerable<ProblemTest<int[], int>.TestCase> GenerateRandomizedCases(int count = 5)
+        {
+            List<ProblemTest<int[], int>.TestCase> testCases = new();
+            foreach (DensityLevel DensityLevel in Enum.GetValues(typeof(DensityLevel)))
+            {
+                testCases.AddRange(GenerateRemoveDuplicatesCases(DensityLevel, count / 5));
+            }
+            return testCases;
+        }
+        private static List<ProblemTest<int[], int>.TestCase> GenerateRemoveDuplicatesCases(DensityLevel density, int count = 5)
         {
             var rand = new Random();
             var cases = new List<ProblemTest<int[], int>.TestCase>();
 
             for (int i = 0; i < count; i++)
             {
-                int length = rand.Next(1, 30_001); // Length between 1 and 30,000
-                int[] input = new int[length];
+                int length = rand.Next(10, 30_001);
+                int uniqueCount = density switch
+                {
+                    DensityLevel.None => length,
+                    DensityLevel.Low => rand.Next(length * 9 / 10, length + 1),
+                    DensityLevel.Medium => rand.Next(length / 2, length * 3 / 4),
+                    DensityLevel.High => rand.Next(length / 10, length / 3),
+                    DensityLevel.VeryHigh => rand.Next(1, length / 10 + 1),
+                    _ => length
+                };
 
+                var uniqueValues = Enumerable.Range(-100, 201).OrderBy(_ => rand.Next()).Take(uniqueCount).ToList();
+                int[] input = new int[length];
                 for (int j = 0; j < length; j++)
-                    input[j] = rand.Next(-100, 101); // Values between -100 and 100
+                    input[j] = uniqueValues[rand.Next(uniqueValues.Count)];
 
                 Array.Sort(input);
-
                 int expected = input.Distinct().Count();
-
                 cases.Add(new(input, expected));
             }
 
