@@ -9,14 +9,16 @@ namespace Leetcode.TestHarness
         public record TestResult(bool IsPass, TInput Input, TOutput Expected, TOutput Actual, double TimeMicros);
         public record TestCase(TInput Input, TOutput Expected, bool ValidateBySum = false, bool ValidateByCount = false);
         public bool IsInPlace { get; }
+        public bool HasDuplicates { get; }
 
         private readonly Func<TInput, TOutput> _solver;
         private readonly Func<TestCase, TOutput, bool> _comparer;
-        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false)
+        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false, bool hasDuplicates=false)
         {
             _solver = solver;
             _comparer = comparer;
             IsInPlace = isInPlace;
+            HasDuplicates = hasDuplicates;
         }
 
         public void RunTests(List<TestCase> cases, int iterations = 1)
