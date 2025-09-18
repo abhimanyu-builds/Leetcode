@@ -4,8 +4,6 @@ using Leetcode.StrategyRegistry;
 
 namespace Leetcode.Common
 {
-    public enum ProblemType { TwoSum, TwoSumSorted, ThreeSum, RemoveDuplicatesFromSortedArray, RemoveElement }
-
     public class ProblemStrategy<TInput, TOutput> : IProblemStrategy<TInput, TOutput>
     {
         public string Name { get; }
@@ -27,5 +25,6 @@ namespace Leetcode.Common
         public static IEnumerable<IProblemStrategy<ThreeSumInput, List<List<int>>>> GetThreeSumStrategies() => ThreeSumStrategies.All;
         public static IEnumerable<IProblemStrategy<int[], int>> GetRemoveDuplicatesStrategies() => RemoveDuplicatesStrategies.All;
         public static IEnumerable<IProblemStrategy<RemoveElementInput, int>> GetRemoveElementStrategies() => RemoveElementStrategies.All;
+        public static IEnumerable<IProblemStrategy<RotatedArrayInput, int>> GetRotatedArrayStrategies() => RotatedArrayStrategies.All;
     }
 }
