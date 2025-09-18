@@ -1,16 +1,9 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.TestHarness
 {
-    public enum DensityLevel
-    {
-        None,       // 0% targets
-        Low,        // ~0–10%
-        Medium,     // ~25–50%
-        High,       // ~66–90%
-        VeryHigh    // ~90–100%
-    }
     public class RemoveElementTestCaseProvider : ITestCaseProvider<RemoveElementInput, int>
     {
         public List<ProblemTest<RemoveElementInput, int>.TestCase> GetTestCases()

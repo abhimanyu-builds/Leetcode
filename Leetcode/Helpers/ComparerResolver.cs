@@ -1,6 +1,6 @@
-﻿using Leetcode.TestHarness;
-using Leetcode.Metadata;
+﻿using Leetcode.Metadata;
 using Leetcode.Models;
+using Leetcode.TestHarness;
 
 namespace Leetcode.Helpers
 {
@@ -42,8 +42,11 @@ namespace Leetcode.Helpers
 
                 ProblemType.RotatedArray => (tc, actual) =>
                 {
-                    if (tc.Input is RotatedArrayInput rai && actual is int index && index >= 0)
-                        return rai.Numbers[index] == rai.Target;
+                    if (tc.Input is RotatedArrayInput input && actual is int index)
+                    {
+                        if (index == -1) return tc.Expected.Equals(-1); // target not found
+                        return index >= 0 && index < input.Numbers.Length && input.Numbers[index] == input.Target;
+                    }
                     return false;
                 }
                 ,
