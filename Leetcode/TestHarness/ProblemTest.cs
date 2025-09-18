@@ -116,21 +116,24 @@ namespace Leetcode.TestHarness
         {
             if (obj == null) return "null";
 
+            if (obj is ProblemInput<int[]> inputWithTarget)
+                return $"[{string.Join(", ", inputWithTarget.Numbers)}], Target: {inputWithTarget.Target}";
+
+            if (obj is int[] arr)
+                return $"[{string.Join(", ", arr)}]";
+
             if (obj is IEnumerable<int[]> listOfArrays)
             {
-                var formattedArrays = listOfArrays
-                    .Select(arr => $"[{string.Join(", ", arr)}]");
+                var formattedArrays = listOfArrays.Select(arr => $"[{string.Join(", ", arr)}]");
                 return $"[{string.Join(", ", formattedArrays)}]";
             }
 
             if (obj is IEnumerable enumerable && obj is not string)
             {
-                var items = enumerable.Cast<object>()
-                    .Select(item => Format(item)); // recursive
+                var items = enumerable.Cast<object>().Select(item => Format(item));
                 return $"[{string.Join(", ", items)}]";
             }
 
-            // Fallback for single objects
             return obj.ToString() ?? "null";
         }
         static T Clone<T>(T input)

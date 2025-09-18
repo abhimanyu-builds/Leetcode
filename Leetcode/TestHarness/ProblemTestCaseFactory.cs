@@ -15,5 +15,7 @@ namespace Leetcode.TestHarness
             new RemoveDuplicatesSortedTestCaseProvider();
         public static ITestCaseProvider<RemoveElementInput, int> GetRemoveElementTestCases() =>
             new RemoveElementTestCaseProvider();
+        public static ITestCaseProvider<RotatedArrayInput, int> GetRotatedArrayTestCases() =>
+        new RotatedArrayTestCaseProvider();
     }
 }

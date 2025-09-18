@@ -7,8 +7,9 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.RemoveElement, 10);
-        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray, 10);
+        RunProblem(ProblemType.RotatedArray,10);
+        RunProblem(ProblemType.RemoveElement);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
         RunProblem(ProblemType.TwoSum);
         RunProblem(ProblemType.TwoSumSorted);
         RunProblem(ProblemType.ThreeSum);
@@ -52,6 +53,13 @@ class Program
                 RunTestSuite<RemoveElementInput, int>(
                     ProblemTestCaseFactory.GetRemoveElementTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRemoveElementStrategies(),
+                    (expected, actual) => expected == actual, iterations
+                );
+                break;
+            case ProblemType.RotatedArray:
+                RunTestSuite<RotatedArrayInput, int>(
+                    ProblemTestCaseFactory.GetRotatedArrayTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetRotatedArrayStrategies(),
                     (expected, actual) => expected == actual, iterations
                 );
                 break;
