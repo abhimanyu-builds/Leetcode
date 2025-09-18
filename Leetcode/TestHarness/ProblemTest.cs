@@ -11,12 +11,11 @@ namespace Leetcode.TestHarness
         public bool IsInPlace { get; }
 
         private readonly Func<TInput, TOutput> _solver;
-        private readonly Func<TOutput, TOutput, bool> _comparer;
-
-        public ProblemTest(Func<TInput, TOutput> solver, Func<TOutput, TOutput, bool>? comparer = null, bool isInPlace = false)
+        private readonly Func<TestCase, TOutput, bool> _comparer;
+        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false)
         {
             _solver = solver;
-            _comparer = comparer ?? ((a, b) => EqualityComparer<TOutput>.Default.Equals(a, b));
+            _comparer = comparer;
             IsInPlace = isInPlace;
         }
 
@@ -46,7 +45,7 @@ namespace Leetcode.TestHarness
                     totalTicks += watch.ElapsedTicks;
                     isPass = testcase.ValidateBySum
                         ? ValidateBySum(input, result, testcase.Expected)
-                        : _comparer(result, testcase.Expected);
+                        : _comparer(testcase, result);
 
                     isPass = isPass && testcase.ValidateByCount
                         ? (result is IEnumerable rEnum && testcase.Expected is IEnumerable eEnum && rEnum.Cast<object>().Count() == eEnum.Cast<object>().Count())
@@ -69,16 +68,20 @@ namespace Leetcode.TestHarness
             if (input is ThreeSumInput ts && actual is List<List<int>> triplet)
             {
                 if (triplet.Count == 0 || triplet?.FirstOrDefault()?.Count != 3 || triplet?.FirstOrDefault()?.Sum() != ts.Target) return false;
-
                 var inputFreq = ts.Numbers.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
-                var tripletFreq = triplet?.FirstOrDefault()?.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+
+                var firstTriplet = triplet?.FirstOrDefault();
+                if (firstTriplet == null) return false;
+
+                var tripletFreq = firstTriplet
+                    .GroupBy(x => x)
+                    .ToDictionary(g => g.Key, g => g.Count());
 
                 foreach (var kv in tripletFreq)
                 {
                     if (!inputFreq.TryGetValue(kv.Key, out int count) || count < kv.Value)
                         return false;
                 }
-
                 return true;
             }
 

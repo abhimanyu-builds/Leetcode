@@ -1,4 +1,5 @@
 ﻿using Leetcode.Common;
+using Leetcode.Helpers;
 using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
@@ -7,23 +8,26 @@ class Program
 {
     static void Main()
     {
-        RunProblem(ProblemType.RotatedArray,10);
+        RunProblem(ProblemType.RotatedArray, 10);
         RunProblem(ProblemType.RemoveElement);
         RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
         RunProblem(ProblemType.TwoSum);
         RunProblem(ProblemType.TwoSumSorted);
         RunProblem(ProblemType.ThreeSum);
     }
+
     static void RunProblem(ProblemType type, int iterations = 1)
     {
         Console.WriteLine($"\n=== Running tests for {type} ===");
+
         switch (type)
         {
             case ProblemType.TwoSum:
                 RunTestSuite<TwoSumInput, int[]>(
                     ProblemTestCaseFactory.GetTwoSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetTwoSumStrategies(),
-                    CompareArrays, iterations
+                    ComparerResolver.GetComparer<TwoSumInput, int[]>(type),
+                    iterations
                 );
                 break;
 
@@ -31,7 +35,8 @@ class Program
                 RunTestSuite<TwoSumSortedInput, int[]>(
                     ProblemTestCaseFactory.GetTwoSumSortedTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetTwoSumSortedStrategies(),
-                    CompareArrays, iterations
+                    ComparerResolver.GetComparer<TwoSumSortedInput, int[]>(type),
+                    iterations
                 );
                 break;
 
@@ -39,28 +44,35 @@ class Program
                 RunTestSuite<ThreeSumInput, List<List<int>>>(
                     ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetThreeSumStrategies(),
-                    CompareTripletSets, iterations
+                    ComparerResolver.GetComparer<ThreeSumInput, List<List<int>>>(type),
+                    iterations
                 );
                 break;
+
             case ProblemType.RemoveDuplicatesFromSortedArray:
                 RunTestSuite<int[], int>(
                     ProblemTestCaseFactory.GetRemoveDuplicatesTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRemoveDuplicatesStrategies(),
-                    (expected, actual) => expected == actual, iterations
+                    ComparerResolver.GetComparer<int[], int>(type),
+                    iterations
                 );
                 break;
+
             case ProblemType.RemoveElement:
                 RunTestSuite<RemoveElementInput, int>(
                     ProblemTestCaseFactory.GetRemoveElementTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRemoveElementStrategies(),
-                    (expected, actual) => expected == actual, iterations
+                    ComparerResolver.GetComparer<RemoveElementInput, int>(type),
+                    iterations
                 );
                 break;
+
             case ProblemType.RotatedArray:
                 RunTestSuite<RotatedArrayInput, int>(
                     ProblemTestCaseFactory.GetRotatedArrayTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRotatedArrayStrategies(),
-                    (expected, actual) => expected == actual, iterations
+                    ComparerResolver.GetComparer<RotatedArrayInput, int>(type),
+                    iterations
                 );
                 break;
 
@@ -69,11 +81,12 @@ class Program
                 break;
         }
     }
+
     static void RunTestSuite<TInput, TOutput>(
-    List<ProblemTest<TInput, TOutput>.TestCase> testCases,
-    IEnumerable<IProblemStrategy<TInput, TOutput>> strategies,
-    Func<TOutput, TOutput, bool> comparer,
-    int iterations)
+        List<ProblemTest<TInput, TOutput>.TestCase> testCases,
+        IEnumerable<IProblemStrategy<TInput, TOutput>> strategies,
+        Func<ProblemTest<TInput, TOutput>.TestCase, TOutput, bool> comparer,
+        int iterations)
     {
         foreach (var strategy in strategies)
         {
@@ -81,25 +94,5 @@ class Program
             var testHarness = new ProblemTest<TInput, TOutput>(strategy.Implementation.Solve, comparer, strategy.IsInPlace);
             testHarness.RunTests(testCases, iterations);
         }
-    }
-    static bool CompareArrays(int[] actual, int[] expected)
-    {
-        if (actual == null || expected == null) return false;
-        if (actual.Length != expected.Length) return false;
-        return actual.SequenceEqual(expected);
-    }
-    static bool CompareTripletSets(List<List<int>> actual, List<List<int>> expected)
-    {
-        if (actual == null || expected == null) return false;
-        if (actual.Count == 0 && actual.Count == expected.Count) return true;
-        if (actual.Count != expected.Count) return false;
-
-        var actualSorted = actual.Select(t => t.OrderBy(x => x).ToArray()).ToList();
-        var expectedSorted = expected.Select(t => t.OrderBy(x => x).ToArray()).ToList();
-
-        var actualSet = new HashSet<string>(actualSorted.Select(t => string.Join(",", t)));
-        var expectedSet = new HashSet<string>(expectedSorted.Select(t => string.Join(",", t)));
-
-        return actualSet.SetEquals(expectedSet);
     }
 }
