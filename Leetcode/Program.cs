@@ -10,14 +10,18 @@ class Program
     {
         RunProblem(ProblemType.RotatedArray, 10);
         RunProblem(ProblemType.RemoveElement);
-        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
-        RunProblem(ProblemType.TwoSum);
-        RunProblem(ProblemType.TwoSumSorted);
-        RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.ContainsDuplicateI, 1);
+        //RunProblem(ProblemType.RotatedArray, 10);
+        //RunProblem(ProblemType.RemoveElement);
+        //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
+        //RunProblem(ProblemType.TwoSum);
+        //RunProblem(ProblemType.TwoSumSorted);
+        //RunProblem(ProblemType.ThreeSum);
     }
 
     static void RunProblem(ProblemType type, int iterations = 1)
     {
+        Console.Clear();
         Console.WriteLine($"\n=== Running tests for {type} ===");
 
         switch (type)
@@ -72,6 +76,15 @@ class Program
                     ProblemTestCaseFactory.GetRotatedArrayTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetRotatedArrayStrategies(),
                     ComparerResolver.GetComparer<RotatedArrayInput, int>(type),
+                    iterations
+                );
+                break;
+
+            case ProblemType.ContainsDuplicateI:
+                RunTestSuite<ContainsDuplicateInput, bool>(
+                    ProblemTestCaseFactory.GetContainsDuplicateTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetContainsDuplicateIStrategies(),
+                    ComparerResolver.GetComparer<ContainsDuplicateInput, bool>(type),
                     iterations
                 );
                 break;

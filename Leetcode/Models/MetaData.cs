@@ -24,6 +24,7 @@
         ThreeSum,
         RemoveDuplicatesFromSortedArray,
         RemoveElement,
-        RotatedArray
+        RotatedArray,
+        ContainsDuplicateI
     }
 }

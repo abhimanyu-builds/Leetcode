@@ -8,7 +8,7 @@ namespace Leetcode.Strategies
         public int[] Solve(TwoSumInput input)
         {
 
-            //Submission: //https://leetcode.com/submissions/detail/1761606991/
+            //Submission: https://leetcode.com/submissions/detail/1761606991/
 
             //Analysis:
             //nums can have -ve/0/+ve numbers in any order
