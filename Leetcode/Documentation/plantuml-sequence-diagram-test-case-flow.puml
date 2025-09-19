@@ -1,7 +1,10 @@
 @startuml
+' Layout and rendering fixes
 skinparam classAttributeIconSize 0
 skinparam shadowing false
 skinparam linetype ortho
+skinparam dpi 300
+scale 1.5
 autonumber
 
 title Test Case Execution Flow
@@ -9,6 +12,7 @@ title Test Case Execution Flow
 participant Program
 participant StrategyFactory
 participant TestCaseFactory
+participant ComparerResolver
 participant TestHarness
 participant Strategy
 participant Validator
@@ -16,11 +20,14 @@ participant Benchmark
 
 == Initialization Phase ==
 
-Program -> StrategyFactory : GetStrategies()
+Program -> StrategyFactory : GetStrategies(problemType)
 StrategyFactory --> Program : List<IProblemStrategy>
 
-Program -> TestCaseFactory : GetTestCases()
+Program -> TestCaseFactory : GetTestCases(problemType)
 TestCaseFactory --> Program : List<TestCase>
+
+Program -> ComparerResolver : GetComparer(problemType)
+ComparerResolver --> Program : comparer function
 
 == Execution Phase ==
 

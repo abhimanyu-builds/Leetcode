@@ -1,38 +1,76 @@
 @startuml
+' Layout and rendering fixes
 autonumber
 skinparam shadowing false
 skinparam linetype ortho
+skinparam sequenceMessageAlign center
+skinparam sequenceParticipant underline
+skinparam dpi 300
+scale 1.5
+
+title Strategy Registration and Execution Flow
 
 participant Program
 participant StrategyFactory
 participant StrategyRegistry
+participant ComparerResolver
+participant TestHarness
 participant ProblemStrategy
 participant Solution
 
 == Startup Phase ==
+note over Program, StrategyFactory
+Program initializes the strategy system by invoking the factory.
+end note
 
 Program -> StrategyFactory : Initialize()
+
+note over StrategyFactory, StrategyRegistry
+Factory registers all available strategies for each problem type.
+end note
+
 StrategyFactory -> StrategyRegistry : Register(TwoSumStrategy)
 StrategyFactory -> StrategyRegistry : Register(TwoSumSortedStrategy)
 StrategyFactory -> StrategyRegistry : Register(ThreeSumStrategy)
+StrategyFactory -> StrategyRegistry : Register(RotatedArrayStrategy)
+StrategyFactory -> StrategyRegistry : Register(RemoveElementStrategy)
+StrategyFactory -> StrategyRegistry : Register(RemoveDuplicatesStrategy)
+
 StrategyRegistry --> StrategyFactory : Registration confirmation
 
 == Selection Phase ==
+note over Program, StrategyFactory
+Program requests strategies for a specific problem type.
+end note
 
 Program -> StrategyFactory : GetStrategies(ProblemType)
 StrategyFactory -> StrategyRegistry : Fetch strategies for ProblemType
 StrategyRegistry --> StrategyFactory : List<IProblemStrategy>
 StrategyFactory --> Program : Return strategies
 
+Program -> ComparerResolver : GetComparer(ProblemType)
+ComparerResolver --> Program : comparer function
+
 == Execution Phase ==
+note over Program, TestHarness
+Program creates a test harness with strategy and comparer.
+end note
 
 loop For each strategy
-    Program -> ProblemStrategy : Get Implementation
-    ProblemStrategy -> Solution : Solve(input)
-    activate Solution
-    Solution --> ProblemStrategy : output
-    deactivate Solution
-    ProblemStrategy --> Program : Return output
+    Program -> TestHarness : Create(strategy, comparer)
+    Program -> TestHarness : RunTests(testCases)
+
+    loop For each test case
+        TestHarness -> ProblemStrategy : Get Implementation
+        ProblemStrategy -> Solution : Solve(input)
+        activate Solution
+        Solution --> ProblemStrategy : output
+        deactivate Solution
+        ProblemStrategy --> TestHarness : Return output
+
+        TestHarness -> ComparerResolver : Compare(output, expected)
+        ComparerResolver --> TestHarness : result
+    end
 end
 
 @enduml

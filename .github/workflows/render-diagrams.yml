@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'Leetcode/Documentation/diagrams/*.puml'
+  pull_request:
+    paths:
+      - 'Leetcode/Documentation/diagrams/*.puml'
 
 jobs:
   render:
@@ -12,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Render PlantUML diagrams
+      - name: Render SVG diagrams
         uses: weirongxu/plantuml-action@v1
         with:
           args: -tsvg Leetcode/Documentation/diagrams/*.puml
@@ -22,5 +25,4 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add Leetcode/Documentation/diagrams/*.svg
-          git commit -m "Auto-rendered PlantUML diagrams"
-          git push
+          git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push)

@@ -1,7 +1,11 @@
 @startuml
+' Layout and rendering fixes
 skinparam classAttributeIconSize 0
 skinparam shadowing false
 skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
 
 ' Core Interfaces
 interface IProblemSolution<TInput, TOutput>
@@ -26,13 +30,39 @@ class ProblemStrategy<TInput, TOutput> implements IProblemStrategy {
 }
 
 ' Strategy Implementations
-class TwoSumOnOneLoopDictionarySolution implements IProblemSolution
-class TwoSumOn2TwoLoopSolution implements IProblemSolution
-class TwoSumSortedTwoPointerSolution implements IProblemSolution
-class TwoSumSortedBinarySearchSolution implements IProblemSolution
-class ThreeSum0On2OneLoopDictionarySolution implements IProblemSolution
-class ThreeSum0On2SortingTwoPointerSolution implements IProblemSolution
-class ThreeSum0On2Hashset2SumComplementSolution implements IProblemSolution
+package "Two Sum" {
+  class TwoSumOnOneLoopDictionarySolution implements IProblemSolution
+  class TwoSumOn2TwoLoopSolution implements IProblemSolution
+}
+
+package "Two Sum Sorted" {
+  class TwoSumSortedTwoPointerSolution implements IProblemSolution
+  class TwoSumSortedBinarySearchSolution implements IProblemSolution
+}
+
+package "Three Sum" {
+  class ThreeSum0On2OneLoopDictionarySolution implements IProblemSolution
+  class ThreeSum0On2SortingTwoPointerSolution implements IProblemSolution
+  class ThreeSum0On2Hashset2SumComplementSolution implements IProblemSolution
+}
+
+package "Rotated Array Search" {
+  class RotatedArrayOlognTwoPointerSolution implements IProblemSolution
+  class RotatedArrayOnBruteForceSolution implements IProblemSolution
+  class RotatedArrayIIOlognTwoPointerSolution implements IProblemSolution
+  class RotatedArrayIIOnBruteForceSolution implements IProblemSolution
+}
+
+package "Remove Element" {
+  class RemoveElementFwdPointerOverwriteSolution implements IProblemSolution
+  class RemoveElementSwapWithEndPointerSolution implements IProblemSolution
+  class RemoveElementTwoPointerPartitioningSolution implements IProblemSolution
+}
+
+package "Remove Duplicates" {
+  class RemoveDuplicatesSortedTwoPointerSolution implements IProblemSolution
+  class RemoveDuplicatesAllowNTimesSortedTwoPointerSolution implements IProblemSolution
+}
 
 ' Test Harness
 class ProblemTest<TInput, TOutput> {
@@ -69,20 +99,52 @@ class BenchmarkResult {
     - IsCorrect: bool
 }
 
+' Comparer Logic
+class ComparerResolver {
+    + GetComparer(problemType): Func<TOutput, TOutput, bool>
+}
+
+class ComparerHelper {
+    + ArraysEqual()
+    + TripletSetsEqual()
+    + ValidateBySum()
+}
+
 ' Factories
 class ProblemStrategyFactory {
     + GetTwoSumStrategies(): IEnumerable
     + GetTwoSumSortedStrategies(): IEnumerable
     + GetThreeSumStrategies(): IEnumerable
+    + GetRotatedArrayStrategies(): IEnumerable
+    + GetRemoveElementStrategies(): IEnumerable
+    + GetRemoveDuplicatesStrategies(): IEnumerable
 }
 
 class ProblemTestCaseFactory {
     + GetTwoSumTestCases(): ITestCaseProvider
     + GetTwoSumSortedTestCases(): ITestCaseProvider
     + GetThreeSumTestCases(): ITestCaseProvider
+    + GetRotatedArrayTestCases(): ITestCaseProvider
+    + GetRemoveElementTestCases(): ITestCaseProvider
+    + GetRemoveDuplicatesTestCases(): ITestCaseProvider
 }
 
+' Strategy Registrars
+class RotatedArrayStrategies
+class RemoveElementStrategies
+class RemoveDuplicatesStrategies
+
+' Test Case Providers
+class RotatedArrayTestCaseProvider implements ITestCaseProvider
+class RemoveElementTestCaseProvider implements ITestCaseProvider
+class RemoveDuplicatesSortedTestCaseProvider implements ITestCaseProvider
+
 ' Models
+abstract class ProblemInput<T> {
+    - Input: T
+    - Target: object
+}
+
 class TwoSumInput {
     - Numbers: int[]
     - Target: int
@@ -101,6 +163,16 @@ class ThreeSumInput {
     + ToString(): string
 }
 
+class RotatedArrayInput extends ProblemInput<int[]> {
+    - Numbers: int[]
+    - Target: int
+}
+
+class RemoveElementInput {
+    - Numbers: int[]
+    - Value: int
+}
+
 ' Dispatcher
 class Program {
     + Main()
@@ -112,6 +184,9 @@ enum ProblemType {
     TwoSum
     TwoSumSorted
     ThreeSum
+    RotatedArray
+    RemoveElement
+    RemoveDuplicatesFromSortedArray
 }
 
 ' Relationships
@@ -119,23 +194,27 @@ Program --> ProblemType
 Program --> ProblemStrategyFactory
 Program --> ProblemTestCaseFactory
 Program --> ProblemTest
+Program --> ComparerResolver
 
 ProblemStrategyFactory --> ProblemStrategy
+ProblemStrategyFactory --> RotatedArrayStrategies
+ProblemStrategyFactory --> RemoveElementStrategies
+ProblemStrategyFactory --> RemoveDuplicatesStrategies
+
 ProblemTestCaseFactory --> ITestCaseProvider
+ProblemTestCaseFactory --> RotatedArrayTestCaseProvider
+ProblemTestCaseFactory --> RemoveElementTestCaseProvider
+ProblemTestCaseFactory --> RemoveDuplicatesSortedTestCaseProvider
+
 ProblemTest --> IProblemStrategy
 ProblemTest --> TestCase
 ProblemTest --> TestResult
+ProblemTest --> ComparerResolver
+ComparerResolver --> ComparerHelper
+
 ProblemStrategy --> IProblemSolution
 
 StrategyBenchmark --> IProblemStrategy
 StrategyBenchmark --> BenchmarkResult
-
-TwoSumOnOneLoopDictionarySolution --> IProblemSolution
-TwoSumOn2TwoLoopSolution --> IProblemSolution
-TwoSumSortedTwoPointerSolution --> IProblemSolution
-TwoSumSortedBinarySearchSolution --> IProblemSolution
-ThreeSum0On2OneLoopDictionarySolution --> IProblemSolution
-ThreeSum0On2SortingTwoPointerSolution --> IProblemSolution
-ThreeSum0On2Hashset2SumComplementSolution --> IProblemSolution
 
 @enduml
