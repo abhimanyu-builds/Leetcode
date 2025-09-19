@@ -13,7 +13,7 @@ namespace Leetcode.TestHarness
 
         private readonly Func<TInput, TOutput> _solver;
         private readonly Func<TestCase, TOutput, bool> _comparer;
-        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false, bool hasDuplicates=false)
+        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false, bool hasDuplicates = false)
         {
             _solver = solver;
             _comparer = comparer;

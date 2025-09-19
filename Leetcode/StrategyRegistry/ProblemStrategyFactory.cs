@@ -28,5 +28,6 @@ namespace Leetcode.Common
         public static IEnumerable<IProblemStrategy<int[], int>> GetRemoveDuplicatesStrategies() => RemoveDuplicatesStrategies.All;
         public static IEnumerable<IProblemStrategy<RemoveElementInput, int>> GetRemoveElementStrategies() => RemoveElementStrategies.All;
         public static IEnumerable<IProblemStrategy<RotatedArrayInput, int>> GetRotatedArrayStrategies() => RotatedArrayStrategies.All;
+        public static IEnumerable<IProblemStrategy<ContainsDuplicateInput, bool>> GetContainsDuplicateIStrategies() => ContainsDuplicateIStrategies.All;
     }
 }

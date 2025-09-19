@@ -44,12 +44,15 @@ namespace Leetcode.Helpers
                 {
                     if (tc.Input is RotatedArrayInput input && actual is int index)
                     {
-                        if (index == -1) return tc.Expected.Equals(-1); // target not found
+                        if (index == -1) return tc.Expected != null && tc.Expected.Equals(-1); // target not found
                         return index >= 0 && index < input.Numbers.Length && input.Numbers[index] == input.Target;
                     }
                     return false;
                 }
                 ,
+                ProblemType.ContainsDuplicateI => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected),
+
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")
             };
