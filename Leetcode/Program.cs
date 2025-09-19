@@ -8,15 +8,13 @@ class Program
 {
     static void Main()
     {
+        RunProblem(ProblemType.ContainsDuplicateI, 1);
         RunProblem(ProblemType.RotatedArray, 10);
         RunProblem(ProblemType.RemoveElement);
-        RunProblem(ProblemType.ContainsDuplicateI, 1);
-        //RunProblem(ProblemType.RotatedArray, 10);
-        //RunProblem(ProblemType.RemoveElement);
-        //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
-        //RunProblem(ProblemType.TwoSum);
-        //RunProblem(ProblemType.TwoSumSorted);
-        //RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
+        RunProblem(ProblemType.TwoSum);
+        RunProblem(ProblemType.TwoSumSorted);
+        RunProblem(ProblemType.ThreeSum);
     }
 
     static void RunProblem(ProblemType type, int iterations = 1)
@@ -82,7 +80,7 @@ class Program
 
             case ProblemType.ContainsDuplicateI:
                 RunTestSuite<ContainsDuplicateInput, bool>(
-                    ProblemTestCaseFactory.GetContainsDuplicateTestCases().GetTestCases(),
+                    ProblemTestCaseFactory.GetContainsDuplicateITestCases().GetTestCases(),
                     ProblemStrategyFactory.GetContainsDuplicateIStrategies(),
                     ComparerResolver.GetComparer<ContainsDuplicateInput, bool>(type),
                     iterations
