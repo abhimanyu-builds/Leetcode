@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.ThreeSum
 {
-    public class ThreeSum0On2SortingTwoPointerSolution : IProblemSolution<ThreeSumInput, List<List<int>>>
+    public class On2Hashset2SumComplementSolution : IProblemSolution<ThreeSumInput, List<List<int>>>
     {
         public List<List<int>> Solve(ThreeSumInput input)
         {
@@ -53,7 +53,7 @@ namespace Leetcode.Strategies
                 if (current > target && current >= 0) break; // early exit. sorted array, so no further triplets possible
                 long sum = (long)current + nums[i + 1] + nums[i + 2];
                 if (sum > target) break; // early exit. smallest possible triplet exceeds target
-                int left = i + 1, right=nums.Count-1;
+                int left = i + 1, right = nums.Count - 1;
                 while (left < right)
                 {
                     sum = (long)current + nums[left] + nums[right];
@@ -70,7 +70,8 @@ namespace Leetcode.Strategies
                         right--;
                         while (left < right && nums[left] == nums[left - 1]) left++; // skip duplicates
                         while (left < right && nums[right] == nums[right + 1]) right--; // skip duplicates
-                    }else if (sum < target)
+                    }
+                    else if (sum < target)
                     {
                         left++;
                     }

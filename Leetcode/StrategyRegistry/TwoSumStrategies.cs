@@ -1,6 +1,6 @@
 ﻿using Leetcode.Common;
 using Leetcode.Models;
-using Leetcode.Strategies;
+using Leetcode.Strategies.TwoSum;
 
 namespace Leetcode.StrategyRegistry
 {
@@ -8,8 +8,8 @@ namespace Leetcode.StrategyRegistry
     {
         public static List<IProblemStrategy<TwoSumInput, int[]>> All => new()
         {
-            new ProblemStrategy<TwoSumInput, int[]>("O(n) One loop Dictionary Lookup", new TwoSumOnOneLoopDictionarySolution()),
-            new ProblemStrategy<TwoSumInput, int[]>("O(n²) Nested loop", new TwoSumOn2TwoLoopSolution())
+            new ProblemStrategy<TwoSumInput, int[]>("O(n) One loop Dictionary Lookup", new OnOneLoopDictionarySolution()),
+            new ProblemStrategy<TwoSumInput, int[]>("O(n²) Nested loop", new On2TwoLoopSolution())
         };
     }
 }

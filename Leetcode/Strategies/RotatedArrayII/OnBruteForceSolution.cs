@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.RotatedArrayII
 {
-    public class RotatedArrayIIOnBruteForceSolution : IProblemSolution<RotatedArrayInput, int>
+    public class OnBruteForceSolution : IProblemSolution<RotatedArrayInput, int>
     {
         public int Solve(RotatedArrayInput input)
         {

@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.RemoveElement
 {
-    public class RemoveElementTwoPointerPartitioningSolution : IProblemSolution<RemoveElementInput, int>
+    public class TwoPointerPartitioningSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)
         {
@@ -35,7 +35,7 @@ namespace Leetcode.Strategies
 
                     if (scanIx >= writeIx) break;
 
-                    nums[scanIx] = nums[writeIx];       
+                    nums[scanIx] = nums[writeIx];
                     writeIx--;
                 }
                 else

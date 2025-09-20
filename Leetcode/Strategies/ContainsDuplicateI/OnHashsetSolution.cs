@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.ContainsDuplicateI
 {
-    public class ContainsDuplicateIOnHashsetSolution : IProblemSolution<ContainsDuplicateInput, bool>
+    public class OnHashsetSolution : IProblemSolution<ContainsDuplicateInput, bool>
     {
         public bool Solve(ContainsDuplicateInput input)
         {

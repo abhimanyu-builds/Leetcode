@@ -1,8 +1,8 @@
 ﻿using Leetcode.Interfaces;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.RemoveDuplicates
 {
-    public class RemoveDuplicatesSortedTwoPointerSolution : IProblemSolution<int[], int>
+    public class SortedTwoPointerSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)
         {

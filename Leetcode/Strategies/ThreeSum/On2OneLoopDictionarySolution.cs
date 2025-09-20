@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.ThreeSum
 {
-    public class ThreeSum0On2OneLoopDictionarySolution : IProblemSolution<ThreeSumInput, List<List<int>>>
+    public class On2OneLoopDictionarySolution : IProblemSolution<ThreeSumInput, List<List<int>>>
     {
         public List<List<int>> Solve(ThreeSumInput input)
         {
@@ -112,7 +112,7 @@ namespace Leetcode.Strategies
 
             List<int> triplet = [];
             int third = target / 3;
-            if ((3 * third == target) && pool.TryGetValue(third, out int count) && count >= 3)
+            if (3 * third == target && pool.TryGetValue(third, out int count) && count >= 3)
             {
                 triplet = [third, third, third];
                 var tripletSignature = $"{third}:{third}:{third}";

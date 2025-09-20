@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.RemoveElement
 {
-    public class RemoveElementSwapWithEndPointerSolution : IProblemSolution<RemoveElementInput, int>
+    public class SwapWithEndPointerSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)
         {
@@ -25,7 +25,7 @@ namespace Leetcode.Strategies
 
             for (; scanIx < nums.Length; scanIx++)
             {
-                if(scanIx > writeIx) break; //pointers have crossed or met. Need to allow scanIx == writeIx to be processed. The swap logic already protects against unnecessary swaps when pointers meet
+                if (scanIx > writeIx) break; //pointers have crossed or met. Need to allow scanIx == writeIx to be processed. The swap logic already protects against unnecessary swaps when pointers meet
                 while (nums[writeIx] == target && writeIx > scanIx) { writeIx--; }
                 while (nums[scanIx] != target && scanIx < writeIx) { scanIx++; }
                 if (nums[scanIx] == target) { (nums[writeIx], nums[scanIx]) = (nums[scanIx], nums[writeIx]); writeIx--; }

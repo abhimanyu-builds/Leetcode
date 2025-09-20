@@ -1,6 +1,6 @@
 ﻿using Leetcode.Common;
 using Leetcode.Models;
-using Leetcode.Strategies;
+using Leetcode.Strategies.ContainsDuplicateI;
 
 namespace Leetcode.StrategyRegistry
 {
@@ -8,9 +8,9 @@ namespace Leetcode.StrategyRegistry
     {
         public static List<IProblemStrategy<ContainsDuplicateInput, bool>> All => new()
         {
-            new ProblemStrategy<ContainsDuplicateInput, bool>("O(n) Hashset", new ContainsDuplicateIOnHashsetSolution()),
-            new ProblemStrategy<ContainsDuplicateInput, bool>("O(nlogn) Sort + Scan", new ContainsDuplicateIOnlognSortScanSolution()),
-            new ProblemStrategy<ContainsDuplicateInput, bool>("O(n²) Brute Force", new ContainsDuplicateIOn2BruteForceSolution()),
+            new ProblemStrategy<ContainsDuplicateInput, bool>("O(n) Hashset", new OnHashsetSolution()),
+            new ProblemStrategy<ContainsDuplicateInput, bool>("O(nlogn) Sort + Scan", new OnlognSortScanSolution()),
+            new ProblemStrategy<ContainsDuplicateInput, bool>("O(n²) Brute Force", new On2BruteForceSolution()),
         };
     }
 }

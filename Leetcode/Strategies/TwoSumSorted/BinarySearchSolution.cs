@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.TwoSumSorted
 {
-    public class TwoSumSortedBinarySearchSolution : IProblemSolution<TwoSumSortedInput, int[]>
+    public class BinarySearchSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
         public int[] Solve(TwoSumSortedInput input)
         {
@@ -25,7 +25,7 @@ namespace Leetcode.Strategies
             //trivial example test case: [10, 20, 30, 40, 50, 60];
             //example target 100. result for 40,60 []
             var (numbers, target) = (input.Numbers, input.Target);
-            for (int i = 0; i < numbers.Length-1; i++) //n-1 as last element cannot have a complement
+            for (int i = 0; i < numbers.Length - 1; i++) //n-1 as last element cannot have a complement
             {
                 if (i > 0 && numbers[i] == numbers[i - 1]) continue;    //skip duplicates
                 int complement = target - numbers[i];

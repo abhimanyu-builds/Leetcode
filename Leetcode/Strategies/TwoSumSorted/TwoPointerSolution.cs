@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.TwoSumSorted
 {
-    public class TwoSumSortedTwoPointerSolution : IProblemSolution<TwoSumSortedInput, int[]>
+    public class TwoPointerSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
         public int[] Solve(TwoSumSortedInput input)
         {

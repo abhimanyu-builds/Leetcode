@@ -8,6 +8,7 @@ class Program
 {
     static void Main()
     {
+        Console.Clear();
         RunProblem(ProblemType.ContainsDuplicateI, 1);
         RunProblem(ProblemType.RotatedArray, 10);
         RunProblem(ProblemType.RemoveElement);
@@ -19,7 +20,6 @@ class Program
 
     static void RunProblem(ProblemType type, int iterations = 1)
     {
-        Console.Clear();
         Console.WriteLine($"\n=== Running tests for {type} ===");
 
         switch (type)

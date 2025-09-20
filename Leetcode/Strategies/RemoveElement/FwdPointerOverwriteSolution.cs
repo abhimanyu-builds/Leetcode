@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.RemoveElement
 {
-    public class RemoveElementFwdPointerOverwriteSolution : IProblemSolution<RemoveElementInput, int>
+    public class FwdPointerOverwriteSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)
         {

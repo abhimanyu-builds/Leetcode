@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.TwoSum
 {
-    public class TwoSumOnOneLoopDictionarySolution : IProblemSolution<TwoSumInput, int[]>
+    public class OnOneLoopDictionarySolution : IProblemSolution<TwoSumInput, int[]>
     {
         public int[] Solve(TwoSumInput input)
         {

@@ -1,9 +1,9 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies
+namespace Leetcode.Strategies.ThreeSum
 {
-    public class ThreeSum0On2Hashset2SumComplementSolution : IProblemSolution<ThreeSumInput, List<List<int>>>
+    public class On2SortingTwoPointerSolution : IProblemSolution<ThreeSumInput, List<List<int>>>
     {
         public List<List<int>> Solve(ThreeSumInput input)
         {
