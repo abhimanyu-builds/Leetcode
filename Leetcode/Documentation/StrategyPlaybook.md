@@ -4,6 +4,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ## 📋 Table of Contents
 
+- [Contains-duplicate-II](#contains-duplicate-ii)
 - [Contains-duplicate-I](#contains-duplicate-i)
 - [Remove-duplicates](#remove-duplicates)
 - [Remove-element](#remove-element)
@@ -13,6 +14,16 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Two-sum-sorted](#two-sum-sorted)
 
 ---
+
+### 📊 Strategy Tradeoffs — Contains Duplicate II
+<a name="contains-duplicate-ii"></a>
+
+| Strategy                      | Time Complexity | Space Complexity | Description                                                                 |
+|------------------------------|------------------|-------------------|------------------------------------------------------------------------------|
+| Brute Force (O(nk))          | O(nk)            | O(1)              | Checks every pair within distance `k`. Simple but slow for large inputs.     |
+| HashSet Sliding Window       | O(n)             | O(k)              | Maintains a window of size `k` using a HashSet. Fast and memory-efficient.   |
+| Dictionary Index Tracking    | O(n)             | O(n)              | Stores last seen index of each value. Flexible and handles large `k` well.   |
+
 
 ## Contains-duplicate-I
 <a name="contains-duplicate-i"></a>
@@ -202,7 +213,8 @@ Approaches
 
 Tradeoffs
 ---------
-|							|				Two Pointers								|				Binary Search per i							|
+
+|							|				Two Pointers								|				Binary Search per i							|
 |---------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
 | Instruction Overhead		| Just one comparison per step and moves a single pointer	| Multiple comparisons										|
 |							|															| Repeated recalculation of the midpoint					|
@@ -214,4 +226,3 @@ Tradeoffs
 | Nested Loop Cost			| Single linear scan, no nested loops - O(n) overall		| One pass + log n search for each element - O(n log n)		|
 
 ---
-

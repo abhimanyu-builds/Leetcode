@@ -25,6 +25,7 @@
         RemoveDuplicatesFromSortedArray,
         RemoveElement,
         RotatedArray,
-        ContainsDuplicateI
+        ContainsDuplicateI,
+        ContainsDuplicateII
     }
 }

@@ -51,6 +51,9 @@ namespace Leetcode.Helpers
                 }
                 ,
                 ProblemType.ContainsDuplicateI => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected)
+                ,
+                ProblemType.ContainsDuplicateII => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected),
 
 
