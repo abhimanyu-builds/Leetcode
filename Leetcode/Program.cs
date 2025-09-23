@@ -9,9 +9,10 @@ class Program
     static void Main()
     {
         Console.Clear();
-        RunProblem(ProblemType.ContainsDuplicateII, 1);
-        //RunProblem(ProblemType.ContainsDuplicateI, 1);
-        //RunProblem(ProblemType.RotatedArray, 10);
+        RunProblem(ProblemType.MaxAvgSubArrayI, 1);
+        //RunProblem(ProblemType.ContainsDuplicateII);
+        //RunProblem(ProblemType.ContainsDuplicateI);
+        //RunProblem(ProblemType.RotatedArray);
         //RunProblem(ProblemType.RemoveElement);
         //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
         //RunProblem(ProblemType.TwoSum);
@@ -93,6 +94,14 @@ class Program
                     ProblemTestCaseFactory.GetContainsDuplicateIITestCases().GetTestCases(),
                     ProblemStrategyFactory.GetContainsDuplicateIIStrategies(),
                     ComparerResolver.GetComparer<ContainsDuplicateInput, bool>(type),
+                    iterations
+                );
+                break;
+            case ProblemType.MaxAvgSubArrayI:
+                RunTestSuite<MaxAvgSubArrayInput, double>(
+                    ProblemTestCaseFactory.GetMaxAvgSubArrayITestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetMaxAvgSubArrayIStrategies(),
+                    ComparerResolver.GetComparer<MaxAvgSubArrayInput, double>(type),
                     iterations
                 );
                 break;

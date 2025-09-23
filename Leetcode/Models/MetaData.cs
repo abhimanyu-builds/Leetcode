@@ -26,6 +26,7 @@
         RemoveElement,
         RotatedArray,
         ContainsDuplicateI,
-        ContainsDuplicateII
+        ContainsDuplicateII,
+        MaxAvgSubArrayI
     }
 }

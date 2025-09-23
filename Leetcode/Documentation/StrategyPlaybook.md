@@ -226,3 +226,18 @@ Tradeoffs
 | Nested Loop Cost			| Single linear scan, no nested loops - O(n) overall		| One pass + log n search for each element - O(n log n)		|
 
 ---
+
+## Max-average-subarray-I
+<a name="max-average-subarray-I"></a>
+
+📘 [Problem Description](./Problems/Max-average-subarray-I-Description.md)
+
+Approaches
+----------
+
+| Rank | Approach        | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
+|------|------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
+| 1    | Sliding Window   | O(n)             | O(1)              | Efficient for large arrays.                    | Requires careful window management.                    |
+|      |                  |                  |                   | Avoids recomputation by reusing previous sum.  | Slightly harder to implement than brute force.         |
+| 2    | Brute Force      | O(n × k)         | O(1)              | Simple and intuitive.                          | Very slow for large `n` or large `k`.                  |
+|      |                  |                  |                   | Easy to debug and verify.                      | Recomputes sum for every window.                       |

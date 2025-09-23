@@ -20,4 +20,9 @@
             return $"{baseStr}{kStr}{tStr}";
         }
     }
+
+    public class MaxAvgSubArrayInput : ContainsDuplicateInput
+    {
+        public MaxAvgSubArrayInput(int[] numbers, int k) : base(numbers, k) { }
+    }
 }
