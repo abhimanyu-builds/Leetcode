@@ -54,7 +54,18 @@ namespace Leetcode.Helpers
                     actual != null && actual.Equals(tc.Expected)
                 ,
                 ProblemType.ContainsDuplicateII => (tc, actual) =>
-                    actual != null && actual.Equals(tc.Expected),
+                    actual != null && actual.Equals(tc.Expected)
+                ,
+                ProblemType.MaxAvgSubArrayI => (tc, actual) =>
+                {
+                    if (tc.Expected is double expected && actual is double result)
+                    {
+                        const double epsilon = 1e-5;                        // double.Equals() checks for exact binary equality — not ideal for averages or floating-point math.
+                        return Math.Abs(expected - result) < epsilon;       // Using Math.Abs(expected - result) < epsilon ensures comparison within a safe margin of error.
+                    }
+                    return false;
+                }
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")

@@ -1,7 +1,7 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Models;
 
-namespace Leetcode.Strategies.ContainsDuplicateII
+namespace Leetcode.Strategies.MaxAvgSubArrayI
 {
     public class OnHashsetSolution : IProblemSolution<ContainsDuplicateInput, bool>
     {

@@ -13,5 +13,6 @@ namespace Leetcode.TestHarness
         public static ITestCaseProvider<RotatedArrayInput, int> GetRotatedArrayTestCases() => new RotatedArrayTestCaseProvider();
         public static ITestCaseProvider<ContainsDuplicateInput, bool> GetContainsDuplicateITestCases() => new ContainsDuplicateITestCaseProvider();
         public static ITestCaseProvider<ContainsDuplicateInput, bool> GetContainsDuplicateIITestCases() => new ContainsDuplicateIITestCaseProvider();
+        public static ITestCaseProvider<MaxAvgSubArrayInput, double> GetMaxAvgSubArrayITestCases() => new MaxAvgSubArrayITestCaseProvider();
     }
 }
