@@ -40,5 +40,8 @@ namespace Leetcode.Models
     {
         public RotatedArrayInput(int[] numbers, int target) : base(numbers, target) { }
     }
-
+    public class MaxAverageSubArrayInput : ProblemInput<int[]>
+    {
+        public MaxAverageSubArrayInput(int[] numbers, int target) : base(numbers, target) { }
+    }
 }

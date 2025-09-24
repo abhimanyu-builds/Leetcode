@@ -27,6 +27,7 @@
         RotatedArray,
         ContainsDuplicateI,
         ContainsDuplicateII,
-        MaxAvgSubArrayI
+        MaxAvgSubArrayI,
+        MaxConsecutive1s
     }
 }

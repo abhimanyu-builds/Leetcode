@@ -31,5 +31,6 @@ namespace Leetcode.Common
         public static IEnumerable<IProblemStrategy<ContainsDuplicateInput, bool>> GetContainsDuplicateIStrategies() => ContainsDuplicateIStrategies.All;
         public static IEnumerable<IProblemStrategy<ContainsDuplicateInput, bool>> GetContainsDuplicateIIStrategies() => ContainsDuplicateIIStrategies.All;
         public static IEnumerable<IProblemStrategy<MaxAvgSubArrayInput, double>> GetMaxAvgSubArrayIStrategies() => MaxAvgSubArrayIStrategies.All;
+        public static IEnumerable<IProblemStrategy<int[], int>> GetMaxConsectuive1sStrategies() => MaxConsecutive1sStrategies.All;
     }
 }

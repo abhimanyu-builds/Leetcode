@@ -9,7 +9,8 @@ class Program
     static void Main()
     {
         Console.Clear();
-        RunProblem(ProblemType.MaxAvgSubArrayI, 1);
+        RunProblem(ProblemType.MaxConsecutive1s,10);
+        //RunProblem(ProblemType.MaxAvgSubArrayI);
         //RunProblem(ProblemType.ContainsDuplicateII);
         //RunProblem(ProblemType.ContainsDuplicateI);
         //RunProblem(ProblemType.RotatedArray);
@@ -102,6 +103,14 @@ class Program
                     ProblemTestCaseFactory.GetMaxAvgSubArrayITestCases().GetTestCases(),
                     ProblemStrategyFactory.GetMaxAvgSubArrayIStrategies(),
                     ComparerResolver.GetComparer<MaxAvgSubArrayInput, double>(type),
+                    iterations
+                );
+                break;
+            case ProblemType.MaxConsecutive1s:
+                RunTestSuite<int[], int>(
+                    ProblemTestCaseFactory.GetMaxConsecutive1sTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetMaxConsectuive1sStrategies(),
+                    ComparerResolver.GetComparer<int[], int>(type),
                     iterations
                 );
                 break;
