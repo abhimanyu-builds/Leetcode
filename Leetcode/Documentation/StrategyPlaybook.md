@@ -4,6 +4,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ## 📋 Table of Contents
 
+- [Max-consecutive-1s](#max-consecutive-1s)
 - [Contains-duplicate-II](#contains-duplicate-ii)
 - [Contains-duplicate-I](#contains-duplicate-i)
 - [Remove-duplicates](#remove-duplicates)
@@ -36,7 +37,7 @@ Approaches
 |------|----------------|-------------------|-------------------|
 | 1    | HashSet        | O(n)				| O(n)              |
 | 2    | Sort and Scan  | O(n log n)		| O(1)              |
-| 3    | Brute Force    | O(n^2)				| O(1)              |
+| 3    | Brute Force    | O(n^2)			| O(1)              |
 
 ---
 
@@ -241,3 +242,18 @@ Approaches
 |      |                  |                  |                   | Avoids recomputation by reusing previous sum.  | Slightly harder to implement than brute force.         |
 | 2    | Brute Force      | O(n × k)         | O(1)              | Simple and intuitive.                          | Very slow for large `n` or large `k`.                  |
 |      |                  |                  |                   | Easy to debug and verify.                      | Recomputes sum for every window.                       |
+
+## Max-consecutive-1s
+<a name="max-consecutive-1s"></a>
+
+📘 [Problem Description](./Problems/Max-consecutive-1s-Description.md)
+
+Approaches
+----------
+
+| Rank | Approach                  | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
+|------|---------------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
+| 1    | Streaming Scan            | O(n)             | O(1)              | Clean, idiomatic, and branch-efficient.        | May do redundant comparisons on long zero blocks.      |
+|      |                           |                  |                   | Handles all edge cases naturally.              | Slightly less optimized for skipping zero segments.    |
+| 2    | Manual Index Traversal    | O(n)             | O(1)              | Can skip zero blocks aggressively.             | Requires careful index control and loop management.    |
+|      |                           |                  |                   | Works well for clustered 1s.                   | More error-prone and harder to read.                   |
