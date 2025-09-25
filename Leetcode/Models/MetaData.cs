@@ -28,6 +28,7 @@
         ContainsDuplicateI,
         ContainsDuplicateII,
         MaxAvgSubArrayI,
-        MaxConsecutive1s
+        MaxConsecutive1s,
+        SearchInsertPosition
     }
 }

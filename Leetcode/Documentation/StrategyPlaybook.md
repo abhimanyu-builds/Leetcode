@@ -4,6 +4,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ## 📋 Table of Contents
 
+- [Search-insert-position](#search-insert-position)
 - [Max-consecutive-1s](#max-consecutive-1s)
 - [Contains-duplicate-II](#contains-duplicate-ii)
 - [Contains-duplicate-I](#contains-duplicate-i)
@@ -15,6 +16,15 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Two-sum-sorted](#two-sum-sorted)
 
 ---
+
+### 📊 Strategy Tradeoffs — Search Insert Position
+<a name="search-insert-position"></a>
+
+| Strategy              | Match Behavior					| Insert Behavior								| Time Complexity	| Space	| Idiomatic Use Case						| Notes                                                             |
+|-----------------------|-----------------------------------|-----------------------------------------------|-------------------|-------|-------------------------------------------|-------------------------------------------------------------------|
+| Hybrid Binary Search  | Returns exact match if found		| Returns insert index if not found				| O(log n)			| O(1)  | Explicit match vs insert logic            | Slightly more verbose, but useful for logging/debugging           |
+| Lower Bound           | Returns first index ≥ target		| Returns correct insert index					| O(log n)			| O(1)  | STL-style semantics (`std::lower_bound`)  | Clean, branchless, ideal for sorted arrays                        |
+| Stateful Traversal    | Tracks insert index during scan	| Returns insert index when target not found	| O(n)				| O(1)  | Small arrays or streaming-style traversal | Useful when binary search is overkill or array is nearly sorted   |
 
 ### 📊 Strategy Tradeoffs — Contains Duplicate II
 <a name="contains-duplicate-ii"></a>

@@ -9,7 +9,9 @@ class Program
     static void Main()
     {
         Console.Clear();
-        RunProblem(ProblemType.MaxConsecutive1s,10);
+
+        RunProblem(ProblemType.SearchInsertPosition);
+        //RunProblem(ProblemType.MaxConsecutive1s);
         //RunProblem(ProblemType.MaxAvgSubArrayI);
         //RunProblem(ProblemType.ContainsDuplicateII);
         //RunProblem(ProblemType.ContainsDuplicateI);
@@ -111,6 +113,14 @@ class Program
                     ProblemTestCaseFactory.GetMaxConsecutive1sTestCases().GetTestCases(),
                     ProblemStrategyFactory.GetMaxConsectuive1sStrategies(),
                     ComparerResolver.GetComparer<int[], int>(type),
+                    iterations
+                );
+                break;
+            case ProblemType.SearchInsertPosition:
+                RunTestSuite<SearchInsertPositionInput, int>(
+                    ProblemTestCaseFactory.GetSearchInsertPositionTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetSearchInsertPositionStrategies(),
+                    ComparerResolver.GetComparer<SearchInsertPositionInput, int>(type),
                     iterations
                 );
                 break;

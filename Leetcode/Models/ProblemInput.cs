@@ -44,4 +44,8 @@ namespace Leetcode.Models
     {
         public MaxAverageSubArrayInput(int[] numbers, int target) : base(numbers, target) { }
     }
+    public class SearchInsertPositionInput : ProblemInput<int[]>
+    {
+        public SearchInsertPositionInput(int[] numbers, int target) : base(numbers, target) { }
+    }
 }
