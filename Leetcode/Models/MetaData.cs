@@ -19,16 +19,26 @@
 
     public enum ProblemType
     {
-        TwoSum,
-        TwoSumSorted,
-        ThreeSum,
-        RemoveDuplicatesFromSortedArray,
-        RemoveElement,
+        //Search / Binary Search
+        SearchInsertPosition,
         RotatedArray,
-        ContainsDuplicateI,
-        ContainsDuplicateII,
+
+        //Sliding Window
         MaxAvgSubArrayI,
         MaxConsecutive1s,
-        SearchInsertPosition
+
+        //Hashing / Frequency Maps
+        TwoSum,
+        ContainsDuplicateI,
+        ContainsDuplicateII,
+        LongestHarmoniousSubsequence,
+
+        //Two-Pointer / Sorting
+        TwoSumSorted,
+        ThreeSum,
+
+        //In-place Mutation
+        RemoveElement,
+        RemoveDuplicatesFromSortedArray,
     }
 }

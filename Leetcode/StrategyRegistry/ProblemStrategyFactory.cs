@@ -33,6 +33,7 @@ namespace Leetcode.Common
         public static IEnumerable<IProblemStrategy<MaxAvgSubArrayInput, double>> GetMaxAvgSubArrayIStrategies() => MaxAvgSubArrayIStrategies.All;
         public static IEnumerable<IProblemStrategy<int[], int>> GetMaxConsectuive1sStrategies() => MaxConsecutive1sStrategies.All;
         public static IEnumerable<IProblemStrategy<SearchInsertPositionInput, int>> GetSearchInsertPositionStrategies() => SearchInsertPositionStrategies.All;
+        public static IEnumerable<IProblemStrategy<int[], int>> GetLongestHarmoniousSubsequenceStrategies() => LongestHarmoniousSubsequenceStrategies.All;
 
 
     }

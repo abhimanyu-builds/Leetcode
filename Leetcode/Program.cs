@@ -10,7 +10,8 @@ class Program
     {
         Console.Clear();
 
-        RunProblem(ProblemType.SearchInsertPosition);
+        RunProblem(ProblemType.LongestHarmoniousSubsequence,1);
+        //RunProblem(ProblemType.SearchInsertPosition);
         //RunProblem(ProblemType.MaxConsecutive1s);
         //RunProblem(ProblemType.MaxAvgSubArrayI);
         //RunProblem(ProblemType.ContainsDuplicateII);
@@ -124,7 +125,15 @@ class Program
                     iterations
                 );
                 break;
-
+            case ProblemType.LongestHarmoniousSubsequence:
+                RunTestSuite<int[], int>(
+                    ProblemTestCaseFactory.GetLongestHarmoniousSubsequenceTestCases().GetTestCases(),
+                    ProblemStrategyFactory.GetLongestHarmoniousSubsequenceStrategies(),
+                    ComparerResolver.GetComparer<int[], int>(type),
+                    iterations
+                );
+                break;
+                
             default:
                 Console.WriteLine($"Unsupported problem type {type}");
                 break;
