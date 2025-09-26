@@ -16,6 +16,7 @@ namespace Leetcode.TestHarness
         public static ITestCaseProvider<MaxAvgSubArrayInput, double> GetMaxAvgSubArrayITestCases() => new MaxAvgSubArrayITestCaseProvider();
         public static ITestCaseProvider<int[], int> GetMaxConsecutive1sTestCases() => new MaxConsecutive1sTestCaseProvider();
         public static ITestCaseProvider<SearchInsertPositionInput, int> GetSearchInsertPositionTestCases() => new SearchInsertPositionTestCaseProvider();
-        
+        public static ITestCaseProvider<int[], int> GetLongestHarmoniousSubsequenceTestCases() => new LongestHarmoniousSubsequenceTestCaseProvider();
+
     }
 }

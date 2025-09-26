@@ -70,6 +70,8 @@ namespace Leetcode.Helpers
                     actual != null && actual.Equals(tc.Expected),
                 ProblemType.SearchInsertPosition => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected),
+                ProblemType.LongestHarmoniousSubsequence => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected),
 
 
 

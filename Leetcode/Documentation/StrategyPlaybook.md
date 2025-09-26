@@ -4,16 +4,27 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ## 📋 Table of Contents
 
+### Search / Binary Search
 - [Search-insert-position](#search-insert-position)
+- [Search-rotated-sorted-array](#search-rotated-sorted-array)
+
+### Sliding Window
 - [Max-consecutive-1s](#max-consecutive-1s)
-- [Contains-duplicate-II](#contains-duplicate-ii)
+- [Max-average-subarray-I](#max-average-subarray-I)
+
+### Hashing / Frequency Maps
+- [Two-sum](#two-sum)
 - [Contains-duplicate-I](#contains-duplicate-i)
+- [Contains-duplicate-II](#contains-duplicate-ii)
+- [Longest-harmonious-subsequence](#longest-harmonious-subsequence)
+
+### Two-Pointer / Sorting
+- [Two-sum-sorted](#two-sum-sorted)
+- [Three-sum](#three-sum)
+
+### In-place Mutation
 - [Remove-duplicates](#remove-duplicates)
 - [Remove-element](#remove-element)
-- [Search-rotated-sorted-array](#search-rotated-sorted-array)
-- [Three-sum](#three-sum)
-- [Two-sum](#two-sum)
-- [Two-sum-sorted](#two-sum-sorted)
 
 ---
 
@@ -25,60 +36,6 @@ A consolidated reference of all strategy tradeoffs across problems.
 | Hybrid Binary Search  | Returns exact match if found		| Returns insert index if not found				| O(log n)			| O(1)  | Explicit match vs insert logic            | Slightly more verbose, but useful for logging/debugging           |
 | Lower Bound           | Returns first index ≥ target		| Returns correct insert index					| O(log n)			| O(1)  | STL-style semantics (`std::lower_bound`)  | Clean, branchless, ideal for sorted arrays                        |
 | Stateful Traversal    | Tracks insert index during scan	| Returns insert index when target not found	| O(n)				| O(1)  | Small arrays or streaming-style traversal | Useful when binary search is overkill or array is nearly sorted   |
-
-### 📊 Strategy Tradeoffs — Contains Duplicate II
-<a name="contains-duplicate-ii"></a>
-
-| Strategy                      | Time Complexity | Space Complexity | Description                                                                 |
-|------------------------------|------------------|-------------------|------------------------------------------------------------------------------|
-| Brute Force (O(nk))          | O(nk)            | O(1)              | Checks every pair within distance `k`. Simple but slow for large inputs.     |
-| HashSet Sliding Window       | O(n)             | O(k)              | Maintains a window of size `k` using a HashSet. Fast and memory-efficient.   |
-| Dictionary Index Tracking    | O(n)             | O(n)              | Stores last seen index of each value. Flexible and handles large `k` well.   |
-
-
-## Contains-duplicate-I
-<a name="contains-duplicate-i"></a>
-
-📘 [Problem Description](./Problems/Contains-duplicate-I-Description.md)
-
-Approaches
-----------
-| Rank | Approach       | Time Complexity	| Space Complexity	|
-|------|----------------|-------------------|-------------------|
-| 1    | HashSet        | O(n)				| O(n)              |
-| 2    | Sort and Scan  | O(n log n)		| O(1)              |
-| 3    | Brute Force    | O(n^2)			| O(1)              |
-
----
-
-## Remove-duplicates
-<a name="remove-duplicates"></a>
-
-📘 [Problem Description](./Problems/Remove-duplicates-Description.md)
-
-Approaches
-----------
-| Rank   | Approach             | Time Complexity  | Space Complexity  |
-|--------|----------------------|------------------|-------------------|
-| 1      | Two Pointers			| O(n)             | O(1)              |
-
----
-
-## Remove-element
-<a name="remove-element"></a>
-
-📘 [Problem Description](./Problems/Remove-element-Description.md)
-
-Approaches
-----------
-
-| Rank	| Approach							| Time Complexity	| Space Complexity	| Pros                                              | Cons                                                  |
-|-------|-----------------------------------|-------------------|-------------------|---------------------------------------------------|-------------------------------------------------------|
-| 1		| Forward Overwrite					| O(n)				| O(1)              | Simple, preserves order, easy to implement        | May perform unnecessary writes before first match.	|
-|		|									|					|					|													|	Optimized in implementation							|
-| 2		| Swap with End Pointer				| O(n)				| O(1)              | Fewer writes when target is frequent              | Does not preserve order, trickier to debug            |
-| 3		| Two-Pointer Partitioning			| O(n)				| O(1)              | Efficient in-place partitioning                   | Requires careful handling of edge cases,				|
-|		|									|					|					|													|	Does not preserve order								|
 
 ---
 
@@ -96,6 +53,154 @@ Approaches
 |		|									|					|					| Leverages sorted structure.						| Harder to implement correctly.						|
 | 2		| Brute Force						| O(n)				| O(1)              | Simple to write and debug.						| Inefficient for large arrays.							|
 |		|									|					|					| Works regardless of rotation or duplicates.		| Doesn't leverage sorted structure.					|
+
+---
+
+## Max-consecutive-1s
+<a name="max-consecutive-1s"></a>
+
+📘 [Problem Description](./Problems/Max-consecutive-1s-Description.md)
+
+Approaches
+----------
+
+| Rank | Approach                  | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
+|------|---------------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
+| 1    | Streaming Scan            | O(n)             | O(1)              | Clean, idiomatic, and branch-efficient.        | May do redundant comparisons on long zero blocks.      |
+|      |                           |                  |                   | Handles all edge cases naturally.              | Slightly less optimized for skipping zero segments.    |
+| 2    | Manual Index Traversal    | O(n)             | O(1)              | Can skip zero blocks aggressively.             | Requires careful index control and loop management.    |
+|      |                           |                  |                   | Works well for clustered 1s.                   | More error-prone and harder to read.                   |
+
+---
+
+## Max-average-subarray-I
+<a name="max-average-subarray-I"></a>
+
+📘 [Problem Description](./Problems/Max-average-subarray-I-Description.md)
+
+Approaches
+----------
+
+| Rank | Approach        | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
+|------|------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
+| 1    | Sliding Window   | O(n)             | O(1)              | Efficient for large arrays.                    | Requires careful window management.                    |
+|      |                  |                  |                   | Avoids recomputation by reusing previous sum.  | Slightly harder to implement than brute force.         |
+| 2    | Brute Force      | O(n × k)         | O(1)              | Simple and intuitive.                          | Very slow for large `n` or large `k`.                  |
+|      |                  |                  |                   | Easy to debug and verify.                      | Recomputes sum for every window.                       |
+
+---
+## Two-sum
+<a name="two-sum"></a>
+
+📘 [Problem Description](./Problems/Two-sum-Description.md)
+
+Approaches
+----------
+| Rank   | Approach                      | Time Complexity  | Space Complexity  | Pros                                             | Cons                                    |
+|--------|-------------------------------|------------------|-------------------|--------------------------------------------------|-----------------------------------------|
+| 1      | Hash Map (Dictionary)         | O(n)             | O(n)              | Fast, preserves indices, ideal for unsorted input| Uses extra space                        |
+| 2      | Two-Pointer (Sorted Input)    | O(n log n)       | O(1)              | Elegant, efficient for value-based checks        | Requires sorting, loses original indices|
+| 3      | Set-Based Lookup              | O(n)             | O(n)              | Simple, great for value-only checks              | Doesn^2t track indices                   |
+| 4      | Binary Search After Sorting   | O(n log n)       | O(1)              | Works well with sorted data                      | More complex, index tracking needed     |
+| 5      | Brute Force (Nested Loops)    | O(n^2)            | O(1)              | Easy to understand and implement                 | Very slow for large inputs              |
+
+Variants
+--------
+- Three Sum / K Sum: Extend the logic to find triplets or k-sized combinations.
+- Two Sum II: Sorted input, return indices (Leetcode variant).
+- Two Sum Less Than K: Find max sum < K.
+- Two Sum with Multiplicity: Count pairs considering duplicates.
+- Two Sum with Constraints: Find pairs with additional constraints (e.g., indices difference).
+- Two Sum with Range Queries: Support multiple queries efficiently.
+- Two Sum with Sliding Window: Find pairs in a sliding window of the array.
+- Two Sum with Duplicates: Return all unique pairs.
+- Two Sum with Modulo: Find pairs whose sum is congruent to a target modulo a number.
+- Two Sum with Approximation: Find pairs approximately equal to target.
+
+- Two Sum in a Circular Array: Handle wrap-around cases.
+- Two Sum in a Matrix: Find pairs in a 2D matrix.
+- Two Sum in a BST: Use in-order traversal and two-pointer technique.
+- Two Sum with Set Data Structure: Use sets for O(1) lookups.
+- Two Sum in a Linked List: Use hash map or two-pointer technique.
+- Two Sum with Heaps: Use heaps for specific scenarios.
+- Two Sum with Custom Data Structures: Implement custom structures for specific needs.
+
+- Two Sum with Floating Points: Handle precision issues with floats.
+- Two Sum with Sorting and Binary Search: Sort and use binary search for complements.
+- Two Sum with Bit Manipulation: Use XOR for specific cases.
+- Two Sum with Frequency Count: Use frequency array for limited range of numbers.
+- Two Sum with Updates: Handle dynamic updates to the array.
+- Two Sum with Prefix Sums: Use prefix sums for specific scenarios.
+- Two Sum with Backtracking: Explore combinations recursively.
+- Two Sum with Graph Representation: Model the problem as a graph.
+- Two Sum with Dynamic Programming: Use DP for specific constraints.
+- Two Sum with Parallel Processing: Use concurrency for large datasets.
+
+---
+
+## Contains-duplicate-I
+<a name="contains-duplicate-i"></a>
+
+📘 [Problem Description](./Problems/Contains-duplicate-I-Description.md)
+
+Approaches
+----------
+| Rank | Approach       | Time Complexity	| Space Complexity	|
+|------|----------------|-------------------|-------------------|
+| 1    | HashSet        | O(n)				| O(n)              |
+| 2    | Sort and Scan  | O(n log n)		| O(1)              |
+| 3    | Brute Force    | O(n^2)			| O(1)              |
+
+---
+
+### 📊 Strategy Tradeoffs — Contains Duplicate II
+<a name="contains-duplicate-ii"></a>
+
+| Strategy                      | Time Complexity | Space Complexity | Description                                                                 |
+|------------------------------|------------------|-------------------|------------------------------------------------------------------------------|
+| Brute Force (O(nk))          | O(nk)            | O(1)              | Checks every pair within distance `k`. Simple but slow for large inputs.     |
+| HashSet Sliding Window       | O(n)             | O(k)              | Maintains a window of size `k` using a HashSet. Fast and memory-efficient.   |
+| Dictionary Index Tracking    | O(n)             | O(n)              | Stores last seen index of each value. Flexible and handles large `k` well.   |
+
+---
+
+### 📊 Strategy Tradeoffs — Longest Harmonious Subsequence
+<a name="longest-harmonious-subsequence"></a>
+
+| Strategy               | Time Complexity	| Real-World Speed | Memory Usage | Notes						|
+|------------------------|------------------|------------------|--------------|-----------------------------|
+| Frequency Map          | O(n)             | Slower           | Higher       | Optimal for dense keys		|
+| Sort + Scan            | O(n log n)       | Faster           | Lower        | Cache-friendly, tight loop	|
+
+
+
+---
+
+## Two-sum-sorted
+<a name="two-sum-sorted"></a>
+
+📘 [Problem Description](./Problems/Two-sum-sorted-Description.md)
+
+Approaches
+----------
+| Rank   | Approach             | Time Complexity  | Space Complexity  |
+|--------|----------------------|------------------|-------------------|
+| 1      | Two Pointers			| O(n)             | O(1)              |
+| 2      | Binary Search per i	| O(n log n)       | O(1)              |
+
+Tradeoffs
+---------
+
+|							|				Two Pointers								|				Binary Search per i							|
+|---------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| Instruction Overhead		| Just one comparison per step and moves a single pointer	| Multiple comparisons										|
+|							|															| Repeated recalculation of the midpoint					|
+|							|															| Constant updates to left and right pointers				|
+| Poor Cache Locality		| Walks through the array sequentially						| Jumps around the array, accessing elements non-linearly	|
+|							| Aligns perfectly with how CPUs cache memory				| Disrupts caching and causes slowdown						|
+| Branch Prediction Penalty	| Predictable: either moves left or right					| Has more branching and less predictability				|
+|							| CPUs correctly guess which way the code will branch 		| CPU's wrong guesses lead to performance hits				|
+| Nested Loop Cost			| Single linear scan, no nested loops - O(n) overall		| One pass + log n search for each element - O(n log n)		|
 
 ---
 
@@ -161,109 +266,34 @@ Variants
 
 ---
 
-## Two-sum
-<a name="two-sum"></a>
 
-📘 [Problem Description](./Problems/Two-sum-Description.md)
+## Remove-duplicates
+<a name="remove-duplicates"></a>
 
-Approaches
-----------
-| Rank   | Approach                      | Time Complexity  | Space Complexity  | Pros                                             | Cons                                    |
-|--------|-------------------------------|------------------|-------------------|--------------------------------------------------|-----------------------------------------|
-| 1      | Hash Map (Dictionary)         | O(n)             | O(n)              | Fast, preserves indices, ideal for unsorted input| Uses extra space                        |
-| 2      | Two-Pointer (Sorted Input)    | O(n log n)       | O(1)              | Elegant, efficient for value-based checks        | Requires sorting, loses original indices|
-| 3      | Set-Based Lookup              | O(n)             | O(n)              | Simple, great for value-only checks              | Doesn^2t track indices                   |
-| 4      | Binary Search After Sorting   | O(n log n)       | O(1)              | Works well with sorted data                      | More complex, index tracking needed     |
-| 5      | Brute Force (Nested Loops)    | O(n^2)            | O(1)              | Easy to understand and implement                 | Very slow for large inputs              |
-
-Variants
---------
-- Three Sum / K Sum: Extend the logic to find triplets or k-sized combinations.
-- Two Sum II: Sorted input, return indices (Leetcode variant).
-- Two Sum Less Than K: Find max sum < K.
-- Two Sum with Multiplicity: Count pairs considering duplicates.
-- Two Sum with Constraints: Find pairs with additional constraints (e.g., indices difference).
-- Two Sum with Range Queries: Support multiple queries efficiently.
-- Two Sum with Sliding Window: Find pairs in a sliding window of the array.
-- Two Sum with Duplicates: Return all unique pairs.
-- Two Sum with Modulo: Find pairs whose sum is congruent to a target modulo a number.
-- Two Sum with Approximation: Find pairs approximately equal to target.
-
-- Two Sum in a Circular Array: Handle wrap-around cases.
-- Two Sum in a Matrix: Find pairs in a 2D matrix.
-- Two Sum in a BST: Use in-order traversal and two-pointer technique.
-- Two Sum with Set Data Structure: Use sets for O(1) lookups.
-- Two Sum in a Linked List: Use hash map or two-pointer technique.
-- Two Sum with Heaps: Use heaps for specific scenarios.
-- Two Sum with Custom Data Structures: Implement custom structures for specific needs.
-
-- Two Sum with Floating Points: Handle precision issues with floats.
-- Two Sum with Sorting and Binary Search: Sort and use binary search for complements.
-- Two Sum with Bit Manipulation: Use XOR for specific cases.
-- Two Sum with Frequency Count: Use frequency array for limited range of numbers.
-- Two Sum with Updates: Handle dynamic updates to the array.
-- Two Sum with Prefix Sums: Use prefix sums for specific scenarios.
-- Two Sum with Backtracking: Explore combinations recursively.
-- Two Sum with Graph Representation: Model the problem as a graph.
-- Two Sum with Dynamic Programming: Use DP for specific constraints.
-- Two Sum with Parallel Processing: Use concurrency for large datasets.
-
----
-
-## Two-sum-sorted
-<a name="two-sum-sorted"></a>
-
-📘 [Problem Description](./Problems/Two-sum-sorted-Description.md)
+📘 [Problem Description](./Problems/Remove-duplicates-Description.md)
 
 Approaches
 ----------
 | Rank   | Approach             | Time Complexity  | Space Complexity  |
 |--------|----------------------|------------------|-------------------|
 | 1      | Two Pointers			| O(n)             | O(1)              |
-| 2      | Binary Search per i	| O(n log n)       | O(1)              |
-
-Tradeoffs
----------
-
-|							|				Two Pointers								|				Binary Search per i							|
-|---------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
-| Instruction Overhead		| Just one comparison per step and moves a single pointer	| Multiple comparisons										|
-|							|															| Repeated recalculation of the midpoint					|
-|							|															| Constant updates to left and right pointers				|
-| Poor Cache Locality		| Walks through the array sequentially						| Jumps around the array, accessing elements non-linearly	|
-|							| Aligns perfectly with how CPUs cache memory				| Disrupts caching and causes slowdown						|
-| Branch Prediction Penalty	| Predictable: either moves left or right					| Has more branching and less predictability				|
-|							| CPUs correctly guess which way the code will branch 		| CPU's wrong guesses lead to performance hits				|
-| Nested Loop Cost			| Single linear scan, no nested loops - O(n) overall		| One pass + log n search for each element - O(n log n)		|
 
 ---
 
-## Max-average-subarray-I
-<a name="max-average-subarray-I"></a>
+## Remove-element
+<a name="remove-element"></a>
 
-📘 [Problem Description](./Problems/Max-average-subarray-I-Description.md)
-
-Approaches
-----------
-
-| Rank | Approach        | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
-|------|------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
-| 1    | Sliding Window   | O(n)             | O(1)              | Efficient for large arrays.                    | Requires careful window management.                    |
-|      |                  |                  |                   | Avoids recomputation by reusing previous sum.  | Slightly harder to implement than brute force.         |
-| 2    | Brute Force      | O(n × k)         | O(1)              | Simple and intuitive.                          | Very slow for large `n` or large `k`.                  |
-|      |                  |                  |                   | Easy to debug and verify.                      | Recomputes sum for every window.                       |
-
-## Max-consecutive-1s
-<a name="max-consecutive-1s"></a>
-
-📘 [Problem Description](./Problems/Max-consecutive-1s-Description.md)
+📘 [Problem Description](./Problems/Remove-element-Description.md)
 
 Approaches
 ----------
 
-| Rank | Approach                  | Time Complexity | Space Complexity | Pros                                           | Cons                                                  |
-|------|---------------------------|------------------|-------------------|------------------------------------------------|--------------------------------------------------------|
-| 1    | Streaming Scan            | O(n)             | O(1)              | Clean, idiomatic, and branch-efficient.        | May do redundant comparisons on long zero blocks.      |
-|      |                           |                  |                   | Handles all edge cases naturally.              | Slightly less optimized for skipping zero segments.    |
-| 2    | Manual Index Traversal    | O(n)             | O(1)              | Can skip zero blocks aggressively.             | Requires careful index control and loop management.    |
-|      |                           |                  |                   | Works well for clustered 1s.                   | More error-prone and harder to read.                   |
+| Rank	| Approach							| Time Complexity	| Space Complexity	| Pros                                              | Cons                                                  |
+|-------|-----------------------------------|-------------------|-------------------|---------------------------------------------------|-------------------------------------------------------|
+| 1		| Forward Overwrite					| O(n)				| O(1)              | Simple, preserves order, easy to implement        | May perform unnecessary writes before first match.	|
+|		|									|					|					|													|	Optimized in implementation							|
+| 2		| Swap with End Pointer				| O(n)				| O(1)              | Fewer writes when target is frequent              | Does not preserve order, trickier to debug            |
+| 3		| Two-Pointer Partitioning			| O(n)				| O(1)              | Efficient in-place partitioning                   | Requires careful handling of edge cases,				|
+|		|									|					|					|													|	Does not preserve order								|
+
+---
