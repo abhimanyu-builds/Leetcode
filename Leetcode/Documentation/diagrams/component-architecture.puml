@@ -1,0 +1,59 @@
+@startuml component-architecture
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
+
+package "Orchestration" {
+  [Program]
+  [ProblemStrategyFactory]
+  [ProblemTestCaseFactory]
+}
+
+package "Strategy Layer" {
+  [Strategy Registrars]
+  [Strategy Implementations]
+  [IProblemSolution]
+  [IProblemStrategy]
+}
+
+package "Test Harness" {
+  [ProblemTest]
+  [StrategyBenchmark]
+  [TestCase]
+  [TestResult]
+  [BenchmarkResult]
+  [ComparerResolver]
+  [ComparerHelper]
+}
+
+package "Documentation & Helpers" {
+  [GenerateDocumentationIndex]
+  [StrategyPlaybook.md]
+  [Markdown Problem Descriptions]
+}
+
+[Program] --> [ProblemStrategyFactory]
+[Program] --> [ProblemTestCaseFactory]
+[Program] --> [ProblemTest]
+
+[ProblemStrategyFactory] --> [Strategy Registrars]
+[Strategy Registrars] --> [Strategy Implementations]
+[Strategy Implementations] --> [IProblemSolution]
+[Strategy Implementations] --> [IProblemStrategy]
+
+[ProblemTestCaseFactory] --> [TestCase]
+
+[ProblemTest] --> [TestCase]
+[ProblemTest] --> [TestResult]
+[ProblemTest] --> [ComparerResolver]
+[ComparerResolver] --> [ComparerHelper]
+
+[StrategyBenchmark] --> [BenchmarkResult]
+[StrategyBenchmark] --> [IProblemStrategy]
+
+[GenerateDocumentationIndex] --> [StrategyPlaybook.md]
+[GenerateDocumentationIndex] --> [Markdown Problem Descriptions]
+
+@enduml

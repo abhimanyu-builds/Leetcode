@@ -1,0 +1,70 @@
+@startuml class-core
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
+
+' === Interfaces ===
+interface IProblemSolution<TInput, TOutput>
+note right of IProblemSolution
+Defines the Solve(input) method
+end note
+
+interface IProblemStrategy<TInput, TOutput>
+note right of IProblemStrategy
+Wraps a solution with metadata
+end note
+
+interface ITestCaseProvider<TInput, TOutput>
+note right of ITestCaseProvider
+Provides test cases for a given problem
+end note
+
+' === Strategy Wrapper ===
+class ProblemStrategy<TInput, TOutput> implements IProblemStrategy {
+    - Name: string
+    - Implementation: IProblemSolution
+}
+
+ProblemStrategy --> IProblemSolution
+ProblemStrategy --> IProblemStrategy
+
+' === Core Models ===
+abstract class ProblemInput<T> {
+    - Input: T
+    - Target: object
+}
+
+class TwoSumInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+class TwoSumSortedInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+class ThreeSumInput {
+    - Numbers: int[]
+    - Target: int
+    + ToString(): string
+}
+
+class RotatedArrayInput extends ProblemInput<int[]> {
+    - Numbers: int[]
+    - Target: int
+}
+
+class RemoveElementInput {
+    - Numbers: int[]
+    - Value: int
+}
+
+ProblemInput <|-- RotatedArrayInput
+
+@enduml

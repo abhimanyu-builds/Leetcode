@@ -1,34 +1,52 @@
-﻿
-
-## Documentation Gallery
+﻿## Documentation Gallery
 
 A visual overview of the architecture, execution flow, and design patterns used in this project.
-
-### Execution Flow
+## Execution Flow
 
 - **Test Case Flow – Sequence Diagram**  
   Illustrates how strategies are executed against test cases, including validation and result logging.  
-  ![Test Case Flow](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/plantuml-sequence-diagram-test-case-flow.svg)  
-  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-sequence-diagram-test-case-flow.puml)
-
----
-
-### Architecture & Design
-
-- **Class Diagram – System Structure**  
-  Shows relationships between core interfaces, strategy implementations, and factories.  
-  ![Class Diagram](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/class-diagram.svg)  
-  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/class-diagram.puml)
-
-- **Modular Component Diagram**  
-  Highlights separation of concerns across orchestration, strategy, test case provisioning, and execution.  
-  ![Modular Component Diagram](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/plantuml-modular-component-diagram.svg)  
-  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-modular-component-diagram.puml)
+  ![Test Case Flow](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/sequence-diagram-test-case-flow.svg)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/sequence-diagram-test-case-flow.puml)
 
 - **Strategy Registration – Sequence Diagram**  
   Shows how strategies are registered and retrieved based on problem type.  
-  ![Strategy Registration](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/plantuml-strategy-registration-sequence-diagram.svg)  
-  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/plantuml-strategy-registration-sequence-diagram.puml)
+  ![Strategy Registration](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/sequence-diagram-strategy-registration.svg)  
+  [View PlantUML Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/strategy-registration-sequence-diagram.puml)
+
+---
+
+## Architecture & Design
+
+- **Core Class Diagram**  
+  Shows relationships between core interfaces, models, and strategy wrappers.  
+  ![Core Diagram](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/class-core.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/class-core.puml)
+
+- **Strategy Implementations**  
+  Groups all strategy classes by problem domain.  
+  ![Strategies](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/class-strategies.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/class-strategies.puml)
+
+- **Test Harness Components**  
+  Captures test execution, benchmarking, and result validation.  
+  ![Test Harness](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/class-testharness.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/class-testharness.puml)
+
+- **Factory & Registry Wiring**  
+  Shows how strategies and test cases are orchestrated.  
+  ![Factories](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/class-factories.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/class-factories.puml)
+
+- **Modular Component Diagram**  
+  Highlights separation of concerns across orchestration, strategy, test provisioning, and documentation.  
+  ![Modular Architecture](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/modular-component-diagram.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/modular-component-diagram.puml)
+
+- **System Architecture Overview**  
+  High-level flow of control and component interaction.  
+  ![Architecture](https://raw.githubusercontent.com/abhimanyu-builds/Leetcode/main/Leetcode/Documentation/diagrams/component-architecture.svg)  
+  [View Source](https://github.com/abhimanyu-builds/Leetcode/blob/main/Leetcode/Documentation/diagrams/component-architecture.puml)
+
 ## Description
 
 A modular and scalable testing framework designed for algorithmic problem solving. It supports:

@@ -1,0 +1,38 @@
+@startuml sequence-diagram-test-case-flow
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+skinparam sequenceMessageAlign center
+skinparam sequenceParticipant underline
+skinparam maxMessageSize 100
+scale 1.5
+title Test Case Execution Flow
+
+participant Program
+participant ProblemTest
+participant IProblemStrategy
+participant IProblemSolution
+participant TestCase
+participant ComparerResolver
+participant ComparerHelper
+participant TestResult
+
+Program -> ProblemTest : RunTests(testCases)
+
+loop for each TestCase
+    ProblemTest -> TestCase : Get Input & Expected
+    ProblemTest -> IProblemStrategy : Get Implementation
+    IProblemStrategy -> IProblemSolution : Solve(input)
+    IProblemSolution --> IProblemStrategy : result
+
+    ProblemTest -> ComparerResolver : GetComparer(problemType)
+    ComparerResolver -> ComparerHelper : Validate(actual, expected)
+    ComparerHelper --> ComparerResolver : isPass
+
+    ComparerResolver --> ProblemTest : comparer
+    ProblemTest -> TestResult : Record result, time, pass/fail
+end
+
+ProblemTest --> Program : Summary of results
+
+@enduml

@@ -1,0 +1,62 @@
+@startuml modular-component-diagram
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
+
+package "Orchestration" {
+  [Program]
+  [ProblemStrategyFactory]
+  [ProblemTestCaseFactory]
+}
+
+package "Strategy Layer" {
+  [Strategy Registrars]
+  [Strategy Implementations]
+  [Strategy Metadata]
+}
+
+package "Test Harness" {
+  [ProblemTest]
+  [StrategyBenchmark]
+  [ComparerResolver]
+}
+
+package "Validation & Comparison" {
+  [ComparerHelper]
+  [TestCase]
+  [TestResult]
+  [BenchmarkResult]
+}
+
+package "Documentation" {
+  [GenerateDocumentationIndex]
+  [StrategyPlaybook.md]
+  [Problem Descriptions]
+  [PlantUML Diagrams]
+}
+
+[Program] --> [ProblemStrategyFactory]
+[Program] --> [ProblemTestCaseFactory]
+[Program] --> [ProblemTest]
+
+[ProblemStrategyFactory] --> [Strategy Registrars]
+[Strategy Registrars] --> [Strategy Implementations]
+[Strategy Implementations] --> [Strategy Metadata]
+
+[ProblemTestCaseFactory] --> [TestCase]
+
+[ProblemTest] --> [TestCase]
+[ProblemTest] --> [TestResult]
+[ProblemTest] --> [ComparerResolver]
+[ComparerResolver] --> [ComparerHelper]
+
+[StrategyBenchmark] --> [BenchmarkResult]
+[StrategyBenchmark] --> [Strategy Metadata]
+
+[GenerateDocumentationIndex] --> [StrategyPlaybook.md]
+[GenerateDocumentationIndex] --> [Problem Descriptions]
+[GenerateDocumentationIndex] --> [PlantUML Diagrams]
+
+@enduml

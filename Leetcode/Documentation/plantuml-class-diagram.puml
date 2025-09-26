@@ -64,6 +64,11 @@ package "Remove Duplicates" {
   class RemoveDuplicatesAllowNTimesSortedTwoPointerSolution implements IProblemSolution
 }
 
+package "Longest Harmonious Subsequence" {
+  class LongestHarmoniousSubsequenceOnFrequencyBasedSolution implements IProblemSolution
+  class LongestHarmoniousSubsequenceOnlognSortAndScanSolution implements IProblemSolution
+}
+
 ' Test Harness
 class ProblemTest<TInput, TOutput> {
     - _solver: Func
@@ -118,6 +123,7 @@ class ProblemStrategyFactory {
     + GetRotatedArrayStrategies(): IEnumerable
     + GetRemoveElementStrategies(): IEnumerable
     + GetRemoveDuplicatesStrategies(): IEnumerable
+    + GetLongestHarmoniousSubsequenceStrategies(): IEnumerable
 }
 
 class ProblemTestCaseFactory {
@@ -127,17 +133,20 @@ class ProblemTestCaseFactory {
     + GetRotatedArrayTestCases(): ITestCaseProvider
     + GetRemoveElementTestCases(): ITestCaseProvider
     + GetRemoveDuplicatesTestCases(): ITestCaseProvider
+    + GetLongestHarmoniousSubsequenceTestCases(): ITestCaseProvider
 }
 
 ' Strategy Registrars
 class RotatedArrayStrategies
 class RemoveElementStrategies
 class RemoveDuplicatesStrategies
+class LongestHarmoniousSubsequenceStrategies
 
 ' Test Case Providers
 class RotatedArrayTestCaseProvider implements ITestCaseProvider
 class RemoveElementTestCaseProvider implements ITestCaseProvider
 class RemoveDuplicatesSortedTestCaseProvider implements ITestCaseProvider
+class LongestHarmoniousSubsequenceTestCaseProvider implements ITestCaseProvider
 
 ' Models
 abstract class ProblemInput<T> {
@@ -187,6 +196,7 @@ enum ProblemType {
     RotatedArray
     RemoveElement
     RemoveDuplicatesFromSortedArray
+    LongestHarmoniousSubsequence
 }
 
 ' Relationships
@@ -200,11 +210,13 @@ ProblemStrategyFactory --> ProblemStrategy
 ProblemStrategyFactory --> RotatedArrayStrategies
 ProblemStrategyFactory --> RemoveElementStrategies
 ProblemStrategyFactory --> RemoveDuplicatesStrategies
+ProblemStrategyFactory --> LongestHarmoniousSubsequenceStrategies
 
 ProblemTestCaseFactory --> ITestCaseProvider
 ProblemTestCaseFactory --> RotatedArrayTestCaseProvider
 ProblemTestCaseFactory --> RemoveElementTestCaseProvider
 ProblemTestCaseFactory --> RemoveDuplicatesSortedTestCaseProvider
+ProblemTestCaseFactory --> LongestHarmoniousSubsequenceTestCaseProvider
 
 ProblemTest --> IProblemStrategy
 ProblemTest --> TestCase

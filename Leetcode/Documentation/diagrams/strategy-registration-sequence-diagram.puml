@@ -1,0 +1,32 @@
+@startuml sequence-diagram-strategy-registration
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+skinparam sequenceMessageAlign center
+skinparam sequenceParticipant underline
+skinparam maxMessageSize 100
+scale 1.5
+title Strategy Registration Flow
+
+participant Program
+participant ProblemStrategyFactory
+participant StrategyRegistrar
+participant ProblemStrategy
+participant IProblemSolution
+
+Program -> ProblemStrategyFactory : GetStrategies(type)
+
+alt type == TwoSum
+  ProblemStrategyFactory -> StrategyRegistrar : GetTwoSumStrategies()
+  StrategyRegistrar -> ProblemStrategyFactory : List<ProblemStrategy>
+end
+
+loop for each strategy
+  ProblemStrategyFactory -> ProblemStrategy : Wrap implementation
+  ProblemStrategy -> IProblemSolution : Reference Solve(input)
+end
+
+ProblemStrategyFactory --> Program : Return strategies
+Program --> IProblemSolution : Execute strategies
+
+@enduml

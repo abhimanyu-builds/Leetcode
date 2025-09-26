@@ -3,10 +3,10 @@ name: Render PlantUML Diagrams
 on:
   push:
     paths:
-      - 'Leetcode/Documentation/diagrams/*.puml'
+      - 'Leetcode/Documentation/diagrams/**/*.puml'
   pull_request:
     paths:
-      - 'Leetcode/Documentation/diagrams/*.puml'
+      - 'Leetcode/Documentation/diagrams/**/*.puml'
 
 jobs:
   render:
@@ -15,14 +15,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Render SVG diagrams
-        uses: weirongxu/plantuml-action@v1
-        with:
-          args: -tsvg Leetcode/Documentation/diagrams/*.puml
+      - name: Render SVG diagrams using Docker
+        run: |
+          for file in Leetcode/Documentation/diagrams/*.puml; do
+            echo "Rendering $file"
+            docker run --rm -v "$PWD":/workspace plantuml/plantuml -tsvg "/workspace/$file"
+          done
 
       - name: Commit rendered diagrams
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add Leetcode/Documentation/diagrams/*.svg
-          git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push)
+          if ls Leetcode/Documentation/diagrams/*.svg 1> /dev/null 2>&1; then
+            git add Leetcode/Documentation/diagrams/*.svg
+            git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push)
+          else
+            echo "No SVG files found to commit."
+          fi

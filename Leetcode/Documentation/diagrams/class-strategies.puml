@@ -1,0 +1,82 @@
+@startuml class-strategies
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
+
+' === Strategy Implementations by Problem ===
+
+package "SearchInsertPosition" {
+  class OlognExactOrInsertBinarySearchSolution implements IProblemSolution
+  class OlognHybridFirstMatchOrInsertBinarySearchSolution implements IProblemSolution
+  class OlognLowerBoundBinarySearchSolution implements IProblemSolution
+  class OnStatefulTraversalScanSolution implements IProblemSolution
+}
+
+package "RotatedArray" {
+  class OlognTwoPointerSolution implements IProblemSolution
+  class OnBruteForceSolution implements IProblemSolution
+}
+
+package "RotatedArrayII" {
+  class OlognTwoPointerSolution_II implements IProblemSolution
+  class OnBruteForceSolution_II implements IProblemSolution
+}
+
+package "MaxAvgSubArrayI" {
+  class OnkBruteForceSolution implements IProblemSolution
+  class OnSlidingWindowSolution implements IProblemSolution
+}
+
+package "MaxConsecutive1s" {
+  class OnManualIndexManipulationScanSolution implements IProblemSolution
+  class OnStatefulTraversalScanSolution_1s implements IProblemSolution
+}
+
+package "TwoSum" {
+  class On2TwoLoopSolution implements IProblemSolution
+  class OnOneLoopDictionarySolution implements IProblemSolution
+}
+
+package "ContainsDuplicateI" {
+  class On2BruteForceSolution implements IProblemSolution
+  class OnHashsetSolution implements IProblemSolution
+  class OnlognSortScanSolution implements IProblemSolution
+}
+
+package "ContainsDuplicateII" {
+  class On2BruteForceSolution_II implements IProblemSolution
+  class OnDictionarySolution implements IProblemSolution
+  class OnHashsetSolution_II implements IProblemSolution
+}
+
+package "LongestHarmoniousSubsequence" {
+  class OnFrequencyBasedSolution implements IProblemSolution
+  class OnlognSortAndScanSolution implements IProblemSolution
+}
+
+package "TwoSumSorted" {
+  class BinarySearchSolution implements IProblemSolution
+  class TwoPointerSolution implements IProblemSolution
+}
+
+package "ThreeSum" {
+  class On2Hashset2SumComplementSolution implements IProblemSolution
+  class On2OneLoopDictionarySolution implements IProblemSolution
+  class On2SortingTwoPointerSolution implements IProblemSolution
+}
+
+package "RemoveElement" {
+  class FwdPointerOverwriteSolution implements IProblemSolution
+  class SwapWithEndPointerSolution implements IProblemSolution
+  class TwoPointerPartitioningSolution implements IProblemSolution
+}
+
+package "RemoveDuplicatesFromSortedArray" {
+  class SortedTwoPointerSolution implements IProblemSolution
+  class AllowNTimesSortedTwoPointerSolution implements IProblemSolution
+}
+
+@enduml

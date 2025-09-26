@@ -1,0 +1,65 @@
+@startuml class-testharness
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+skinparam dpi 300
+left to right direction
+scale 1.5
+
+' === Test Harness Core ===
+class ProblemTest<TInput, TOutput> {
+    - _solver: Func
+    - _comparer: Func
+    + RunTests(testCases: List<TestCase>)
+}
+note right of ProblemTest
+Executes test cases with optional validation
+end note
+
+class TestCase {
+    - Input: TInput
+    - Expected: TOutput
+    - ValidateBySum: bool
+    - ValidateByCount: bool
+}
+
+class TestResult {
+    - IsPass: bool
+    - Input: TInput
+    - Expected: TOutput
+    - Actual: TOutput
+    - TimeMicros: double
+}
+
+' === Benchmarking ===
+class StrategyBenchmark<TInput, TOutput> {
+    + Run(strategies, testCases, comparer, iterations): List<BenchmarkResult>
+}
+
+class BenchmarkResult {
+    - StrategyName: string
+    - AvgMicroseconds: double
+    - IsCorrect: bool
+}
+
+' === Comparer Logic ===
+class ComparerResolver {
+    + GetComparer(problemType): Func<TOutput, TOutput, bool>
+}
+
+class ComparerHelper {
+    + ArraysEqual()
+    + TripletSetsEqual()
+    + ValidateBySum()
+}
+
+' === Relationships ===
+ProblemTest --> TestCase
+ProblemTest --> TestResult
+ProblemTest --> ComparerResolver
+ComparerResolver --> ComparerHelper
+
+StrategyBenchmark --> BenchmarkResult
+StrategyBenchmark --> IProblemStrategy
+
+@enduml
