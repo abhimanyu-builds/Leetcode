@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.MaxAvgSubArrayI
 {
+    [StrategyExport(
+        ProblemType.MaxAvgSubArrayI,
+        name: "O(n) Sliding Window",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnSlidingWindowSolution : IProblemSolution<MaxAvgSubArrayInput, double>
     {
         public double Solve(MaxAvgSubArrayInput input)

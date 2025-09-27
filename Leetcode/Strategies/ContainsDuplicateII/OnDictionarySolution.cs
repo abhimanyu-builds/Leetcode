@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.ContainsDuplicateII
 {
+    [StrategyExport(
+        ProblemType.ContainsDuplicateII,
+        name: "O(n) Dictionary",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnDictionarySolution : IProblemSolution<ContainsDuplicateInput, bool>
     {
         public bool Solve(ContainsDuplicateInput input)

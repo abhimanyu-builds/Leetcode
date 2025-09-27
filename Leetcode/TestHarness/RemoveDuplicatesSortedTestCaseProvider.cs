@@ -3,6 +3,7 @@ using Leetcode.Metadata;
 
 namespace Leetcode.TestHarness
 {
+    [TestCaseProviderExport(ProblemType.RemoveDuplicatesFromSortedArray)]
     public class RemoveDuplicatesSortedTestCaseProvider : ITestCaseProvider<int[], int>
     {
         public List<ProblemTest<int[], int>.TestCase> GetTestCases()

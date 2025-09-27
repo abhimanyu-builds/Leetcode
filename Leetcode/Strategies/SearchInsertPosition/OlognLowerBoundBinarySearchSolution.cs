@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.SearchInsertPosition
 {
+    [StrategyExport(
+        ProblemType.SearchInsertPosition,
+        name: "O(logn) Lower Bound Binary Search",
+        IsInPlace = false,
+        HasDuplicates = true)]
     public class OlognLowerBoundBinarySearchSolution : IProblemSolution<SearchInsertPositionInput, int>
     {
         public int Solve(SearchInsertPositionInput input)

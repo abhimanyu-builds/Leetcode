@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.ThreeSum
 {
+    [StrategyExport(
+        ProblemType.ThreeSum,
+        name: "O(n^2) - Sorting + Two-pointer",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class On2SortingTwoPointerSolution : IProblemSolution<ThreeSumInput, List<List<int>>>
     {
         public List<List<int>> Solve(ThreeSumInput input)

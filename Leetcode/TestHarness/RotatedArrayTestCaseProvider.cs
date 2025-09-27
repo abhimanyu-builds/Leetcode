@@ -3,6 +3,7 @@ using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
 
+[TestCaseProviderExport(ProblemType.RotatedArray)]
 public class RotatedArrayTestCaseProvider : ITestCaseProvider<RotatedArrayInput, int>
 {
     public List<ProblemTest<RotatedArrayInput, int>.TestCase> GetTestCases()

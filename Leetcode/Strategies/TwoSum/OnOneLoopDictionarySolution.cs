@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.TwoSum
 {
+    [StrategyExport(
+        ProblemType.TwoSum,
+        name: "O(n) One loop Dictionary Lookup",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnOneLoopDictionarySolution : IProblemSolution<TwoSumInput, int[]>
     {
         public int[] Solve(TwoSumInput input)

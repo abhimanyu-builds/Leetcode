@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.RotatedArrayII
 {
+    [StrategyExport(
+        ProblemType.RotatedArray,
+        name: "O(n) - Brute force linear search with duplicates",
+        IsInPlace = false,
+        HasDuplicates = true)]
     public class OnBruteForceSolution : IProblemSolution<RotatedArrayInput, int>
     {
         public int Solve(RotatedArrayInput input)

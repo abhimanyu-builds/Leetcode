@@ -1,5 +1,6 @@
 ﻿using Leetcode.Common;
 using Leetcode.Helpers;
+using Leetcode.Interfaces;
 using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
@@ -10,18 +11,22 @@ class Program
     {
         Console.Clear();
 
-        RunProblem(ProblemType.LongestHarmoniousSubsequence,1);
-        //RunProblem(ProblemType.SearchInsertPosition);
-        //RunProblem(ProblemType.MaxConsecutive1s);
-        //RunProblem(ProblemType.MaxAvgSubArrayI);
-        //RunProblem(ProblemType.ContainsDuplicateII);
-        //RunProblem(ProblemType.ContainsDuplicateI);
-        //RunProblem(ProblemType.RotatedArray);
-        //RunProblem(ProblemType.RemoveElement);
-        //RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
-        //RunProblem(ProblemType.TwoSum);
-        //RunProblem(ProblemType.TwoSumSorted);
-        //RunProblem(ProblemType.ThreeSum);
+        RunProblem(ProblemType.SearchInsertPosition);
+        RunProblem(ProblemType.RotatedArray);
+
+        RunProblem(ProblemType.MaxAvgSubArrayI);
+        RunProblem(ProblemType.MaxConsecutive1s);
+
+        RunProblem(ProblemType.TwoSum);
+        RunProblem(ProblemType.ContainsDuplicateI);
+        RunProblem(ProblemType.ContainsDuplicateII);
+        RunProblem(ProblemType.LongestHarmoniousSubsequence);
+
+        RunProblem(ProblemType.TwoSumSorted);
+        RunProblem(ProblemType.ThreeSum);
+
+        RunProblem(ProblemType.RemoveElement);
+        RunProblem(ProblemType.RemoveDuplicatesFromSortedArray);
     }
 
     static void RunProblem(ProblemType type, int iterations = 1)
@@ -30,113 +35,73 @@ class Program
 
         switch (type)
         {
+
+            case ProblemType.SearchInsertPosition:
+                RunProblemDynamic<SearchInsertPositionInput, int>(type, iterations);
+                break;
+            case ProblemType.RotatedArray:
+                RunProblemDynamic<RotatedArrayInput, int>(type, iterations);
+                break;
+
+            case ProblemType.MaxAvgSubArrayI:
+                RunProblemDynamic<MaxAvgSubArrayInput, double>(type, iterations);
+                break;
+            case ProblemType.MaxConsecutive1s:
+                RunProblemDynamic<int[], int>(type, iterations);
+                break;
+
             case ProblemType.TwoSum:
-                RunTestSuite<TwoSumInput, int[]>(
-                    ProblemTestCaseFactory.GetTwoSumTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetTwoSumStrategies(),
-                    ComparerResolver.GetComparer<TwoSumInput, int[]>(type),
-                    iterations
-                );
+                RunProblemDynamic<TwoSumInput, int[]>(type, iterations);
+                break;
+            case ProblemType.ContainsDuplicateI:
+                RunProblemDynamic<ContainsDuplicateInput, bool>(type, iterations);
+                break;
+            case ProblemType.ContainsDuplicateII:
+                RunProblemDynamic<ContainsDuplicateInput, bool>(type, iterations);
+                break;
+            case ProblemType.LongestHarmoniousSubsequence:
+                RunProblemDynamic<int[], int>(type, iterations);
                 break;
 
             case ProblemType.TwoSumSorted:
-                RunTestSuite<TwoSumSortedInput, int[]>(
-                    ProblemTestCaseFactory.GetTwoSumSortedTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetTwoSumSortedStrategies(),
-                    ComparerResolver.GetComparer<TwoSumSortedInput, int[]>(type),
-                    iterations
-                );
+                RunProblemDynamic<TwoSumSortedInput, int[]>(type, iterations);
                 break;
-
             case ProblemType.ThreeSum:
-                RunTestSuite<ThreeSumInput, List<List<int>>>(
-                    ProblemTestCaseFactory.GetThreeSumTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetThreeSumStrategies(),
-                    ComparerResolver.GetComparer<ThreeSumInput, List<List<int>>>(type),
-                    iterations
-                );
-                break;
-
-            case ProblemType.RemoveDuplicatesFromSortedArray:
-                RunTestSuite<int[], int>(
-                    ProblemTestCaseFactory.GetRemoveDuplicatesTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetRemoveDuplicatesStrategies(),
-                    ComparerResolver.GetComparer<int[], int>(type),
-                    iterations
-                );
+                RunProblemDynamic<ThreeSumInput, List<List<int>>>(type, iterations);
                 break;
 
             case ProblemType.RemoveElement:
-                RunTestSuite<RemoveElementInput, int>(
-                    ProblemTestCaseFactory.GetRemoveElementTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetRemoveElementStrategies(),
-                    ComparerResolver.GetComparer<RemoveElementInput, int>(type),
-                    iterations
-                );
+                RunProblemDynamic<RemoveElementInput, int>(type, iterations);
+                break;
+            case ProblemType.RemoveDuplicatesFromSortedArray:
+                RunProblemDynamic<int[], int>(type, iterations);
                 break;
 
-            case ProblemType.RotatedArray:
-                RunTestSuite<RotatedArrayInput, int>(
-                    ProblemTestCaseFactory.GetRotatedArrayTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetRotatedArrayStrategies(),
-                    ComparerResolver.GetComparer<RotatedArrayInput, int>(type),
-                    iterations
-                );
-                break;
-
-            case ProblemType.ContainsDuplicateI:
-                RunTestSuite<ContainsDuplicateInput, bool>(
-                    ProblemTestCaseFactory.GetContainsDuplicateITestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetContainsDuplicateIStrategies(),
-                    ComparerResolver.GetComparer<ContainsDuplicateInput, bool>(type),
-                    iterations
-                );
-                break;
-
-            case ProblemType.ContainsDuplicateII:
-                RunTestSuite<ContainsDuplicateInput, bool>(
-                    ProblemTestCaseFactory.GetContainsDuplicateIITestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetContainsDuplicateIIStrategies(),
-                    ComparerResolver.GetComparer<ContainsDuplicateInput, bool>(type),
-                    iterations
-                );
-                break;
-            case ProblemType.MaxAvgSubArrayI:
-                RunTestSuite<MaxAvgSubArrayInput, double>(
-                    ProblemTestCaseFactory.GetMaxAvgSubArrayITestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetMaxAvgSubArrayIStrategies(),
-                    ComparerResolver.GetComparer<MaxAvgSubArrayInput, double>(type),
-                    iterations
-                );
-                break;
-            case ProblemType.MaxConsecutive1s:
-                RunTestSuite<int[], int>(
-                    ProblemTestCaseFactory.GetMaxConsecutive1sTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetMaxConsectuive1sStrategies(),
-                    ComparerResolver.GetComparer<int[], int>(type),
-                    iterations
-                );
-                break;
-            case ProblemType.SearchInsertPosition:
-                RunTestSuite<SearchInsertPositionInput, int>(
-                    ProblemTestCaseFactory.GetSearchInsertPositionTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetSearchInsertPositionStrategies(),
-                    ComparerResolver.GetComparer<SearchInsertPositionInput, int>(type),
-                    iterations
-                );
-                break;
-            case ProblemType.LongestHarmoniousSubsequence:
-                RunTestSuite<int[], int>(
-                    ProblemTestCaseFactory.GetLongestHarmoniousSubsequenceTestCases().GetTestCases(),
-                    ProblemStrategyFactory.GetLongestHarmoniousSubsequenceStrategies(),
-                    ComparerResolver.GetComparer<int[], int>(type),
-                    iterations
-                );
-                break;
-                
             default:
                 Console.WriteLine($"Unsupported problem type {type}");
                 break;
+        }
+    }
+
+    static void RunProblemDynamic<TInput, TOutput>(ProblemType type, int iterations = 1)
+    {
+        var providerObj = TestCaseProviderRegistry.GetProvider(type);
+        var strategyObjs = StrategyRegistry.GetStrategies(type);
+
+        if (providerObj is ITestCaseProvider<TInput, TOutput> provider &&
+            strategyObjs.All(s => s is IProblemStrategy<TInput, TOutput>))
+        {
+            var strategies = strategyObjs.Cast<IProblemStrategy<TInput, TOutput>>();
+            RunTestSuite<TInput, TOutput>(
+                provider.GetTestCases(),
+                strategies,
+                ComparerResolver.GetComparer<TInput, TOutput>(type),
+                iterations
+            );
+        }
+        else
+        {
+            Console.WriteLine($"❌ Type mismatch or missing registry entries for {type}");
         }
     }
 

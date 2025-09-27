@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.RotatedArrayII
 {
+    [StrategyExport(
+        ProblemType.RotatedArray,
+        name: "O(logn) - Two Pointer Binary search solution with duplicates",
+        IsInPlace = false,
+        HasDuplicates = true)]
     public class OlognTwoPointerSolution : IProblemSolution<RotatedArrayInput, int>
     {
         public int Solve(RotatedArrayInput input)

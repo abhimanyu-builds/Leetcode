@@ -1,7 +1,8 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
-
+[TestCaseProviderExport(ProblemType.ContainsDuplicateI)]
 public class ContainsDuplicateITestCaseProvider : ITestCaseProvider<ContainsDuplicateInput, bool>
 {
     public List<ProblemTest<ContainsDuplicateInput, bool>.TestCase> GetTestCases()

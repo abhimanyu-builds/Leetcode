@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.SearchInsertPosition
 {
+    [StrategyExport(
+        ProblemType.SearchInsertPosition,
+        name: "O(logn) Hybrid First Match Or Insert Binary Search",
+        IsInPlace = false,
+        HasDuplicates = true)]
     public class OlognHybridFirstMatchOrInsertBinarySearchSolution : IProblemSolution<SearchInsertPositionInput, int>
     {
         public int Solve(SearchInsertPositionInput input)

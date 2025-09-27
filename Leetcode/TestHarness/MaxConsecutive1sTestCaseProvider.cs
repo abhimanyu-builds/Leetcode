@@ -1,6 +1,8 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.TestHarness;
 
+[TestCaseProviderExport(ProblemType.MaxConsecutive1s)]
 public class MaxConsecutive1sTestCaseProvider : ITestCaseProvider<int[], int>
 {
     public List<ProblemTest<int[], int>.TestCase> GetTestCases()

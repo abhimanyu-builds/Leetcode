@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.RemoveElement
 {
+    [StrategyExport(
+        ProblemType.RemoveElement,
+        name: "O(n) - Two Pointer Partitioning",
+        IsInPlace = true,
+        HasDuplicates = false)]
     public class TwoPointerPartitioningSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)
