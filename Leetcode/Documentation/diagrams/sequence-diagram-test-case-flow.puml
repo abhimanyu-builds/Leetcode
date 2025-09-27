@@ -33,6 +33,7 @@ loop for each TestCase
     ProblemTest -> TestResult : Record result, time, pass/fail
 end
 
-ProblemTest --> Program : Summary of results
+ProblemTest -> ProblemTest : Aggregate results
+ProblemTest --> Program : Return BenchmarkSummary
 
 @enduml

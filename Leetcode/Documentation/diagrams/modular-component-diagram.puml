@@ -12,7 +12,7 @@ package "Orchestration" {
 }
 
 package "Strategy Layer" {
-  [Strategy Registrars]
+  [StrategyRegistryBuilder]
   [Strategy Implementations]
   [Strategy Metadata]
 }
@@ -21,6 +21,9 @@ package "Test Harness" {
   [ProblemTest]
   [StrategyBenchmark]
   [ComparerResolver]
+  [BenchmarkSummary]
+  [IBenchmarkSummary]
+  [TestCaseProviderRegistryBuilder]
 }
 
 package "Validation & Comparison" {
@@ -31,30 +34,39 @@ package "Validation & Comparison" {
 }
 
 package "Documentation" {
+  [BenchmarkFormatter]
   [GenerateDocumentationIndex]
   [StrategyPlaybook.md]
   [Problem Descriptions]
   [PlantUML Diagrams]
 }
 
+' === Orchestration Relationships ===
 [Program] --> [ProblemStrategyFactory]
 [Program] --> [ProblemTestCaseFactory]
 [Program] --> [ProblemTest]
+[Program] --> [BenchmarkFormatter]
 
-[ProblemStrategyFactory] --> [Strategy Registrars]
-[Strategy Registrars] --> [Strategy Implementations]
+' === Strategy Layer Relationships ===
+[ProblemStrategyFactory] --> [StrategyRegistryBuilder]
+[StrategyRegistryBuilder] --> [Strategy Implementations]
 [Strategy Implementations] --> [Strategy Metadata]
 
-[ProblemTestCaseFactory] --> [TestCase]
-
+' === Test Harness Relationships ===
+[ProblemTestCaseFactory] --> [TestCaseProviderRegistryBuilder]
+[TestCaseProviderRegistryBuilder] --> [TestCase]
 [ProblemTest] --> [TestCase]
 [ProblemTest] --> [TestResult]
 [ProblemTest] --> [ComparerResolver]
+[ProblemTest] --> [BenchmarkSummary]
+[BenchmarkSummary] --> [IBenchmarkSummary]
 [ComparerResolver] --> [ComparerHelper]
 
 [StrategyBenchmark] --> [BenchmarkResult]
 [StrategyBenchmark] --> [Strategy Metadata]
 
+' === Documentation Relationships ===
+[BenchmarkFormatter] --> [IBenchmarkSummary]
 [GenerateDocumentationIndex] --> [StrategyPlaybook.md]
 [GenerateDocumentationIndex] --> [Problem Descriptions]
 [GenerateDocumentationIndex] --> [PlantUML Diagrams]

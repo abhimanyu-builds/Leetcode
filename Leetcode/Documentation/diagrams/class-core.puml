@@ -22,6 +22,15 @@ note right of ITestCaseProvider
 Provides test cases for a given problem
 end note
 
+interface IBenchmarkSummary {
+    + ProblemName: string
+    + StrategyName: string
+    + Passed: int
+    + Total: int
+    + AvgTimeMicros: double
+    + TotalTimeMicros: double
+}
+
 ' === Strategy Wrapper ===
 class ProblemStrategy<TInput, TOutput> implements IProblemStrategy {
     - Name: string
@@ -30,6 +39,18 @@ class ProblemStrategy<TInput, TOutput> implements IProblemStrategy {
 
 ProblemStrategy --> IProblemSolution
 ProblemStrategy --> IProblemStrategy
+
+' === Benchmark Summary ===
+class BenchmarkSummary implements IBenchmarkSummary {
+    + ProblemName: string
+    + StrategyName: string
+    + Passed: int
+    + Total: int
+    + AvgTimeMicros: double
+    + TotalTimeMicros: double
+}
+
+BenchmarkSummary --> IBenchmarkSummary
 
 ' === Core Models ===
 abstract class ProblemInput<T> {

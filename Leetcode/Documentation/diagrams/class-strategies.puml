@@ -6,6 +6,9 @@ skinparam dpi 300
 left to right direction
 scale 1.5
 
+' === Interface ===
+interface IProblemSolution
+
 ' === Strategy Implementations by Problem ===
 
 package "SearchInsertPosition" {

@@ -8,62 +8,23 @@ scale 1.5
 
 ' === Strategy Factory ===
 class ProblemStrategyFactory {
-    + GetTwoSumStrategies(): IEnumerable
-    + GetTwoSumSortedStrategies(): IEnumerable
-    + GetThreeSumStrategies(): IEnumerable
-    + GetRotatedArrayStrategies(): IEnumerable
-    + GetRemoveElementStrategies(): IEnumerable
-    + GetRemoveDuplicatesStrategies(): IEnumerable
-    + GetSearchInsertPositionStrategies(): IEnumerable
-    + GetMaxAvgSubArrayIStrategies(): IEnumerable
-    + GetMaxConsecutive1sStrategies(): IEnumerable
-    + GetContainsDuplicateIStrategies(): IEnumerable
-    + GetContainsDuplicateIIStrategies(): IEnumerable
-    + GetLongestHarmoniousSubsequenceStrategies(): IEnumerable
+    + GetStrategies(problemType): IEnumerable<IProblemStrategy>
+}
+class StrategyRegistryBuilder {
+    + RegisterAll(): Dictionary<string, List<IProblemStrategy>>
 }
 
-' === Strategy Registrars ===
-class TwoSumStrategies
-class TwoSumSortedStrategies
-class ThreeSumStrategies
-class RotatedArrayStrategies
-class RemoveElementStrategies
-class RemoveDuplicatesStrategies
-class SearchInsertPositionStrategies
-class MaxAvgSubArrayIStrategies
-class MaxConsecutive1sStrategies
-class ContainsDuplicateIStrategies
-class ContainsDuplicateIIStrategies
-class LongestHarmoniousSubsequenceStrategies
-
-ProblemStrategyFactory --> TwoSumStrategies
-ProblemStrategyFactory --> TwoSumSortedStrategies
-ProblemStrategyFactory --> ThreeSumStrategies
-ProblemStrategyFactory --> RotatedArrayStrategies
-ProblemStrategyFactory --> RemoveElementStrategies
-ProblemStrategyFactory --> RemoveDuplicatesStrategies
-ProblemStrategyFactory --> SearchInsertPositionStrategies
-ProblemStrategyFactory --> MaxAvgSubArrayIStrategies
-ProblemStrategyFactory --> MaxConsecutive1sStrategies
-ProblemStrategyFactory --> ContainsDuplicateIStrategies
-ProblemStrategyFactory --> ContainsDuplicateIIStrategies
-ProblemStrategyFactory --> LongestHarmoniousSubsequenceStrategies
+ProblemStrategyFactory --> StrategyRegistryBuilder
 
 ' === Test Case Factory ===
 class ProblemTestCaseFactory {
-    + GetTwoSumTestCases(): ITestCaseProvider
-    + GetTwoSumSortedTestCases(): ITestCaseProvider
-    + GetThreeSumTestCases(): ITestCaseProvider
-    + GetRotatedArrayTestCases(): ITestCaseProvider
-    + GetRemoveElementTestCases(): ITestCaseProvider
-    + GetRemoveDuplicatesTestCases(): ITestCaseProvider
-    + GetSearchInsertPositionTestCases(): ITestCaseProvider
-    + GetMaxAvgSubArrayITestCases(): ITestCaseProvider
-    + GetMaxConsecutive1sTestCases(): ITestCaseProvider
-    + GetContainsDuplicateITestCases(): ITestCaseProvider
-    + GetContainsDuplicateIITestCases(): ITestCaseProvider
-    + GetLongestHarmoniousSubsequenceTestCases(): ITestCaseProvider
+    + GetTestCases(problemType): ITestCaseProvider
 }
+class TestCaseProviderRegistryBuilder {
+    + RegisterAll(): Dictionary<string, ITestCaseProvider>
+}
+
+ProblemTestCaseFactory --> TestCaseProviderRegistryBuilder
 
 ' === Test Case Providers ===
 class TwoSumTestCaseProvider implements ITestCaseProvider
@@ -79,17 +40,17 @@ class ContainsDuplicateITestCaseProvider implements ITestCaseProvider
 class ContainsDuplicateIITestCaseProvider implements ITestCaseProvider
 class LongestHarmoniousSubsequenceTestCaseProvider implements ITestCaseProvider
 
-ProblemTestCaseFactory --> TwoSumTestCaseProvider
-ProblemTestCaseFactory --> TwoSumSortedTestCaseProvider
-ProblemTestCaseFactory --> ThreeSumTestCaseProvider
-ProblemTestCaseFactory --> RotatedArrayTestCaseProvider
-ProblemTestCaseFactory --> RemoveElementTestCaseProvider
-ProblemTestCaseFactory --> RemoveDuplicatesSortedTestCaseProvider
-ProblemTestCaseFactory --> SearchInsertPositionTestCaseProvider
-ProblemTestCaseFactory --> MaxAvgSubArrayITestCaseProvider
-ProblemTestCaseFactory --> MaxConsecutive1sTestCaseProvider
-ProblemTestCaseFactory --> ContainsDuplicateITestCaseProvider
-ProblemTestCaseFactory --> ContainsDuplicateIITestCaseProvider
-ProblemTestCaseFactory --> LongestHarmoniousSubsequenceTestCaseProvider
+TestCaseProviderRegistryBuilder --> TwoSumTestCaseProvider
+TestCaseProviderRegistryBuilder --> TwoSumSortedTestCaseProvider
+TestCaseProviderRegistryBuilder --> ThreeSumTestCaseProvider
+TestCaseProviderRegistryBuilder --> RotatedArrayTestCaseProvider
+TestCaseProviderRegistryBuilder --> RemoveElementTestCaseProvider
+TestCaseProviderRegistryBuilder --> RemoveDuplicatesSortedTestCaseProvider
+TestCaseProviderRegistryBuilder --> SearchInsertPositionTestCaseProvider
+TestCaseProviderRegistryBuilder --> MaxAvgSubArrayITestCaseProvider
+TestCaseProviderRegistryBuilder --> MaxConsecutive1sTestCaseProvider
+TestCaseProviderRegistryBuilder --> ContainsDuplicateITestCaseProvider
+TestCaseProviderRegistryBuilder --> ContainsDuplicateIITestCaseProvider
+TestCaseProviderRegistryBuilder --> LongestHarmoniousSubsequenceTestCaseProvider
 
 @enduml

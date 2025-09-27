@@ -10,10 +10,11 @@ scale 1.5
 class ProblemTest<TInput, TOutput> {
     - _solver: Func
     - _comparer: Func
-    + RunTests(testCases: List<TestCase>)
+    - _problemName: string
+    + RunTests(testCases: List<TestCase>): BenchmarkSummary
 }
 note right of ProblemTest
-Executes test cases with optional validation
+Executes test cases with optional validation and returns benchmark summary
 end note
 
 class TestCase {
@@ -32,6 +33,24 @@ class TestResult {
 }
 
 ' === Benchmarking ===
+interface IBenchmarkSummary {
+    + ProblemName: string
+    + StrategyName: string
+    + Passed: int
+    + Total: int
+    + AvgTimeMicros: double
+    + TotalTimeMicros: double
+}
+
+class BenchmarkSummary implements IBenchmarkSummary {
+    + ProblemName: string
+    + StrategyName: string
+    + Passed: int
+    + Total: int
+    + AvgTimeMicros: double
+    + TotalTimeMicros: double
+}
+
 class StrategyBenchmark<TInput, TOutput> {
     + Run(strategies, testCases, comparer, iterations): List<BenchmarkResult>
 }
@@ -56,6 +75,8 @@ class ComparerHelper {
 ' === Relationships ===
 ProblemTest --> TestCase
 ProblemTest --> TestResult
+ProblemTest --> BenchmarkSummary
+BenchmarkSummary --> IBenchmarkSummary
 ProblemTest --> ComparerResolver
 ComparerResolver --> ComparerHelper
 

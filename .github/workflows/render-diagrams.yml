@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_ACTION_TOKEN }}
 
       - name: Render SVG diagrams using Docker
         run: |
@@ -23,12 +25,14 @@ jobs:
           done
 
       - name: Commit rendered diagrams
+        env:
+          GH_TOKEN: ${{ secrets.GH_ACTION_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           if ls Leetcode/Documentation/diagrams/*.svg 1> /dev/null 2>&1; then
             git add Leetcode/Documentation/diagrams/*.svg
-            git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push)
+            git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push https://x-access-token:${GH_TOKEN}@github.com/abhimanyu-builds/Leetcode.git HEAD:main)
           else
             echo "No SVG files found to commit."
           fi
