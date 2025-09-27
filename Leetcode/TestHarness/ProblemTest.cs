@@ -1,4 +1,5 @@
-﻿using Leetcode.Models;
+﻿using Leetcode.Interfaces;
+using Leetcode.Models;
 using System.Collections;
 using System.Diagnostics;
 
@@ -6,6 +7,7 @@ namespace Leetcode.TestHarness
 {
     public class ProblemTest<TInput, TOutput>
     {
+        public record BenchmarkSummary(string ProblemName, string StrategyName, int Passed, int Total, double TotalTimeMicros, double AvgTimeMicros) : IBenchmarkSummary;
         public record TestResult(bool IsPass, TInput Input, TOutput Expected, TOutput Actual, double TimeMicros);
         public record TestCase(TInput Input, TOutput Expected, bool ValidateBySum = false, bool ValidateByCount = false);
         public bool IsInPlace { get; }
@@ -13,15 +15,17 @@ namespace Leetcode.TestHarness
 
         private readonly Func<TInput, TOutput> _solver;
         private readonly Func<TestCase, TOutput, bool> _comparer;
-        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false, bool hasDuplicates = false)
+        private readonly string _problemName;
+        public ProblemTest(Func<TInput, TOutput> solver, Func<TestCase, TOutput, bool> comparer, bool isInPlace = false, bool hasDuplicates = false, string problemName = "UnknownProblem")
         {
             _solver = solver;
             _comparer = comparer;
             IsInPlace = isInPlace;
             HasDuplicates = hasDuplicates;
+            _problemName = problemName;
         }
 
-        public void RunTests(List<TestCase> cases, int iterations = 1)
+        public BenchmarkSummary RunTests(List<TestCase> cases, int iterations = 1)
         {
             List<TestResult> results = new();
             int passed = 0;
@@ -61,8 +65,15 @@ namespace Leetcode.TestHarness
                 totalTimeMicros += avgMicros;
                 if (isPass) passed++;
             }
-
-            PrintSummary(results, passed, cases.Count, totalTimeMicros);
+            //PrintSummary(results, passed, cases.Count, totalTimeMicros);
+            return new BenchmarkSummary(
+                                        ProblemName: _problemName,
+                                        StrategyName: _solver.Method.DeclaringType?.Name ?? "UnknownStrategy",
+                                        Passed: passed,
+                                        Total: cases.Count,
+                                        TotalTimeMicros: totalTimeMicros,
+                                        AvgTimeMicros: totalTimeMicros / cases.Count
+                                    );
         }
 
         private bool ValidateBySum(TInput input, TOutput actual, TOutput expected)
