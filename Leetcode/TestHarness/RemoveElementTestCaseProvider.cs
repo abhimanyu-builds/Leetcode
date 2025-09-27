@@ -4,6 +4,7 @@ using Leetcode.Models;
 
 namespace Leetcode.TestHarness
 {
+    [TestCaseProviderExport(ProblemType.RemoveElement)]
     public class RemoveElementTestCaseProvider : ITestCaseProvider<RemoveElementInput, int>
     {
         public List<ProblemTest<RemoveElementInput, int>.TestCase> GetTestCases()

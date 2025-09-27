@@ -19,6 +19,8 @@
 
     public enum ProblemType
     {
+        None,
+
         //Search / Binary Search
         SearchInsertPosition,
         RotatedArray,

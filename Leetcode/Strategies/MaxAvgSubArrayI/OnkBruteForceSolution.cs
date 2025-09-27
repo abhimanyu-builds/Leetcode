@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.MaxAvgSubArrayI
 {
+    [StrategyExport(
+        ProblemType.MaxAvgSubArrayI,
+        name: "O(nk) Brute force",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnkBruteForceSolution : IProblemSolution<MaxAvgSubArrayInput, double>
     {
         public double Solve(MaxAvgSubArrayInput input)

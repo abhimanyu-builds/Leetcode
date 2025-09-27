@@ -1,7 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 
 namespace Leetcode.Strategies.LongestHarmoniousSubsequence
 {
+
+    [StrategyExport(
+        ProblemType.LongestHarmoniousSubsequence,
+        name: "O(nlogn) Sort and Linear Scan",
+        IsInPlace = false,
+        HasDuplicates = true)]
     public class OnlognSortScanSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)

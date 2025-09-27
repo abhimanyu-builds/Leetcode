@@ -1,6 +1,4 @@
 ﻿using Leetcode.Interfaces;
-using Leetcode.Models;
-using Leetcode.StrategyRegistry;
 
 namespace Leetcode.Common
 {
@@ -20,21 +18,4 @@ namespace Leetcode.Common
         }
     }
 
-    public static class ProblemStrategyFactory
-    {
-        public static IEnumerable<IProblemStrategy<TwoSumInput, int[]>> GetTwoSumStrategies() => TwoSumStrategies.All;
-        public static IEnumerable<IProblemStrategy<TwoSumSortedInput, int[]>> GetTwoSumSortedStrategies() => TwoSumSortedStrategies.All;
-        public static IEnumerable<IProblemStrategy<ThreeSumInput, List<List<int>>>> GetThreeSumStrategies() => ThreeSumStrategies.All;
-        public static IEnumerable<IProblemStrategy<int[], int>> GetRemoveDuplicatesStrategies() => RemoveDuplicatesStrategies.All;
-        public static IEnumerable<IProblemStrategy<RemoveElementInput, int>> GetRemoveElementStrategies() => RemoveElementStrategies.All;
-        public static IEnumerable<IProblemStrategy<RotatedArrayInput, int>> GetRotatedArrayStrategies() => RotatedArrayStrategies.All;
-        public static IEnumerable<IProblemStrategy<ContainsDuplicateInput, bool>> GetContainsDuplicateIStrategies() => ContainsDuplicateIStrategies.All;
-        public static IEnumerable<IProblemStrategy<ContainsDuplicateInput, bool>> GetContainsDuplicateIIStrategies() => ContainsDuplicateIIStrategies.All;
-        public static IEnumerable<IProblemStrategy<MaxAvgSubArrayInput, double>> GetMaxAvgSubArrayIStrategies() => MaxAvgSubArrayIStrategies.All;
-        public static IEnumerable<IProblemStrategy<int[], int>> GetMaxConsectuive1sStrategies() => MaxConsecutive1sStrategies.All;
-        public static IEnumerable<IProblemStrategy<SearchInsertPositionInput, int>> GetSearchInsertPositionStrategies() => SearchInsertPositionStrategies.All;
-        public static IEnumerable<IProblemStrategy<int[], int>> GetLongestHarmoniousSubsequenceStrategies() => LongestHarmoniousSubsequenceStrategies.All;
-
-
-    }
 }

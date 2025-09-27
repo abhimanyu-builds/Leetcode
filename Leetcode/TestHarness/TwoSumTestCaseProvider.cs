@@ -1,7 +1,9 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
 
+[TestCaseProviderExport(ProblemType.TwoSum)]
 public class TwoSumTestCaseProvider : ITestCaseProvider<TwoSumInput, int[]>
 {
     public List<ProblemTest<TwoSumInput, int[]>.TestCase> GetTestCases()

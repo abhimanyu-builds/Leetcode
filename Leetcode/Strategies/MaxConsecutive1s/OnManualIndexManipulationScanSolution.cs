@@ -1,7 +1,13 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 
 namespace Leetcode.Strategies.MaxConsecutive1s
 {
+    [StrategyExport(
+        ProblemType.MaxConsecutive1s,
+        name: "O(n) Manual index manipulation",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnManualIndexManipulationScanSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)

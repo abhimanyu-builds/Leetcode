@@ -1,7 +1,8 @@
 ﻿using Leetcode.Interfaces;
-using Leetcode.Models;
+using Leetcode.Metadata;
 using Leetcode.TestHarness;
 
+[TestCaseProviderExport(ProblemType.LongestHarmoniousSubsequence)]
 public class LongestHarmoniousSubsequenceTestCaseProvider : ITestCaseProvider<int[], int>
 {
     public List<ProblemTest<int[], int>.TestCase> GetTestCases()

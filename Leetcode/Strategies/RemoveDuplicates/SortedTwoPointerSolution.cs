@@ -1,7 +1,13 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 
 namespace Leetcode.Strategies.RemoveDuplicates
 {
+    [StrategyExport(
+        ProblemType.RemoveDuplicatesFromSortedArray,
+        name: "O(n) - Two Pointer",
+        IsInPlace = true,
+        HasDuplicates = false)]
     public class SortedTwoPointerSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)

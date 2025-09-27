@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.TwoSum
 {
+    [StrategyExport(
+        ProblemType.TwoSum,
+        name: "O(n²) Nested loop",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class On2TwoLoopSolution : IProblemSolution<TwoSumInput, int[]>
     {
         public int[] Solve(TwoSumInput input)

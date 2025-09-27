@@ -1,7 +1,9 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
 
+[TestCaseProviderExport(ProblemType.MaxAvgSubArrayI)]
 public class MaxAvgSubArrayITestCaseProvider : ITestCaseProvider<MaxAvgSubArrayInput, double>
 {
     public List<ProblemTest<MaxAvgSubArrayInput, double>.TestCase> GetTestCases()

@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.RemoveElement
 {
+    [StrategyExport(
+        ProblemType.RemoveElement,
+        name: "O(n) - Two Pointer Swap",
+        IsInPlace = true,
+        HasDuplicates = false)]
     public class SwapWithEndPointerSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)

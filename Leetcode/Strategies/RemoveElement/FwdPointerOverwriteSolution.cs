@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.RemoveElement
 {
+    [StrategyExport(
+        ProblemType.RemoveElement,
+        name: "O(n) - Fwd Pointer Overwrite",
+        IsInPlace = true,
+        HasDuplicates = false)]
     public class FwdPointerOverwriteSolution : IProblemSolution<RemoveElementInput, int>
     {
         public int Solve(RemoveElementInput input)

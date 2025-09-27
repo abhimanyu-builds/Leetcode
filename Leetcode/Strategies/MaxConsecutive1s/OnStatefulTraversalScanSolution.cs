@@ -1,7 +1,13 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 
 namespace Leetcode.Strategies.MaxConsecutive1s
 {
+    [StrategyExport(
+        ProblemType.MaxConsecutive1s,
+        name: "O(n) Stateful Traversal",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class OnStatefulTraversalScanSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)

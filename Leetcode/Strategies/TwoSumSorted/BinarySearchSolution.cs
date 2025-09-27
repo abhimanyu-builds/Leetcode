@@ -1,8 +1,14 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 
 namespace Leetcode.Strategies.TwoSumSorted
 {
+    [StrategyExport(
+        ProblemType.TwoSumSorted,
+        name: "O(nlogn) Binary Search",
+        IsInPlace = false,
+        HasDuplicates = false)]
     public class BinarySearchSolution : IProblemSolution<TwoSumSortedInput, int[]>
     {
         public int[] Solve(TwoSumSortedInput input)

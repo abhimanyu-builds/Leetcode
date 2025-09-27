@@ -1,6 +1,9 @@
 ﻿using Leetcode.Interfaces;
+using Leetcode.Metadata;
 using Leetcode.Models;
 using Leetcode.TestHarness;
+
+[TestCaseProviderExport(ProblemType.SearchInsertPosition)]
 
 public class SearchInsertPositionTestCaseProvider : ITestCaseProvider<SearchInsertPositionInput, int>
 {
