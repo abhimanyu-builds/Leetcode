@@ -66,7 +66,7 @@ namespace Leetcode.TestHarness
                 if (isPass) passed++;
             }
             //PrintSummary(results, passed, cases.Count, totalTimeMicros);
-            return new BenchmarkSummary(
+            var summary = new BenchmarkSummary(
                                         ProblemName: _problemName,
                                         StrategyName: _solver.Method.DeclaringType?.Name ?? "UnknownStrategy",
                                         Passed: passed,
@@ -74,6 +74,20 @@ namespace Leetcode.TestHarness
                                         TotalTimeMicros: totalTimeMicros,
                                         AvgTimeMicros: totalTimeMicros / cases.Count
                                     );
+            var failedCases = results.Where(r => !r.IsPass).ToList();
+
+            if (failedCases.Any())
+            {
+                Console.WriteLine($"\n❌ Failed Test Cases for {summary.StrategyName}:");
+                foreach (var fail in failedCases)
+                {
+                    Console.WriteLine($"Input:    {Format(fail.Input)}");
+                    Console.WriteLine($"Expected: {Format(fail.Expected)}");
+                    Console.WriteLine($"Actual:   {Format(fail.Actual)}");
+                    Console.WriteLine($"Time:     {fail.TimeMicros:F2} µs\n");
+                }
+            }
+            return summary;
         }
 
         private bool ValidateBySum(TInput input, TOutput actual, TOutput expected)
