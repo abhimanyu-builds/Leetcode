@@ -70,6 +70,8 @@ namespace Leetcode.Helpers
                     actual != null && actual.Equals(tc.Expected),
                 ProblemType.LongestSubarrayAfterOneDeletion => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected),
+                ProblemType.MaxConsecutive1sIII => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected),
 
                 ProblemType.SearchInsertPosition => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected),

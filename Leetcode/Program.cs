@@ -14,7 +14,7 @@ class Program
         var allSummaries = new List<IBenchmarkSummary>();
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.LongestSubarrayAfterOneDeletion
+            ProblemType.MaxConsecutive1sIII
         };
         //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
@@ -40,6 +40,10 @@ class Program
 
                 case ProblemType.LongestSubarrayAfterOneDeletion:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+
+                case ProblemType.MaxConsecutive1sIII:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<MaxConsecutive1sIIIInput, int>(type) ?? []);
                     break;
 
                 case ProblemType.TwoSum:
@@ -130,7 +134,7 @@ class Program
 
         }
 
-        BenchmarkFormatter.PrintTable(type.ToString(),summaries);
+        BenchmarkFormatter.PrintTable(type.ToString(), summaries);
 
         return summaries;
     }

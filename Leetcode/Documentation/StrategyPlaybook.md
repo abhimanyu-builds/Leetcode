@@ -11,6 +11,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 ### Sliding Window
 - [Max-consecutive-1s](#max-consecutive-1s)
 - [Longest-subarray-after-one-deletion](#longest-subarray-after-one-deletion)
+- [Max-consecutive-1s-III](#max-consecutive-1s-iii)
 - [Max-average-subarray-I](#max-average-subarray-I)
 
 ### Hashing / Frequency Maps
@@ -74,10 +75,25 @@ Approaches
 
 ---
 
+## MaxConsecutive1sIII  
+<a name="max-consecutive-1s-iii"></a>  
+
+📘 [Problem Description](./Problems/Max-consecutive-1s-III-Description.md)  
+
+Approaches  
+----------  
+
+| Rank | Approach                    | Time Complexity	| Space Complexity	| Pros                                                       | Cons                                                       |
+|------|-----------------------------|------------------|-------------------|------------------------------------------------------------|------------------------------------------------------------|
+| 1    | Stateful Traversal Scan     | O(n)             | O(1)              | Fastest, minimal memory, ideal for production              | Less explicit about flip positions, harder to visualize    |
+| 2    | Zero Index Queue            | O(n)             | O(k)              | Precise rollback, great for onboarding and debugging       | Slower due to queue overhead and memory allocation         |
+
+---
+
 ## LongestSubarrayAfterOneDeletion  
 <a name="longest-subarray-after-one-deletion"></a>  
 
-📘 [Problem Description](./Problems/LongestSubarrayAfterOneDeletion-Description.md)  
+📘 [Problem Description](./Problems/Longest-subarray-after-one-deletion-Description.md)  
 
 Approaches  
 ----------  
