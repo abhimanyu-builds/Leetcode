@@ -25,4 +25,8 @@
     {
         public MaxAvgSubArrayInput(int[] numbers, int k) : base(numbers, k) { }
     }
+    public class MaxConsecutive1sIIIInput : ContainsDuplicateInput
+    {
+        public MaxConsecutive1sIIIInput(int[] numbers, int k) : base(numbers, k) { }
+    }
 }

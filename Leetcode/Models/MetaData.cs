@@ -29,6 +29,7 @@
         MaxAvgSubArrayI,
         MaxConsecutive1s,
         LongestSubarrayAfterOneDeletion,
+        MaxConsecutive1sIII,
 
         //Hashing / Frequency Maps
         TwoSum,

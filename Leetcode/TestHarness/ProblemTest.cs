@@ -84,7 +84,7 @@ namespace Leetcode.TestHarness
                     Console.WriteLine($"Input:    {Format(fail.Input)}");
                     Console.WriteLine($"Expected: {Format(fail.Expected)}");
                     Console.WriteLine($"Actual:   {Format(fail.Actual)}");
-                    Console.WriteLine($"Time:     {fail.TimeMicros:F2} µs\n");
+                    //Console.WriteLine($"Time:     {fail.TimeMicros:F2} µs\n");
                 }
             }
             return summary;
@@ -145,6 +145,9 @@ namespace Leetcode.TestHarness
         private string Format(object? obj)
         {
             if (obj == null) return "null";
+
+            if (obj is ContainsDuplicateInput inputWithK)
+                return $"[{string.Join(", ", inputWithK.Numbers)}], K: {inputWithK.K}";
 
             if (obj is ProblemInput<int[]> inputWithTarget)
                 return $"[{string.Join(", ", inputWithTarget.Numbers)}], Target: {inputWithTarget.Target}";
