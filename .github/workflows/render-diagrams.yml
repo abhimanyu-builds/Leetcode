@@ -1,12 +1,14 @@
-name: Render PlantUML Diagrams
+name: Render Diagrams and Generate VisualSolutions.md
 
 on:
   push:
     paths:
       - 'Leetcode/Documentation/diagrams/**/*.puml'
+      - 'Leetcode/Documentation/flowcharts/**/*.md'
   pull_request:
     paths:
       - 'Leetcode/Documentation/diagrams/**/*.puml'
+      - 'Leetcode/Documentation/flowcharts/**/*.md'
 
 jobs:
   render:
@@ -17,22 +19,75 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTION_TOKEN }}
 
-      - name: Render SVG diagrams using Docker
+      - name: Install Mermaid CLI locally
+        run: |
+          mkdir -p mermaid-cli-local
+          cd mermaid-cli-local
+          npm init -y
+          npm install @mermaid-js/mermaid-cli@10.4.0
+      - name: Render Mermaid diagrams to PNG and SVG
+        run: |
+          echo '{ "args": ["--no-sandbox"] }' > puppeteer-config.json
+
+          find Leetcode/Documentation/flowcharts -name '*.md' | while read file; do
+            out_dir=$(dirname "$file")
+            base_name=$(basename "$file" .md)
+            echo "Rendering $file → $out_dir/$base_name.(png|svg)"
+
+            # Render PNG
+            ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
+              -i "$file" -o "$out_dir/${base_name}.png"
+
+            # Render SVG
+            ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
+              -i "$file" -o "$out_dir/${base_name}.svg"
+
+            # Rename actual output to expected name
+            png_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.png" | head -n 1)
+            svg_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.svg" | head -n 1)
+
+            mv "$png_output" "$out_dir/${base_name}.png"
+            mv "$svg_output" "$out_dir/${base_name}.svg"
+          done
+
+          rm puppeteer-config.json
+
+      - name: Render PlantUML diagrams to SVG
         run: |
           for file in Leetcode/Documentation/diagrams/*.puml; do
             echo "Rendering $file"
             docker run --rm -v "$PWD":/workspace plantuml/plantuml -tsvg "/workspace/$file"
           done
 
-      - name: Commit rendered diagrams
+      - name: Auto-generate VisualSolutions.md
+        run: |
+          output="Leetcode/Documentation/VisualSolutions.md"
+          echo "" > "$output"
+          for problem_dir in Leetcode/Documentation/flowcharts/*; do
+            problem_name=$(basename "$problem_dir")
+            echo "## $problem_name – Strategy Comparison" >> "$output"
+            echo "" >> "$output"
+            for md_file in "$problem_dir"/*.md; do
+              base_name=$(basename "$md_file" .md)
+              title=$(echo "$base_name" | sed 's/Solution//; s/On//; s/\([A-Z]\)/ \1/g' | sed 's/^ *//')
+              echo "### $title" >> "$output"
+              echo "![${title}](./flowcharts/${problem_name}/${base_name}.png)" >> "$output"
+              echo "" >> "$output"
+            done
+            echo "---" >> "$output"
+            echo "" >> "$output"
+          done
+
+      - name: Commit rendered diagrams and VisualSolutions.md
         env:
           GH_TOKEN: ${{ secrets.GH_ACTION_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          if ls Leetcode/Documentation/diagrams/*.svg 1> /dev/null 2>&1; then
-            git add Leetcode/Documentation/diagrams/*.svg
-            git diff --cached --quiet || (git commit -m "Auto-rendered PlantUML diagrams" && git push https://x-access-token:${GH_TOKEN}@github.com/abhimanyu-builds/Leetcode.git HEAD:main)
-          else
-            echo "No SVG files found to commit."
-          fi
+          git add Leetcode/Documentation/flowcharts/**/*.png
+          git add Leetcode/Documentation/flowcharts/**/*.svg
+          git add Leetcode/Documentation/VisualSolutions.md
+          git diff --cached --quiet || (
+            git commit -m "Auto-rendered diagrams and updated VisualSolutions.md" &&
+            git push https://x-access-token:${GH_TOKEN}@github.com/abhimanyu-builds/Leetcode.git HEAD:main
+          )

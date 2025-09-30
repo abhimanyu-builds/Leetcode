@@ -8,4 +8,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Documentation\flowcharts\ContainsDuplicateI\On2BruteForceSolution.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Documentation\flowcharts\ContainsDuplicateI\On2BruteForceSolution.md" />
+  </ItemGroup>
+
 </Project>
