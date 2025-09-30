@@ -28,6 +28,7 @@
         //Sliding Window
         MaxAvgSubArrayI,
         MaxConsecutive1s,
+        LongestSubarrayAfterOneDeletion,
 
         //Hashing / Frequency Maps
         TwoSum,

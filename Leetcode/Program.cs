@@ -12,8 +12,13 @@ class Program
         Console.Clear();
 
         var allSummaries = new List<IBenchmarkSummary>();
+        var problemTypesToRun = new ProblemType[]
+        {
+            ProblemType.LongestSubarrayAfterOneDeletion
+        };
+        //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
-        foreach (var type in Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>())
+        foreach (var type in problemTypesToRun)
         {
             switch (type)
             {
@@ -30,6 +35,10 @@ class Program
                     break;
 
                 case ProblemType.MaxConsecutive1s:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+
+                case ProblemType.LongestSubarrayAfterOneDeletion:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
                     break;
 
@@ -118,6 +127,7 @@ class Program
 
             var summary = testHarness.RunTests(testCases, iterations);
             summaries.Add(summary);
+
         }
 
         BenchmarkFormatter.PrintTable(type.ToString(),summaries);

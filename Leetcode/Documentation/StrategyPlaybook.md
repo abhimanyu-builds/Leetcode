@@ -10,6 +10,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ### Sliding Window
 - [Max-consecutive-1s](#max-consecutive-1s)
+- [Longest-subarray-after-one-deletion](#longest-subarray-after-one-deletion)
 - [Max-average-subarray-I](#max-average-subarray-I)
 
 ### Hashing / Frequency Maps
@@ -70,6 +71,24 @@ Approaches
 |      |                           |                  |                   | Handles all edge cases naturally.              | Slightly less optimized for skipping zero segments.    |
 | 2    | Manual Index Traversal    | O(n)             | O(1)              | Can skip zero blocks aggressively.             | Requires careful index control and loop management.    |
 |      |                           |                  |                   | Works well for clustered 1s.                   | More error-prone and harder to read.                   |
+
+---
+
+## LongestSubarrayAfterOneDeletion  
+<a name="longest-subarray-after-one-deletion"></a>  
+
+📘 [Problem Description](./Problems/LongestSubarrayAfterOneDeletion-Description.md)  
+
+Approaches  
+----------  
+
+| Rank | Approach								| Time Complexity | Space Complexity | Pros                                                                 | Cons                                                                 |
+|------|----------------------------------------|-----------------|------------------|----------------------------------------------------------------------|----------------------------------------------------------------------|
+| 1    | Adjacent Block Merge					| O(n)            | O(1)             | Fastest in benchmarks, minimal branching, high cache locality        | Slightly less intuitive, requires careful bridge logic               |
+|      |										|                 |                  |                                                                      | Optimized for sequential access                                      |
+| 2    | Sliding Window with Stateful Traversal | O(n)			  | O(1)             | Conceptually clean, generalizable to k-deletion variants             | Slightly slower due to backtracking and nested loop overhead         |
+| 3    | Prefix/Suffix Scan						| O(n)            | O(n)             | Modular, easy to visualize and extend for multiple deletions         | Requires extra space, less performant for single-deletion case       |
+
 
 ---
 

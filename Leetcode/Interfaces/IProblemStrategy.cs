@@ -1,6 +1,4 @@
-﻿using Leetcode.Interfaces;
-
-namespace Leetcode.Common
+﻿namespace Leetcode.Interfaces
 {
     public interface IProblemStrategy<TInput, TOutput>
     {
