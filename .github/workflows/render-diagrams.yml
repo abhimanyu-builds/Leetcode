@@ -2,10 +2,8 @@ name: Render Diagrams and Generate VisualSolutions.md
 
 on:
   push:
-    paths:
-      - 'Leetcode/Documentation/diagrams/**/*.puml'
-      - 'Leetcode/Documentation/flowcharts/**/*.md'
-  pull_request:
+    branches:
+      - main
     paths:
       - 'Leetcode/Documentation/diagrams/**/*.puml'
       - 'Leetcode/Documentation/flowcharts/**/*.md'
