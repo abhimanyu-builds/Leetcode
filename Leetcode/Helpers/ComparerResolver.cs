@@ -78,6 +78,18 @@ namespace Leetcode.Helpers
                 ProblemType.LongestHarmoniousSubsequence => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected),
 
+                ProblemType.MergeSortedArrays => (tc, actual) =>
+                {
+                    if (tc.Input is MergeSortedArraysInput input && tc.Expected is int[] expected && actual is int[] result)
+                    {
+                        int validLength = input.M + input.N;
+                        int[] mutated = result.Take(validLength).ToArray();
+                        int[] trimmedExpected = expected.Take(validLength).ToArray();
+                        return CompareHelper.ArraysEqual(mutated, trimmedExpected);
+                    }
+                    return false;
+                }
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")

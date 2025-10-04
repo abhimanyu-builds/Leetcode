@@ -44,5 +44,6 @@
         //In-place Mutation
         RemoveElement,
         RemoveDuplicatesFromSortedArray,
+        MergeSortedArrays,
     }
 }

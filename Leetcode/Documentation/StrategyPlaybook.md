@@ -28,6 +28,10 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Remove-duplicates](#remove-duplicates)
 - [Remove-element](#remove-element)
 
+### Strategy Tradeoffs
+- [Merge-sorted-arrays](#merge-sorted-arrays)
+
+
 ---
 
 ### 📊 Strategy Tradeoffs — Search Insert Position
@@ -332,3 +336,13 @@ Approaches
 |		|									|					|					|													|	Does not preserve order								|
 
 ---
+## Merge Sorted Arrays  
+<a name="merge-sorted-arrays"></a>
+
+| Strategy               | Time Complexity | Space | In-place	| Mutation Safety			| Idiomatic Use Case                     | Notes                                                            |
+|------------------------|-----------------|-------|------------|---------------------------|----------------------------------------|------------------------------------------------------------------|
+| Reverse Merge          | O(m + n)        | O(1)  | ✅			| ✅ (no overwrites)		| Reference-grade, sorted merge          | Merges from back using 3 pointers; optimal and clean             |
+| Forward Merge + Queue  | O(n²)           | O(n)  | ❌			| ❌ (cascading shifts)		| Educational or exploratory             | Risks Hilbert’s hotel behavior; inefficient for large arrays		|
+| Forward Merge + Buffer | O(m + n)        | O(m)  | ❌			| ✅ (safe staging)			| Readable, but violates constraints     | Copies `nums1[0..m]` to temp; merges into `nums1`                |
+| Bubble Merge           | O(m × n)        | O(1)  | ✅			| ❌ (repeated shifting)	| Adversarial or brute-force scenarios   | Works in-place but inefficient; useful for stress testing        |
+| Two-Pass Index Mapping | O(m + n)        | O(1)  | ✅			| ✅ (if carefully staged)	| Complex merge logic                    | Requires precomputing insert positions; harder to maintain       |
