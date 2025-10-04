@@ -9,11 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Documentation\flowcharts\ContainsDuplicateI\On2BruteForceSolution.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Documentation\flowcharts\ContainsDuplicateI\On2BruteForceSolution.md" />
+    <None Include="Documentation\flowcharts\**\*.md" />
   </ItemGroup>
 
 </Project>

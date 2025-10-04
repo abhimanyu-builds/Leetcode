@@ -14,7 +14,7 @@ class Program
         var allSummaries = new List<IBenchmarkSummary>();
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.MaxConsecutive1sIII
+            ProblemType.MergeSortedArrays
         };
         //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
@@ -76,6 +76,10 @@ class Program
 
                 case ProblemType.RemoveDuplicatesFromSortedArray:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+
+                case ProblemType.MergeSortedArrays:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<MergeSortedArraysInput, int[]>(type) ?? []);
                     break;
 
                 default:

@@ -65,7 +65,7 @@ namespace Leetcode.TestHarness
                 totalTimeMicros += avgMicros;
                 if (isPass) passed++;
             }
-            //PrintSummary(results, passed, cases.Count, totalTimeMicros);
+            PrintSummary(results, passed, cases.Count, totalTimeMicros);
             var summary = new BenchmarkSummary(
                                         ProblemName: _problemName,
                                         StrategyName: _solver.Method.DeclaringType?.Name ?? "UnknownStrategy",
@@ -152,6 +152,10 @@ namespace Leetcode.TestHarness
             if (obj is ProblemInput<int[]> inputWithTarget)
                 return $"[{string.Join(", ", inputWithTarget.Numbers)}], Target: {inputWithTarget.Target}";
 
+            if (obj is MergeSortedArraysInput mergeInput)
+                return $"Nums1: [{string.Join(", ", mergeInput.Nums1)}], M: {mergeInput.M}, " +
+                       $"Nums2: [{string.Join(", ", mergeInput.Nums2)}], N: {mergeInput.N}";
+
             if (obj is int[] arr)
                 return $"[{string.Join(", ", arr)}]";
 
@@ -181,6 +185,14 @@ namespace Leetcode.TestHarness
 
                 case RemoveElementInput rei:
                     return (T)(object)new RemoveElementInput(rei.Numbers.ToArray(), rei.Target);
+
+                case MergeSortedArraysInput mergeInput:
+                    return (T)(object)new MergeSortedArraysInput(
+                        nums1: mergeInput.Nums1.ToArray(),
+                        m: mergeInput.M,
+                        nums2: mergeInput.Nums2.ToArray(),
+                        n: mergeInput.N
+                    );
 
                 default:
                     throw new NotSupportedException($"Clone not implemented for type: {typeof(T).Name}");
