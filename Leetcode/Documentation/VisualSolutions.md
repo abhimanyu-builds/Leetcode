@@ -40,5 +40,8 @@
 ### 2 Brute Force
 ![2 Brute Force](./flowcharts/MergeSortedArrays/On2BruteForceSolution.png)
 
+### Reverse Merge
+![Reverse Merge](./flowcharts/MergeSortedArrays/OnReverseMergeSolution.png)
+
 ---
 
