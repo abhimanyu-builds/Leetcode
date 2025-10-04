@@ -35,3 +35,10 @@
 
 ---
 
+## MergeSortedArrays – Strategy Comparison
+
+### 2 Brute Force
+![2 Brute Force](./flowcharts/MergeSortedArrays/On2BruteForceSolution.png)
+
+---
+
