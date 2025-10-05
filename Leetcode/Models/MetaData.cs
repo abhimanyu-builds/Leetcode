@@ -45,5 +45,6 @@
         RemoveElement,
         RemoveDuplicatesFromSortedArray,
         MergeSortedArrays,
+        ValidMountainArray,
     }
 }
