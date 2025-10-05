@@ -31,10 +31,13 @@ A consolidated reference of all strategy tradeoffs across problems.
 ### Strategy Tradeoffs
 - [Merge-sorted-arrays](#merge-sorted-arrays)
 
+### Directional Traversal / State Machines
+- [Valid-mountain-array](#valid-mountain-array)
+
 
 ---
 
-### 📊 Strategy Tradeoffs — Search Insert Position
+## Search Insert Position
 <a name="search-insert-position"></a>
 
 | Strategy              | Match Behavior					| Insert Behavior								| Time Complexity	| Space	| Idiomatic Use Case						| Notes                                                             |
@@ -346,3 +349,20 @@ Approaches
 | Forward Merge + Buffer | O(m + n)        | O(m)  | ❌			| ✅ (safe staging)			| Readable, but violates constraints     | Copies `nums1[0..m]` to temp; merges into `nums1`                |
 | Bubble Merge           | O(m × n)        | O(1)  | ✅			| ❌ (repeated shifting)	| Adversarial or brute-force scenarios   | Works in-place but inefficient; useful for stress testing        |
 | Two-Pass Index Mapping | O(m + n)        | O(1)  | ✅			| ✅ (if carefully staged)	| Complex merge logic                    | Requires precomputing insert positions; harder to maintain       |
+
+
+---
+## Valid-Mountain-Array  
+<a name="valid-mountain-array"></a>
+
+📘 [Problem Description](./Problems/Valid-Mountain-Array-Description.md)
+
+Benchmarked Strategies  
+----------------------  
+| Rank | Strategy Name                          | Time Complexity | Space Complexity	| Notes												|
+|------|----------------------------------------|------------------|--------------------|---------------------------------------------------|
+| 1    | OnSinglePassClassicSolution            | O(n)             | O(1)				| Tight loop and minimal branching					|
+| 2    | OnSinglePassStateSolution              | O(n)             | O(1)				| Tracks direction changes with state variables		|
+| 3    | OnSinglePassMultiplePeakStateSolution  | O(n)             | O(1)				| Generalized for multiple peaks, more branching	|
+
+---
