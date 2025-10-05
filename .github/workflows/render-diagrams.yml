@@ -23,24 +23,29 @@ jobs:
           cd mermaid-cli-local
           npm init -y
           npm install @mermaid-js/mermaid-cli@10.4.0
+
+      - name: Detect modified Mermaid and PlantUML files
+        id: detect_changes
+        run: |
+          echo "MODIFIED_MERMAID=$(git diff --name-only HEAD^ HEAD -- 'Leetcode/Documentation/flowcharts/**/*.md' 2>/dev/null || git diff --name-only HEAD -- 'Leetcode/Documentation/flowcharts/**/*.md')" >> $GITHUB_ENV
+          echo "MODIFIED_PUML=$(git diff --name-only HEAD^ HEAD -- 'Leetcode/Documentation/diagrams/**/*.puml' 2>/dev/null || git diff --name-only HEAD -- 'Leetcode/Documentation/diagrams/**/*.puml')" >> $GITHUB_ENV
+
       - name: Render Mermaid diagrams to PNG and SVG
         run: |
           echo '{ "args": ["--no-sandbox"] }' > puppeteer-config.json
 
-          find Leetcode/Documentation/flowcharts -name '*.md' | while read file; do
+          for file in $MODIFIED_MERMAID; do
+            [ -f "$file" ] || continue
             out_dir=$(dirname "$file")
             base_name=$(basename "$file" .md)
             echo "Rendering $file → $out_dir/$base_name.(png|svg)"
 
-            # Render PNG
             ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
               -i "$file" -o "$out_dir/${base_name}.png"
 
-            # Render SVG
             ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
               -i "$file" -o "$out_dir/${base_name}.svg"
 
-            # Rename actual output to expected name
             png_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.png" | head -n 1)
             svg_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.svg" | head -n 1)
 
@@ -52,7 +57,8 @@ jobs:
 
       - name: Render PlantUML diagrams to SVG
         run: |
-          for file in Leetcode/Documentation/diagrams/*.puml; do
+          for file in $MODIFIED_PUML; do
+            [ -f "$file" ] || continue
             echo "Rendering $file"
             docker run --rm -v "$PWD":/workspace plantuml/plantuml -tsvg "/workspace/$file"
           done
@@ -82,10 +88,27 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
           git add Leetcode/Documentation/flowcharts/**/*.png
           git add Leetcode/Documentation/flowcharts/**/*.svg
           git add Leetcode/Documentation/VisualSolutions.md
+
+          # Determine commit message
+          count=$(echo "$MODIFIED_MERMAID" | wc -l)
+          if [ "$count" -eq 1 ]; then
+            solution_name=$(basename "$MODIFIED_MERMAID" .md)
+            problem_name=$(basename "$(dirname "$MODIFIED_MERMAID")")
+            msg="Autorendered diagrams for ${solution_name} in ${problem_name}"
+          elif [ "$count" -gt 1 ]; then
+            first_file=$(echo "$MODIFIED_MERMAID" | head -n 1)
+            problem_name=$(basename "$(dirname "$first_file")")
+            msg="Autorendered diagrams for ${problem_name} strategies"
+          else
+            echo "No diagram changes detected. Skipping commit."
+            exit 0
+          fi
+
           git diff --cached --quiet || (
-            git commit -m "Auto-rendered diagrams and updated VisualSolutions.md" &&
+            git commit -m "$msg" &&
             git push https://x-access-token:${GH_TOKEN}@github.com/abhimanyu-builds/Leetcode.git HEAD:main
           )

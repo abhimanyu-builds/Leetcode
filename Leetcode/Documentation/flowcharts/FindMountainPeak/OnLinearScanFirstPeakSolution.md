@@ -1,4 +1,5 @@
 ﻿```mermaid
+
 flowchart TD
     A["arr.Length < 3"]
     A -->|true| B["return -1"]
@@ -13,4 +14,5 @@ flowchart TD
 
     C --> D
     D --> G["return -1"]
+
 ```

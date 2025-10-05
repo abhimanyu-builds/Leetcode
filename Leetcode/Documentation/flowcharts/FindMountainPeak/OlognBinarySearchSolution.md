@@ -1,4 +1,5 @@
 ﻿```mermaid
+
 flowchart TD
     A["left = 0, right = arr.Length - 1"]
     A --> B
@@ -12,4 +13,5 @@ flowchart TD
     end
 
     B -- left >= right --> F["return left"]
+
 ```
