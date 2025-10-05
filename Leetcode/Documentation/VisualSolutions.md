@@ -25,6 +25,16 @@
 
 ---
 
+## FindMountainPeak – Strategy Comparison
+
+### Ologn Binary Search
+![Ologn Binary Search](./flowcharts/FindMountainPeak/OlognBinarySearchSolution.png)
+
+### Linear Scan First Peak
+![Linear Scan First Peak](./flowcharts/FindMountainPeak/OnLinearScanFirstPeakSolution.png)
+
+---
+
 ## MaxConsecutive1sIII – Strategy Comparison
 
 ### Stateful Traversal Scan
