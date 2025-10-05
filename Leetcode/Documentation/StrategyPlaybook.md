@@ -33,6 +33,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 
 ### Directional Traversal / State Machines
 - [Valid-mountain-array](#valid-mountain-array)
+- [Find-mountain-peak](#valid-mountain-array)
 
 
 ---
@@ -364,5 +365,19 @@ Benchmarked Strategies
 | 1    | OnSinglePassClassicSolution            | O(n)             | O(1)				| Tight loop and minimal branching					|
 | 2    | OnSinglePassStateSolution              | O(n)             | O(1)				| Tracks direction changes with state variables		|
 | 3    | OnSinglePassMultiplePeakStateSolution  | O(n)             | O(1)				| Generalized for multiple peaks, more branching	|
+
+---
+
+## Find-Mountain-Peak
+<a name="find-mountain-peak"></a>
+
+📘 [Problem Description](./Problems/Find-Mountain-Peak-Description.md)
+
+Benchmarked Strategies  
+----------------------  
+| Rank | Strategy Name                     | Time Complexity | Space Complexity | Notes                                                       |
+|------|-----------------------------------|------------------|------------------|-------------------------------------------------------------|
+| 1    | LognLowerBoundBinarySearch        | O(log n)         | O(1)             | Slope-aware binary search that converges on peak index      |
+| 2    | OnLinearScanFirstPeak             | O(n)             | O(1)             | Returns first peak found via strict neighbor comparison     |
 
 ---

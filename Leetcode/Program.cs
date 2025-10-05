@@ -14,7 +14,7 @@ class Program
         var allSummaries = new List<IBenchmarkSummary>();
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.ValidMountainArray
+            ProblemType.FindMountainPeak
         };
         //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
@@ -86,6 +86,10 @@ class Program
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], bool>(type) ?? []);
                     break;
 
+                case ProblemType.FindMountainPeak:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+
                 default:
                     Console.WriteLine($"⚠️ Skipping {type} — no type mapping defined.");
                     break;
@@ -97,7 +101,7 @@ class Program
 
     }
 
-    static List<IBenchmarkSummary>? RunProblemDynamicAndReturnSummary<TInput, TOutput>(ProblemType type, int iterations = 10)
+    static List<IBenchmarkSummary>? RunProblemDynamicAndReturnSummary<TInput, TOutput>(ProblemType type, int iterations = 1)
     {
         var providerObj = TestCaseProviderRegistry.GetProvider(type);
         var strategyObjs = StrategyRegistry.GetStrategies(type);
