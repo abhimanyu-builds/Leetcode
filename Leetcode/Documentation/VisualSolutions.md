@@ -37,11 +37,18 @@
 
 ## MergeSortedArrays – Strategy Comparison
 
-### 2 Brute Force
-![2 Brute Force](./flowcharts/MergeSortedArrays/On2BruteForceSolution.png)
-
 ### Reverse Merge
 ![Reverse Merge](./flowcharts/MergeSortedArrays/OnReverseMergeSolution.png)
+
+---
+
+## ValidMountainArray – Strategy Comparison
+
+### Single Pass Classic
+![Single Pass Classic](./flowcharts/ValidMountainArray/OnSinglePassClassicSolution.png)
+
+### Single Pass State
+![Single Pass State](./flowcharts/ValidMountainArray/OnSinglePassStateSolution.png)
 
 ---
 
