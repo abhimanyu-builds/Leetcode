@@ -12,4 +12,14 @@
     <None Include="Documentation\flowcharts\**\*.md" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Documentation\flowcharts\HillAndValleyCount\OnPlateauCollapseLinearSearchSolution.md" />
+    <None Remove="Documentation\flowcharts\HillAndValleyCount\OnTwoPointerLinearSearchSolution.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Documentation\flowcharts\HillAndValleyCount\OnPlateauCollapseLinearSearchSolution.md" />
+    <Compile Include="Documentation\flowcharts\HillAndValleyCount\OnTwoPointerLinearSearchSolution.md" />
+  </ItemGroup>
+
 </Project>

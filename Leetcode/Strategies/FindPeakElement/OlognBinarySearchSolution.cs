@@ -8,7 +8,7 @@ namespace Leetcode.Strategies.FindPeakElement
         name: "O(logn) Binary Search",
         IsInPlace = false,
         HasDuplicates = false)]
-    public class OlognBinarySearchSolution : IProblemSolution<int[], int>
+    public class OnLinearSearchSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)
         {
