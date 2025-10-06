@@ -35,6 +35,13 @@
 
 ---
 
+## FindPeakElement – Strategy Comparison
+
+### Ologn Binary Search
+![Ologn Binary Search](./flowcharts/FindPeakElement/OlognBinarySearchSolution.png)
+
+---
+
 ## MaxConsecutive1sIII – Strategy Comparison
 
 ### Stateful Traversal Scan
