@@ -16,8 +16,8 @@ flowchart TD
     subgraph "while (left < right)"
         N["mid = left + (right - left) / 2"]
         O{"nums[mid] < nums[mid + 1]"}
-        O -->|true| P["left = mid + 1"]
         O -->|false| Q["right = mid"]
+        O -->|true| P["left = mid + 1"]
     end
 
     M --> N

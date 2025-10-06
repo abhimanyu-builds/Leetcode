@@ -35,6 +35,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Valid-mountain-array](#valid-mountain-array)
 - [Find-mountain-peak](#valid-mountain-array)
 - [Find-peak-element](#find-peak-element)
+- [Hill-and-valley-count](#hill-and-valley-count)
 
 
 
@@ -380,7 +381,7 @@ Benchmarked Strategies
 ----------------------  
 | Rank | Strategy Name                     | Time Complexity | Space Complexity | Notes                                                       |
 |------|-----------------------------------|------------------|------------------|-------------------------------------------------------------|
-| 1    | LognLowerBoundBinarySearch        | O(log n)         | O(1)             | Slope-aware binary search that converges on peak index      |
+| 1    | OlognLowerBoundBinarySearch        | O(log n)         | O(1)             | Slope-aware binary search that converges on peak index      |
 | 2    | OnLinearScanFirstPeak             | O(n)             | O(1)             | Returns first peak found via strict neighbor comparison     |
 
 ---
@@ -395,3 +396,14 @@ Benchmarked Strategies
 | Linear Scan                | Check each element against neighbors          | N/A                                         | O(n)             | O(1)	| Small arrays or relaxed constraints       | Disqualified by problem constraint; useful for debugging or brute force	|
 
 ---
+## Hill-and-Valley-Count
+<a name="hill-and-valley-count"></a>
+
+📘 [Problem Description](./Problems/Hill-and-Valley-Count-Description.md)
+
+Approaches
+----------
+| Rank | Approach								| Time Complexity	| Space Complexity |
+|------|----------------------------------------|-------------------|------------------|
+| 1    | O(n) Plateau Collapse Linear Search	| O(n)				| O(n)             |
+| 2    | O(n) Two-Pointer Linear Search			| O(n)				| O(1)             |

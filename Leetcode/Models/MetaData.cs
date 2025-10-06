@@ -48,5 +48,6 @@
         ValidMountainArray,
         FindMountainPeak,
         FindPeakElement,
+        HillAndValleyCount,
     }
 }
