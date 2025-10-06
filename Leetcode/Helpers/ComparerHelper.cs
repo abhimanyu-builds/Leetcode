@@ -1,5 +1,7 @@
 ﻿using Leetcode.Models;
 using Leetcode.TestHarness;
+using System;
+using System.Reflection;
 
 public static class CompareHelper
 {
@@ -30,4 +32,21 @@ public static class CompareHelper
         if (actual < 0) return false;
         return testcase.Input.Numbers[actual] == testcase.Input.Target;
     }
+    public static bool PeakIndexValid<TInput>(ProblemTest<TInput, int>.TestCase testcase, int index)
+    {
+        if (testcase.Input is int[] nums)
+        {
+
+            if (nums == null || nums.Length == 0 || index < 0 || index >= nums.Length)
+                return false;
+
+            int left = (index == 0) ? int.MinValue : nums[index - 1];
+            int right = (index == nums.Length - 1) ? int.MinValue : nums[index + 1];
+
+            return nums[index] > left && nums[index] > right;
+        }
+
+        return false;
+    }
+
 }
