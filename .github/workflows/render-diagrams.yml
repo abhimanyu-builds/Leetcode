@@ -27,8 +27,17 @@ jobs:
       - name: Detect modified Mermaid and PlantUML files
         id: detect_changes
         run: |
-          echo "MODIFIED_MERMAID=$(git diff --name-only HEAD^ HEAD -- 'Leetcode/Documentation/flowcharts/**/*.md' 2>/dev/null || git diff --name-only HEAD -- 'Leetcode/Documentation/flowcharts/**/*.md')" >> $GITHUB_ENV
-          echo "MODIFIED_PUML=$(git diff --name-only HEAD^ HEAD -- 'Leetcode/Documentation/diagrams/**/*.puml' 2>/dev/null || git diff --name-only HEAD -- 'Leetcode/Documentation/diagrams/**/*.puml')" >> $GITHUB_ENV
+          # Mermaid detection
+          MERMAID_CANDIDATES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD 2>/dev/null || git diff-tree --no-commit-id --name-only -r HEAD)
+          MODIFIED_MERMAID=$(echo "$MERMAID_CANDIDATES" | grep '^Leetcode/Documentation/flowcharts/.*\.md$' || true)
+          echo "MODIFIED_MERMAID=$MODIFIED_MERMAID" >> $GITHUB_ENV
+          echo "Detected Mermaid files: $MODIFIED_MERMAID"
+
+          # PlantUML detection
+          PUML_CANDIDATES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD 2>/dev/null || git diff-tree --no-commit-id --name-only -r HEAD)
+          MODIFIED_PUML=$(echo "$PUML_CANDIDATES" | grep '^Leetcode/Documentation/diagrams/.*\.puml$' || true)
+          echo "MODIFIED_PUML=$MODIFIED_PUML" >> $GITHUB_ENV
+          echo "Detected PlantUML files: $MODIFIED_PUML"
 
       - name: Render Mermaid diagrams to PNG and SVG
         run: |
@@ -45,12 +54,6 @@ jobs:
 
             ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
               -i "$file" -o "$out_dir/${base_name}.svg"
-
-            png_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.png" | head -n 1)
-            svg_output=$(find "$out_dir" -maxdepth 1 -name "${base_name}*-*.svg" | head -n 1)
-
-            mv "$png_output" "$out_dir/${base_name}.png"
-            mv "$svg_output" "$out_dir/${base_name}.svg"
           done
 
           rm puppeteer-config.json
@@ -93,21 +96,12 @@ jobs:
           git add Leetcode/Documentation/flowcharts/**/*.svg
           git add Leetcode/Documentation/VisualSolutions.md
 
-          # Determine commit message
-          count=$(echo "$MODIFIED_MERMAID" | wc -l)
-          if [ "$count" -eq 1 ]; then
-            solution_name=$(basename "$MODIFIED_MERMAID" .md)
-            problem_name=$(basename "$(dirname "$MODIFIED_MERMAID")")
-            msg="Autorendered diagrams for ${solution_name} in ${problem_name}"
-          elif [ "$count" -gt 1 ]; then
-            first_file=$(echo "$MODIFIED_MERMAID" | head -n 1)
-            problem_name=$(basename "$(dirname "$first_file")")
-            msg="Autorendered diagrams for ${problem_name} strategies"
-          else
+          if [ -z "$MODIFIED_MERMAID" ] && [ -z "$MODIFIED_PUML" ]; then
             echo "No diagram changes detected. Skipping commit."
             exit 0
           fi
 
+          msg="Autorendered diagrams for updated flowcharts and diagrams"
           git diff --cached --quiet || (
             git commit -m "$msg" &&
             git push https://x-access-token:${GH_TOKEN}@github.com/abhimanyu-builds/Leetcode.git HEAD:main

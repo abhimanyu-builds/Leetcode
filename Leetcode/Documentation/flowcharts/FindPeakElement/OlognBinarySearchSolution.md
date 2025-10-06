@@ -25,5 +25,4 @@ flowchart TD
     Q --> N
     N --> O
     O --> R[return left]
-
 ```
