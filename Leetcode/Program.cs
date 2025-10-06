@@ -14,7 +14,7 @@ class Program
         var allSummaries = new List<IBenchmarkSummary>();
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.FindMountainPeak
+            ProblemType.FindPeakElement
         };
         //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
@@ -87,6 +87,9 @@ class Program
                     break;
 
                 case ProblemType.FindMountainPeak:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+                case ProblemType.FindPeakElement:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
                     break;
 

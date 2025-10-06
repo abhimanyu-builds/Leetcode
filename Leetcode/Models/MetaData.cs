@@ -47,5 +47,6 @@
         MergeSortedArrays,
         ValidMountainArray,
         FindMountainPeak,
+        FindPeakElement,
     }
 }

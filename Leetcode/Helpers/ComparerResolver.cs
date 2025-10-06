@@ -96,6 +96,17 @@ namespace Leetcode.Helpers
                 ProblemType.FindMountainPeak => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected)
                 ,
+                ProblemType.FindPeakElement => (tc, actual) =>
+                {
+                    if (tc is ProblemTest<int[], int>.TestCase typed && actual is int result)
+                    {
+                        if (typed.Input == null || typed.Input.Length == 0) // Edge case: empty array
+                            return typed.Expected.Equals(-1); // Expecting -1 for invalid input
+                        return CompareHelper.PeakIndexValid(typed, result);
+                    }
+                    return false;
+                }
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")

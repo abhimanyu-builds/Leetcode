@@ -34,6 +34,9 @@ A consolidated reference of all strategy tradeoffs across problems.
 ### Directional Traversal / State Machines
 - [Valid-mountain-array](#valid-mountain-array)
 - [Find-mountain-peak](#valid-mountain-array)
+- [Find-peak-element](#find-peak-element)
+
+
 
 
 ---
@@ -379,5 +382,16 @@ Benchmarked Strategies
 |------|-----------------------------------|------------------|------------------|-------------------------------------------------------------|
 | 1    | LognLowerBoundBinarySearch        | O(log n)         | O(1)             | Slope-aware binary search that converges on peak index      |
 | 2    | OnLinearScanFirstPeak             | O(n)             | O(1)             | Returns first peak found via strict neighbor comparison     |
+
+---
+
+## Find Peak Element
+<a name="find-peak-element"></a>
+
+| Strategy                   | Peak Detection Logic                          | Search Direction Based on Slope             | Time Complexity  | Space	| Idiomatic Use Case                        | Notes																		|
+|----------------------------|-----------------------------------------------|---------------------------------------------|------------------|---------|-------------------------------------------|---------------------------------------------------------------------------|
+| Slope-Based Binary Search  | Compare `nums[mid]` with `nums[mid+1]`        | Ascending → right, Descending → left        | O(log n)         | O(1)	| Strict inequality, multiple peaks allowed | Optimal for local maxima, avoids recursion, loop invariant guarantees		|
+| Recursive Divide & Conquer | Check mid and recurse into promising half     | Based on neighbor comparisons               | O(log n)         | O(log n)| Educational recursion patterns            | Equivalent logic, but adds stack overhead and branching complexity		|
+| Linear Scan                | Check each element against neighbors          | N/A                                         | O(n)             | O(1)	| Small arrays or relaxed constraints       | Disqualified by problem constraint; useful for debugging or brute force	|
 
 ---
