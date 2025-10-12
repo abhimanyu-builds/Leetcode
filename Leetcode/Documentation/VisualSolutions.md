@@ -42,6 +42,29 @@
 
 ---
 
+## HillAndValleyCount – Strategy Comparison
+
+### Plateau Collapse Linear Search
+![Plateau Collapse Linear Search](./flowcharts/HillAndValleyCount/OnPlateauCollapseLinearSearchSolution.png)
+
+### Two Pointer Linear Search
+![Two Pointer Linear Search](./flowcharts/HillAndValleyCount/OnTwoPointerLinearSearchSolution.png)
+
+---
+
+## JumpGame – Strategy Comparison
+
+### 2 Can Reach Bottom Up D P
+![2 Can Reach Bottom Up D P](./flowcharts/JumpGame/On2CanReachBottomUpDPSolution.png)
+
+### 2 Memoized D F S
+![2 Memoized D F S](./flowcharts/JumpGame/On2MemoizedDFSSolution.png)
+
+### Max Reach
+![Max Reach](./flowcharts/JumpGame/OnMaxReachSolution.png)
+
+---
+
 ## MaxConsecutive1sIII – Strategy Comparison
 
 ### Stateful Traversal Scan
