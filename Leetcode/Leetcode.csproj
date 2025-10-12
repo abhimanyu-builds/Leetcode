@@ -1,25 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Leetcode</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<RootNamespace>Leetcode</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="Documentation\flowcharts\**\*.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Documentation\flowcharts\HillAndValleyCount\OnPlateauCollapseLinearSearchSolution.md" />
-    <None Remove="Documentation\flowcharts\HillAndValleyCount\OnTwoPointerLinearSearchSolution.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Documentation\flowcharts\HillAndValleyCount\OnPlateauCollapseLinearSearchSolution.md" />
-    <Compile Include="Documentation\flowcharts\HillAndValleyCount\OnTwoPointerLinearSearchSolution.md" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Documentation\flowcharts\**\*.md" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Documentation\flowcharts\**\*.md" />
+	</ItemGroup>
 
 </Project>

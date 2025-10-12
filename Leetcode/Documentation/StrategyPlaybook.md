@@ -37,8 +37,20 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Find-peak-element](#find-peak-element)
 - [Hill-and-valley-count](#hill-and-valley-count)
 
+---
 
+## JumpGame  
+<a name="jumpgame"></a>
 
+📘 [Problem Description](./Problems/JumpGame-Description.md)
+
+Approaches  
+----------  
+| Rank | Approach               | Time Complexity | Space Complexity |
+|------|------------------------|-----------------|------------------|
+| 1    | Greedy (Max Reach)     | O(n)            | O(1)             |
+| 2    | Bottom-up DP           | O(n²) worst     | O(n)             |
+| 3    | Memoized DFS           | O(n²) worst     | O(n)             |
 
 ---
 

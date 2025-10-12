@@ -17,6 +17,14 @@
         VeryHigh    // ~90–100%
     }
 
+    public enum JumpDistribution
+    {
+        FrontLoaded,
+        MidLoaded,
+        TailLoaded,
+        UniformRandom
+    }
+
     public enum ProblemType
     {
         None,
@@ -49,5 +57,6 @@
         FindMountainPeak,
         FindPeakElement,
         HillAndValleyCount,
+        JumpGame,
     }
 }
