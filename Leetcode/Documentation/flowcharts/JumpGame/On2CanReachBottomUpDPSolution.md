@@ -2,10 +2,10 @@
 flowchart LR
     A[Start] --> B["n = nums.Length; canReach = new bool[n]"]
     B --> D["canReach[n - 1] = true"]
-    D --> E
+    D --> E["i = n - 2 to 0"]
 
     subgraph i: n - 2 to 0
-        E["i = n - 2 to 0"] --> F["furthestJump = min(nums[i], n - 1 - i)"]
+        E --> F["furthestJump = min(nums[i], n - 1 - i)"]
         F --> H
 
         subgraph j: i + 1 to i + furthestJump

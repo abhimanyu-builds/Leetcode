@@ -11,7 +11,7 @@ flowchart LR
 
     H[Initialize hills = 0, valleys = 0, Set left, curr, right]
 
-    subgraph "for i = 1 to pruned.Count - 2"
+    subgraph for i: 1 to pruned.Count - 2
         J{"curr > left and curr > right"} -->|true| K[hills++]
         J -->|false| L{"curr < left and curr < right"}
         L -->|true| M[valleys++]

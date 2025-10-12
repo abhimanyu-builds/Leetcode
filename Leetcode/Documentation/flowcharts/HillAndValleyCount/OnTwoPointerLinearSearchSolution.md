@@ -16,7 +16,7 @@ flowchart LR
         O -->|true| Q[valleys++]
     end
 
-    R[return hills + valleys]
+    R["return hills + valleys"]
 
     C --> D
     M --> R

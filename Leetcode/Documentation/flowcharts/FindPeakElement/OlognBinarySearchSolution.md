@@ -10,7 +10,7 @@ flowchart TD
     E -->|false| I["nums[0] > nums[1]"]
     I -->|true| J[return 0]
     I -->|false| K["nums[nums.Length - 1] > nums[nums.Length - 2]"]
-    K -->|true| L[return nums.Length - 1]
+    K -->|true| L["return nums.Length - 1"]
     K -->|false| M[Initialize left = 0, right = nums.Length - 1]
 
     subgraph "while (left < right)"

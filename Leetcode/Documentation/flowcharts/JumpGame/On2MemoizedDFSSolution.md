@@ -2,10 +2,10 @@
 flowchart LR
     A[Start] --> B["memo = new bool?[nums.Length]"]
     B --> C["Call CanReachFromPosition(0, nums, memo)"]
-    C --> D
+    C --> D["i >= nums.Length - 1"]
 
     subgraph "Recursion: CanReachFromPosition(i)"
-        D["i >= nums.Length - 1"] -->|true| E[return true]
+        D -->|true| E[return true]
         D -->|false| F["memo[i] has value?"]
         F -->|true| G["return memo[i].Value"]
         F -->|false| H["furthestJump = min(i + nums[i], nums.Length - 1)"]

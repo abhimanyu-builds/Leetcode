@@ -27,17 +27,31 @@ jobs:
       - name: Detect modified Mermaid and PlantUML files
         id: detect_changes
         run: |
+          git fetch origin
+
           # Mermaid detection
-          MERMAID_CANDIDATES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD 2>/dev/null || git diff-tree --no-commit-id --name-only -r HEAD)
-          MODIFIED_MERMAID=$(echo "$MERMAID_CANDIDATES" | grep '^Leetcode/Documentation/flowcharts/.*\.md$' || true)
-          echo "MODIFIED_MERMAID=$MODIFIED_MERMAID" >> $GITHUB_ENV
-          echo "Detected Mermaid files: $MODIFIED_MERMAID"
+          MERMAID_CANDIDATES=$(git diff --name-only --diff-filter=AM origin/main...HEAD | grep '^Leetcode/Documentation/flowcharts/.*\.md$' || true)
+          if [ -z "$MERMAID_CANDIDATES" ]; then
+            echo "No modified Mermaid files detected. Falling back to all .md files."
+            MERMAID_CANDIDATES=$(find Leetcode/Documentation/flowcharts -name '*.md')
+          fi
+          echo "Detected Mermaid files:"
+          echo "$MERMAID_CANDIDATES"
+          echo "MODIFIED_MERMAID<<EOF" >> $GITHUB_ENV
+          echo "$MERMAID_CANDIDATES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
           # PlantUML detection
-          PUML_CANDIDATES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD 2>/dev/null || git diff-tree --no-commit-id --name-only -r HEAD)
-          MODIFIED_PUML=$(echo "$PUML_CANDIDATES" | grep '^Leetcode/Documentation/diagrams/.*\.puml$' || true)
-          echo "MODIFIED_PUML=$MODIFIED_PUML" >> $GITHUB_ENV
-          echo "Detected PlantUML files: $MODIFIED_PUML"
+          PUML_CANDIDATES=$(git diff --name-only --diff-filter=AM origin/main...HEAD | grep '^Leetcode/Documentation/diagrams/.*\.puml$' || true)
+          if [ -z "$PUML_CANDIDATES" ]; then
+            echo "No modified PlantUML files detected. Falling back to all .puml files."
+            PUML_CANDIDATES=$(find Leetcode/Documentation/diagrams -name '*.puml')
+          fi
+          echo "Detected PlantUML files:"
+          echo "$PUML_CANDIDATES"
+          echo "MODIFIED_PUML<<EOF" >> $GITHUB_ENV
+          echo "$PUML_CANDIDATES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Render Mermaid diagrams to PNG and SVG
         run: |
@@ -47,13 +61,19 @@ jobs:
             [ -f "$file" ] || continue
             out_dir=$(dirname "$file")
             base_name=$(basename "$file" .md)
+
+            # Clean up old renders
+            rm -f "$out_dir/${base_name}.png" "$out_dir/${base_name}.svg"
+
             echo "Rendering $file → $out_dir/$base_name.(png|svg)"
-
             ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
-              -i "$file" -o "$out_dir/${base_name}.png"
+              -i "$file" --output "$out_dir/${base_name}.png" || true
 
-            ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
-              -i "$file" -o "$out_dir/${base_name}.svg"
+            actual_png=$(find "$out_dir" -maxdepth 1 -name "${base_name}*.png" | head -n 1)
+            actual_svg=$(find "$out_dir" -maxdepth 1 -name "${base_name}*.svg" | head -n 1)
+
+            [ -f "$actual_png" ] && mv "$actual_png" "$out_dir/${base_name}.png"
+            [ -f "$actual_svg" ] && mv "$actual_svg" "$out_dir/${base_name}.svg"
           done
 
           rm puppeteer-config.json
