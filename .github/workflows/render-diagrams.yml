@@ -69,9 +69,11 @@ jobs:
             ./mermaid-cli-local/node_modules/.bin/mmdc -p puppeteer-config.json \
               -i "$file" --output "$out_dir/${base_name}.png" || true
 
+            # Detect actual output files
             actual_png=$(find "$out_dir" -maxdepth 1 -name "${base_name}*.png" | head -n 1)
             actual_svg=$(find "$out_dir" -maxdepth 1 -name "${base_name}*.svg" | head -n 1)
 
+            # Rename to canonical name
             [ -f "$actual_png" ] && mv "$actual_png" "$out_dir/${base_name}.png"
             [ -f "$actual_svg" ] && mv "$actual_svg" "$out_dir/${base_name}.svg"
           done
@@ -112,9 +114,7 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          git add Leetcode/Documentation/flowcharts/**/*.png
-          git add Leetcode/Documentation/flowcharts/**/*.svg
-          git add Leetcode/Documentation/VisualSolutions.md
+          git add -A Leetcode/Documentation
 
           if [ -z "$MODIFIED_MERMAID" ] && [ -z "$MODIFIED_PUML" ]; then
             echo "No diagram changes detected. Skipping commit."
