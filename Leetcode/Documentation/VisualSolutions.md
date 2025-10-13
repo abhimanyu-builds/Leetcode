@@ -65,6 +65,26 @@
 
 ---
 
+## JumpGameII – Strategy Comparison
+
+### Greedy Level Order Traversal
+![Greedy Level Order Traversal](./flowcharts/JumpGameII/OnGreedyLevelOrderTraversalSolution.png)
+
+---
+
+## JumpGameIII – Strategy Comparison
+
+### Zero Finder Breadth First
+![Zero Finder Breadth First](./flowcharts/JumpGameIII/OnZeroFinderBreadthFirstSolution.png)
+
+### Zero Finder Depth First
+![Zero Finder Depth First](./flowcharts/JumpGameIII/OnZeroFinderDepthFirstSolution.png)
+
+### Zero Finder Hybrid
+![Zero Finder Hybrid](./flowcharts/JumpGameIII/OnZeroFinderHybridSolution.png)
+
+---
+
 ## MaxConsecutive1sIII – Strategy Comparison
 
 ### Stateful Traversal Scan
