@@ -38,6 +38,34 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Hill-and-valley-count](#hill-and-valley-count)
 - [Jump-game](#jump-game)
 - [Jump-game-II](#jump-game-ii)
+- [Jump-game-III](#jump-game-iii)
+
+- 
+---
+- ## Jump-Game-III
+<a name="jump-game-iii"></a>
+
+📘 [Problem Description](./Problems/JumpGameIII-Description.md)
+
+Approaches
+----------
+| Rank | Approach                          | Time Complexity | Space Complexity | Notes                                                                 |
+|------|-----------------------------------|-----------------|------------------|-----------------------------------------------------------------------|
+| 1    | Breadth-First Search (BFS)        | O(n)            | O(n)             | Safest for large inputs; avoids stack overflow; ideal for deep paths |
+| 2    | Depth-First Search (DFS)          | O(n)            | O(n)             | Fastest for small inputs; must guard against cycles and deep stacks  |
+| 3    | Hybrid (DFS + BFS fallback)       | O(n)            | O(n)             | Combines DFS speed with BFS safety; adds branching logic overhead    |
+
+Limitations
+-----------
+- DFS may overflow on long linear paths (e.g., `[1]*49999 + [0]`)
+- BFS incurs queue overhead and may be slower on shallow graphs
+- Hybrid adds complexity and may be slower on small inputs
+
+Use Cases
+---------
+- Use **DFS** for small arrays or shallow graphs
+- Use **BFS** for large arrays, cyclic traps, or deep traversal
+- Use **Hybrid** in production-grade systems requiring resilience across input types
 
 ---
 ## Jump-Game-II  

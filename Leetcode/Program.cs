@@ -12,11 +12,12 @@ class Program
         Console.Clear();
 
         var allSummaries = new List<IBenchmarkSummary>();
+        //var problemTypesList = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
+
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.JumpGameII
+            ProblemType.JumpGameIII
         };
-        //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
         foreach (var type in problemTypesToRun)
         {
@@ -100,6 +101,9 @@ class Program
                     break;
                 case ProblemType.JumpGameII:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+                case ProblemType.JumpGameIII:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<JumpGameIIIInput, bool>(type) ?? []);
                     break;
 
                 default:

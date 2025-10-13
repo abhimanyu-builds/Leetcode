@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using Leetcode.Interfaces;
 using Leetcode.Metadata;
-using Leetcode.Interfaces;
+using System.Reflection;
 
 namespace Leetcode.Common
 {

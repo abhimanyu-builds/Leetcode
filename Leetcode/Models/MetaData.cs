@@ -59,5 +59,6 @@
         HillAndValleyCount,
         JumpGame,
         JumpGameII,
+        JumpGameIII,
     }
 }
