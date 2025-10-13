@@ -36,11 +36,27 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Find-mountain-peak](#valid-mountain-array)
 - [Find-peak-element](#find-peak-element)
 - [Hill-and-valley-count](#hill-and-valley-count)
+- [Jump-game](#jump-game)
+- [Jump-game-II](#jump-game-ii)
 
 ---
+## Jump-Game-II  
+<a name="jump-game-ii"></a>  
 
-## JumpGame  
-<a name="jumpgame"></a>
+📘 [Problem Description](./Problems/Jump-Game-II-Description.md)  
+
+Approaches  
+----------  
+| Rank | Approach             | Time Complexity | Space Complexity |  
+|------|----------------------|-----------------|------------------|  
+| 1    | Greedy (Jump Window) | O(n)            | O(1)             |  
+| 2    | Bottom-Up DP         | O(n²)           | O(n)             |  
+| 3    | Memoized DFS         | O(n²)           | O(n)             |  
+| 4    | BFS Traversal        | O(n²)           | O(n)             |   
+---
+
+## Jump Game  
+<a name="jump-game"></a>
 
 📘 [Problem Description](./Problems/JumpGame-Description.md)
 
