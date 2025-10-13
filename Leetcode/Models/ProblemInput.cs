@@ -48,4 +48,8 @@ namespace Leetcode.Models
     {
         public SearchInsertPositionInput(int[] numbers, int target) : base(numbers, target) { }
     }
+    public class JumpGameIIIInput : ProblemInput<int[]>
+    {
+        public JumpGameIIIInput(int[] numbers, int target) : base(numbers, target) { }
+    }
 }
