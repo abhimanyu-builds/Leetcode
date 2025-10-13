@@ -14,7 +14,7 @@ class Program
         var allSummaries = new List<IBenchmarkSummary>();
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.JumpGame
+            ProblemType.JumpGameII
         };
         //var problemTypesToRun = Enum.GetValues(typeof(ProblemType)).Cast<ProblemType>();
 
@@ -97,6 +97,9 @@ class Program
                     break;
                 case ProblemType.JumpGame:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], bool>(type) ?? []);
+                    break;
+                case ProblemType.JumpGameII:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
                     break;
 
                 default:

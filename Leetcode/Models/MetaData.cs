@@ -58,5 +58,6 @@
         FindPeakElement,
         HillAndValleyCount,
         JumpGame,
+        JumpGameII,
     }
 }
