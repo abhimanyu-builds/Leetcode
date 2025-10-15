@@ -119,6 +119,9 @@ namespace Leetcode.Helpers
                 ProblemType.JumpGameIII => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected)
                 ,
+                ProblemType.JumpGameIV => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected)
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")
