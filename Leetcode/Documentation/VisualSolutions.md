@@ -85,6 +85,13 @@
 
 ---
 
+## JumpGameIV – Strategy Comparison
+
+### B F S Dictionary
+![B F S Dictionary](./flowcharts/JumpGameIV/OnBFSDictionarySolution.png)
+
+---
+
 ## MaxConsecutive1sIII – Strategy Comparison
 
 ### Stateful Traversal Scan
