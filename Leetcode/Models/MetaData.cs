@@ -60,5 +60,6 @@
         JumpGame,
         JumpGameII,
         JumpGameIII,
+        JumpGameIV,
     }
 }

@@ -39,13 +39,27 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Jump-game](#jump-game)
 - [Jump-game-II](#jump-game-ii)
 - [Jump-game-III](#jump-game-iii)
+- [Jump-game-IV](#jump-game-iv)
 
-- 
+---
+
+## Jump-Game-IV  
+<a name="jump-game-iv"></a>
+
+📘 [Problem Description](./Problems/Jump-game-iv-Description.md)
+
+Approaches  
+----------  
+| Rank | Approach             | Time Complexity | Space Complexity | Notes                                                                 |
+|------|----------------------|------------------|-------------------|-----------------------------------------------------------------------|
+| 1    | Breadth-First Search | O(n)             | O(n)              | Canonical shortest-path strategy for unweighted graphs. Guarantees minimal steps. |
+| 2    | Bidirectional BFS    | O(n)             | O(n)              | Optimizes search space by expanding from both ends. Useful for large arrays with dense value jumps. |
+
 ---
 - ## Jump-Game-III
 <a name="jump-game-iii"></a>
 
-📘 [Problem Description](./Problems/JumpGameIII-Description.md)
+📘 [Problem Description](./Problems/Jump-game-iii-Description.md)
 
 Approaches
 ----------
@@ -71,7 +85,7 @@ Use Cases
 ## Jump-Game-II  
 <a name="jump-game-ii"></a>  
 
-📘 [Problem Description](./Problems/Jump-Game-II-Description.md)  
+📘 [Problem Description](./Problems/Jump-game-ii-Description.md)  
 
 Approaches  
 ----------  
@@ -86,7 +100,7 @@ Approaches
 ## Jump Game  
 <a name="jump-game"></a>
 
-📘 [Problem Description](./Problems/JumpGame-Description.md)
+📘 [Problem Description](./Problems/Jump-game-Description.md)
 
 Approaches  
 ----------  
