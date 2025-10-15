@@ -5,10 +5,10 @@ namespace Leetcode.Strategies.JumpGameIV
 {
     [StrategyExport(
         ProblemType.JumpGameIV,
-        name: "O(n) BFS Queue with Frequency Map and Visited",
+        name: "O(n) Node-Based BFS Queue with HashSet Visited",
         IsInPlace = false,
         HasDuplicates = false)]
-    public class OnBFSDictionarySolution : IProblemSolution<int[], int>
+    public class OnNodeBasedBFSWithHashSetVisitedSolution : IProblemSolution<int[], int>
     {
         public int Solve(int[] nums)
         {
