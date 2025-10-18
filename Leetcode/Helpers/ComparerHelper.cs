@@ -74,5 +74,29 @@ public static class CompareHelper
         return actualFlat.Count == expectedFlat.Count &&
                actualFlat.All(kvp => expectedFlat.TryGetValue(kvp.Key, out var count) && count == kvp.Value);
     }
+    public static bool RemoveAnagramsEqual(string[] actual, string[] expected)
+    {
+        if (actual == null || expected == null) return false;
+        if (actual.Length != expected.Length) return false;
 
+        // Normalize: convert each string to its frequency signature
+        static string GetSignature(string s)
+        {
+            var freq = new int[26];
+            foreach (char c in s)
+                freq[c - 'a']++;
+            return string.Join(".", freq);
+        }
+
+        var actualSignatures = actual.Select(GetSignature).ToArray();
+        var expectedSignatures = expected.Select(GetSignature).ToArray();
+
+        for (int i = 0; i < actualSignatures.Length; i++)
+        {
+            if (actualSignatures[i] != expectedSignatures[i])
+                return false;
+        }
+
+        return true;
+    }
 }

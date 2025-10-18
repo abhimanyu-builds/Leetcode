@@ -135,6 +135,16 @@ namespace Leetcode.Helpers
                     return false;
                 }
                 ,
+                ProblemType.RemoveSequentialAnagrams => (tc, actual) =>
+                {
+                    if (tc is ProblemTest<string[], string[]>.TestCase typed && actual is string[] result)
+                    {
+                        return CompareHelper.RemoveAnagramsEqual(result, typed.Expected);
+                    }
+
+                    return false;
+                }
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")
