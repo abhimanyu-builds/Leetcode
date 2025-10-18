@@ -44,6 +44,22 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Group-anagrams](#group-anagrams)
 
 ---
+## Remove-Anagrams  
+<a name="remove-anagrams"></a>
+
+📘 [Problem Description](./Problems/Remove-Anagrams-Description.md)
+
+Approaches  
+----------
+
+| Rank | Approach                   | Time Complexity | Space Complexity | Notes |
+|------|----------------------------|-----------------|------------------|-------|
+| 1    | Frequency Signature        | O(n · k)        | O(n · k)         | Fastest under lowercase-only constraint; uses fixed-size array for character counts. |
+| 2    | Sorted String Signature    | O(n · k log k)  | O(n · k)         | Charset-agnostic; sorts each string to form signature. |
+| 3    | HashSet with Signature     | O(n · k)        | O(n · k)         | Removes all anagrams globally; not limited to adjacent duplicates. |
+| 4    | Adjacent Signature Compare | O(n · k)        | O(n · k)         | Assumes input is sorted by anagram identity; only removes consecutive anagrams. |
+
+---
 
 ## Group-Anagrams  
 <a name="group-anagrams"></a>

@@ -8,7 +8,7 @@ namespace Leetcode.Strategies.GroupAnagrams
         name: "O(n) Dictionary with Fixed Array Signature",
         IsInPlace = false,
         HasDuplicates = false)]
-    public class OnFixedArraySolution : IProblemSolution<string[], string[][]>
+    public class OnkFixedArraySolution : IProblemSolution<string[], string[][]>
     {
         public string[][] Solve(string[] input)
         {

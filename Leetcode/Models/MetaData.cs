@@ -63,5 +63,6 @@
         JumpGameIV,
         ValidAnagram,
         GroupAnagrams,
+        RemoveSequentialAnagrams,
     }
 }

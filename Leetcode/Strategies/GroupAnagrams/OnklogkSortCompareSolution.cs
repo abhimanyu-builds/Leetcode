@@ -8,7 +8,7 @@ namespace Leetcode.Strategies.GroupAnagrams
         name: "O(n) Sort and Compare",
         IsInPlace = false,
         HasDuplicates = false)]
-    public class OnSortCompareSolution : IProblemSolution<string[], string[][]>
+    public class OnklogkSortCompareSolution : IProblemSolution<string[], string[][]>
     {
         public string[][] Solve(string[] input)
         {
