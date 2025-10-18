@@ -16,7 +16,7 @@ class Program
 
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.RemoveSequentialAnagrams
+            ProblemType.AnagramReplaceSteps
         };
 
         foreach (var type in problemTypesToRun)
@@ -116,6 +116,9 @@ class Program
                     break;
                 case ProblemType.RemoveSequentialAnagrams:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<string[], string[]>(type) ?? []);
+                    break;
+                case ProblemType.AnagramReplaceSteps:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<string[], int>(type) ?? []);
                     break;
 
                 default:

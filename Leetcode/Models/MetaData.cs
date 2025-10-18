@@ -64,5 +64,6 @@
         ValidAnagram,
         GroupAnagrams,
         RemoveSequentialAnagrams,
+        AnagramReplaceSteps,
     }
 }
