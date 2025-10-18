@@ -1,7 +1,5 @@
 ﻿using Leetcode.Models;
 using Leetcode.TestHarness;
-using System;
-using System.Reflection;
 
 public static class CompareHelper
 {
@@ -47,6 +45,34 @@ public static class CompareHelper
         }
 
         return false;
+    }
+    public static bool GroupAnagramsEqual(string[][] actual, string[][] expected)
+    {
+        if (actual == null || expected == null) return false;
+        if (actual.Length != expected.Length) return false;
+
+        // Normalize: sort each group, then sort groups by first element
+        static string[][] Normalize(string[][] groups) =>
+            groups
+                .Select(group => group.OrderBy(word => word).ToArray())
+                .OrderBy(group => group.FirstOrDefault() ?? string.Empty)
+                .ToArray();
+
+        var actualNormalized = Normalize(actual);
+        var expectedNormalized = Normalize(expected);
+
+        for (int i = 0; i < expectedNormalized.Length; i++)
+        {
+            if (!expectedNormalized[i].SequenceEqual(actualNormalized[i]))
+                return false;
+        }
+
+        // Optional: validate flat frequency match
+        var actualFlat = actual.SelectMany(g => g).GroupBy(s => s).ToDictionary(g => g.Key, g => g.Count());
+        var expectedFlat = expected.SelectMany(g => g).GroupBy(s => s).ToDictionary(g => g.Key, g => g.Count());
+
+        return actualFlat.Count == expectedFlat.Count &&
+               actualFlat.All(kvp => expectedFlat.TryGetValue(kvp.Key, out var count) && count == kvp.Value);
     }
 
 }

@@ -41,8 +41,25 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Jump-game-III](#jump-game-iii)
 - [Jump-game-IV](#jump-game-iv)
 - [Valid-anagram](#valid-anagram)
+- [Group-anagrams](#group-anagrams)
 
 ---
+
+## Group-Anagrams  
+<a name="group-anagrams"></a>
+
+📘 [Problem Description](./Problems/Group-Anagrams-Description.md)
+
+Approaches  
+----------
+
+| Rank | Approach               | Time Complexity | Space Complexity | Notes |
+|------|------------------------|-----------------|------------------|-------|
+| 1    | Frequency Signature    | O(n · k)        | O(n · k)         | Fastest for lowercase a–z; uses fixed-size array for character counts. |
+| 2    | Sorted String Signature| O(n · k log k)  | O(n · k)         | Charset-agnostic; sorts each string to form signature. |
+
+---
+
 ## Valid-Anagram  
 <a name="valid-anagram"></a>
 
