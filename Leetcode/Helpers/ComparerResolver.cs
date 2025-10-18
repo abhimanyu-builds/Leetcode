@@ -125,6 +125,16 @@ namespace Leetcode.Helpers
                 ProblemType.ValidAnagram => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected)
                 ,
+                ProblemType.GroupAnagrams => (tc, actual) =>
+                {
+                    if (tc is ProblemTest<string[], string[][]>.TestCase typed && actual is string[][] result)
+                    {
+                        return CompareHelper.GroupAnagramsEqual(result, typed.Expected);
+                    }
+
+                    return false;
+                }
+                ,
 
 
                 _ => throw new NotSupportedException($"No comparer defined for problem type: {type}")

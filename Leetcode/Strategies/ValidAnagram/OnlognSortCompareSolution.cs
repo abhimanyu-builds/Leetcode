@@ -1,7 +1,7 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Metadata;
 
-namespace Leetcode.Strategies.ValidMountainArray
+namespace Leetcode.Strategies.ValidAnagram
 {
     [StrategyExport(
         ProblemType.ValidAnagram,

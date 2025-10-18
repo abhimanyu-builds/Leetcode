@@ -16,7 +16,7 @@ class Program
 
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.ValidAnagram
+            ProblemType.GroupAnagrams
         };
 
         foreach (var type in problemTypesToRun)
@@ -110,6 +110,9 @@ class Program
                     break;
                 case ProblemType.ValidAnagram:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<string[], bool>(type) ?? []);
+                    break;
+                case ProblemType.GroupAnagrams:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<string[], string[][]>(type) ?? []);
                     break;
 
                 default:
