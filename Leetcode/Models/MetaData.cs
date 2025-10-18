@@ -61,5 +61,6 @@
         JumpGameII,
         JumpGameIII,
         JumpGameIV,
+        ValidAnagram,
     }
 }

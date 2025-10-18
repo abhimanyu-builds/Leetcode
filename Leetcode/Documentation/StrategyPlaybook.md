@@ -40,6 +40,23 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Jump-game-II](#jump-game-ii)
 - [Jump-game-III](#jump-game-iii)
 - [Jump-game-IV](#jump-game-iv)
+- [Valid-anagram](#valid-anagram)
+
+---
+## Valid-Anagram  
+<a name="valid-anagram"></a>
+
+📘 [Problem Description](./Problems/Valid-Anagram-Description.md)
+
+Approaches  
+----------
+
+| Rank | Approach               | Time Complexity | Space Complexity | Notes |
+|------|------------------------|-----------------|------------------|-------|
+| 1    | Array Counter (a–z)    | O(n)            | O(1)             | Fastest; assumes input contains only lowercase English letters. |
+| 2    | Dictionary<char, int>  | O(n)            | O(k)             | Flexible; supports any character set within constraints. |
+| 3    | Dictionary<int, int>   | O(n)            | O(k)             | Unicode-safe; future-proof for broader character sets. |
+| 4    | Sort and Compare       | O(n log n)      | O(n)             | Simple but slower; loses frequency-based clarity. |
 
 ---
 

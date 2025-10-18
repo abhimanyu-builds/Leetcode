@@ -16,7 +16,7 @@ class Program
 
         var problemTypesToRun = new ProblemType[]
         {
-            ProblemType.JumpGameIV
+            ProblemType.ValidAnagram
         };
 
         foreach (var type in problemTypesToRun)
@@ -107,6 +107,9 @@ class Program
                     break;
                 case ProblemType.JumpGameIV:
                     allSummaries.AddRange(RunProblemDynamicAndReturnSummary<int[], int>(type) ?? []);
+                    break;
+                case ProblemType.ValidAnagram:
+                    allSummaries.AddRange(RunProblemDynamicAndReturnSummary<string[], bool>(type) ?? []);
                     break;
 
                 default:
