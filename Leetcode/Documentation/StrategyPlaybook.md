@@ -42,8 +42,25 @@ A consolidated reference of all strategy tradeoffs across problems.
 - [Jump-game-IV](#jump-game-iv)
 - [Valid-anagram](#valid-anagram)
 - [Group-anagrams](#group-anagrams)
+- [Minimum-steps-to-anagram](#minimum-steps-to-anagram)
 
 ---
+
+## Minimum-steps-to-anagram
+<a name="minimum-steps-to-anagram"></a>
+
+📘 [Problem Description](./Problems/Anagram-replace-steps-Description.md)
+
+Approaches
+----------
+| Rank | Approach             | Time Complexity | Space Complexity | Notes |
+|------|----------------------|------------------|-------------------|-------|
+| 1    | Frequency Delta Array| O(n)             | O(1)              | Optimal for fixed alphabet; single-pass; no simulation |
+| 2    | Dual Frequency Maps  | O(n)             | O(1)              | Two-pass; slightly more verbose; useful for onboarding clarity |
+| 3    | Sort and Compare     | O(n log n)       | O(n)              | Overcounts mismatches; not guaranteed minimal; useful for brute-force validation |
+
+---
+
 ## Remove-Anagrams  
 <a name="remove-anagrams"></a>
 
