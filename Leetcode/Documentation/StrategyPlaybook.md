@@ -49,7 +49,7 @@ A consolidated reference of all strategy tradeoffs across problems.
 ## Minimum-steps-to-anagram
 <a name="minimum-steps-to-anagram"></a>
 
-📘 [Problem Description](./Problems/Anagram-replace-steps-Description.md)
+📘 [Problem Description](./Problems/Min-steps-to-anagram-Description.md)
 
 Approaches
 ----------

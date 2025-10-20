@@ -1,10 +1,10 @@
 ﻿using Leetcode.Interfaces;
 using Leetcode.Metadata;
 
-namespace Leetcode.Strategies.AnagramReplaceSteps
+namespace Leetcode.Strategies.MinStepsToAnagram
 {
     [StrategyExport(
-        ProblemType.AnagramReplaceSteps,
+        ProblemType.MinStepsToAnagram,
         name: "O(n) Compute Frequency Delta",
         IsInPlace = false,
         HasDuplicates = false)]

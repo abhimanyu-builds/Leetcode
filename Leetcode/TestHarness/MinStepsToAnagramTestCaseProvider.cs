@@ -2,8 +2,8 @@
 using Leetcode.Metadata;
 using Leetcode.TestHarness;
 
-[TestCaseProviderExport(ProblemType.AnagramReplaceSteps)]
-public class AnagramReplaceStepsTestCaseProvider : ITestCaseProvider<string[], int>
+[TestCaseProviderExport(ProblemType.MinStepsToAnagram)]
+public class MinStepsToAnagramTestCaseProvider : ITestCaseProvider<string[], int>
 {
     public List<ProblemTest<string[], int>.TestCase> GetTestCases()
     {

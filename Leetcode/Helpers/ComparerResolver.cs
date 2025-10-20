@@ -145,7 +145,10 @@ namespace Leetcode.Helpers
                     return false;
                 }
                 ,
-                ProblemType.AnagramReplaceSteps => (tc, actual) =>
+                ProblemType.MinStepsToAnagram => (tc, actual) =>
+                    actual != null && actual.Equals(tc.Expected)
+                ,
+                ProblemType.MinStepsToAnagramII => (tc, actual) =>
                     actual != null && actual.Equals(tc.Expected)
                 ,
 
