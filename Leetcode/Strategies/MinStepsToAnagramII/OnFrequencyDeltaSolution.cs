@@ -13,7 +13,7 @@ namespace Leetcode.Strategies.MinStepsToAnagramII
         public int Solve(string[] input)
         {
 
-            //Submission: https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/submissions/1805279872/
+            //Submission: https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii/submissions/1809849457/
 
             // Analysis:
             // Only t can be modified, so have to compute how many characters in t need to be replaced to match s.
@@ -35,12 +35,16 @@ namespace Leetcode.Strategies.MinStepsToAnagramII
                 delta[s[i] - 'a']++;
                 delta[t[i] - 'a']--;
             }
+            for (int i = 0; i < t.Length; i++)
+            {
+                delta[t[i] - 'a']--;
+            }
 
             int steps = 0;
 
             for (int i = 0; i < delta.Length; i++)
             {
-                if (delta[i] > 0) steps += delta[i];
+                steps += Math.Abs(delta[i]);
             }
             return steps;
         }

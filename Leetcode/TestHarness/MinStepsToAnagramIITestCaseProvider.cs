@@ -21,6 +21,12 @@ public class MinStepsToAnagramIITestCaseProvider : ITestCaseProvider<string[], i
             new(["zzzz", "zzzz"], 0),
             new(["abcde", "edcba"], 0),
             new(["abcde", "aaaaa"], 4),
+            new(["abc", "ab"], 1),
+            new(["a", "abc"], 2),
+            new(["abc", "defgh"], 5),
+            new(["xxyyzz", "xyz"], 3),
+            new(["", "abc"], 3),
+            new(["abc", ""], 3),
         };
 
         cases.AddRange(GenerateRandomizedCases());
@@ -36,9 +42,11 @@ public class MinStepsToAnagramIITestCaseProvider : ITestCaseProvider<string[], i
 
         for (int i = 0; i < 10; i++)
         {
-            int len = rand.Next(1, 5001);
-            var s = new string(Enumerable.Range(0, len).Select(_ => (char)('a' + rand.Next(0, 26))).ToArray());
-            var t = new string(Enumerable.Range(0, len).Select(_ => (char)('a' + rand.Next(0, 26))).ToArray());
+            int lenS = rand.Next(1, 200_001);
+            int lenT = rand.Next(1, 200_001);
+
+            var s = new string(Enumerable.Range(0, lenS).Select(_ => (char)('a' + rand.Next(0, 26))).ToArray());
+            var t = new string(Enumerable.Range(0, lenT).Select(_ => (char)('a' + rand.Next(0, 26))).ToArray());
 
             cases.Add(new([s, t], ComputeSteps(s, t)));
         }
@@ -51,24 +59,38 @@ public class MinStepsToAnagramIITestCaseProvider : ITestCaseProvider<string[], i
         var cases = new List<ProblemTest<string[], int>.TestCase>();
 
         // Max length, full mismatch
-        var s1 = new string('a', 50_000);
-        var t1 = new string('b', 50_000);
-        cases.Add(new([s1, t1], 50_000));
+        var s1 = new string('a', 200_000);
+        var t1 = new string('b', 200_000);
+        cases.Add(new([s1, t1], 400_000));
 
         // Max length, perfect match
-        var s2 = new string('z', 50_000);
-        var t2 = new string('z', 50_000);
+        var s2 = new string('z', 200_000);
+        var t2 = new string('z', 200_000);
         cases.Add(new([s2, t2], 0));
 
         // Half-half swap
-        var s3 = new string('a', 25_000) + new string('b', 25_000);
-        var t3 = new string('b', 25_000) + new string('a', 25_000);
+        var s3 = new string('a', 100_000) + new string('b', 100_000);
+        var t3 = new string('b', 100_000) + new string('a', 100_000);
         cases.Add(new([s3, t3], 0));
 
         // Skewed distribution
-        var s4 = new string('a', 49_999) + "z";
-        var t4 = new string('a', 49_998) + "zz";
+        var s4 = new string('a', 199_999) + "z";
+        var t4 = new string('a', 199_998) + "zz";
         cases.Add(new([s4, t4], 1));
+
+        // Unequal length, full mismatch
+        var s5 = new string('a', 200_000);
+        var t5 = new string('b', 1);
+        cases.Add(new([s5, t5], 200_001));
+
+        var s6 = new string('c', 1);
+        var t6 = new string('d', 200_000);
+        cases.Add(new([s6, t6], 200_001));
+
+        // Unequal length, partial overlap
+        var s7 = new string('x', 150_000) + new string('y', 50_000);
+        var t7 = new string('x', 100_000) + new string('z', 100_000);
+        cases.Add(new([s7, t7], 100_000));
 
         return cases;
     }
@@ -76,12 +98,9 @@ public class MinStepsToAnagramIITestCaseProvider : ITestCaseProvider<string[], i
     private int ComputeSteps(string s, string t)
     {
         var freq = new int[26];
-        for (int i = 0; i < s.Length; i++)
-        {
-            freq[s[i] - 'a']++;
-            freq[t[i] - 'a']--;
-        }
+        foreach (var ch in s) freq[ch - 'a']++;
+        foreach (var ch in t) freq[ch - 'a']--;
 
-        return freq.Where(x => x < 0).Sum(x => -x);
+        return freq.Sum(x => Math.Abs(x));
     }
 }
